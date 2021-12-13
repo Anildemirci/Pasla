@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04F644F927670165004840B8 /* PaslaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F644F827670165004840B8 /* PaslaApp.swift */; };
+		04F644FB27670165004840B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F644FA27670165004840B8 /* ContentView.swift */; };
+		04F644FD27670167004840B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F644FC27670167004840B8 /* Assets.xcassets */; };
+		04F6450027670167004840B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F644FF27670167004840B8 /* Preview Assets.xcassets */; };
+		04F6450A27670167004840B8 /* PaslaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6450927670167004840B8 /* PaslaTests.swift */; };
+		04F6451427670167004840B8 /* PaslaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6451327670167004840B8 /* PaslaUITests.swift */; };
+		04F6451627670167004840B8 /* PaslaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6451527670167004840B8 /* PaslaUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04F6450627670167004840B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04F644ED27670165004840B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F644F427670165004840B8;
+			remoteInfo = Pasla;
+		};
+		04F6451027670167004840B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04F644ED27670165004840B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F644F427670165004840B8;
+			remoteInfo = Pasla;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04F644F527670165004840B8 /* Pasla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pasla.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F644F827670165004840B8 /* PaslaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaslaApp.swift; sourceTree = "<group>"; };
+		04F644FA27670165004840B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		04F644FC27670167004840B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04F644FF27670167004840B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		04F6450527670167004840B8 /* PaslaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaslaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F6450927670167004840B8 /* PaslaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaslaTests.swift; sourceTree = "<group>"; };
+		04F6450F27670167004840B8 /* PaslaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaslaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F6451327670167004840B8 /* PaslaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaslaUITests.swift; sourceTree = "<group>"; };
+		04F6451527670167004840B8 /* PaslaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaslaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04F644F227670165004840B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F6450227670167004840B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F6450C27670167004840B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04F644EC27670165004840B8 = {
+			isa = PBXGroup;
+			children = (
+				04F644F727670165004840B8 /* Pasla */,
+				04F6450827670167004840B8 /* PaslaTests */,
+				04F6451227670167004840B8 /* PaslaUITests */,
+				04F644F627670165004840B8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		04F644F627670165004840B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04F644F527670165004840B8 /* Pasla.app */,
+				04F6450527670167004840B8 /* PaslaTests.xctest */,
+				04F6450F27670167004840B8 /* PaslaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04F644F727670165004840B8 /* Pasla */ = {
+			isa = PBXGroup;
+			children = (
+				04F644F827670165004840B8 /* PaslaApp.swift */,
+				04F644FA27670165004840B8 /* ContentView.swift */,
+				04F644FC27670167004840B8 /* Assets.xcassets */,
+				04F644FE27670167004840B8 /* Preview Content */,
+			);
+			path = Pasla;
+			sourceTree = "<group>";
+		};
+		04F644FE27670167004840B8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				04F644FF27670167004840B8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		04F6450827670167004840B8 /* PaslaTests */ = {
+			isa = PBXGroup;
+			children = (
+				04F6450927670167004840B8 /* PaslaTests.swift */,
+			);
+			path = PaslaTests;
+			sourceTree = "<group>";
+		};
+		04F6451227670167004840B8 /* PaslaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				04F6451327670167004840B8 /* PaslaUITests.swift */,
+				04F6451527670167004840B8 /* PaslaUITestsLaunchTests.swift */,
+			);
+			path = PaslaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04F644F427670165004840B8 /* Pasla */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F6451927670167004840B8 /* Build configuration list for PBXNativeTarget "Pasla" */;
+			buildPhases = (
+				04F644F127670165004840B8 /* Sources */,
+				04F644F227670165004840B8 /* Frameworks */,
+				04F644F327670165004840B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pasla;
+			productName = Pasla;
+			productReference = 04F644F527670165004840B8 /* Pasla.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04F6450427670167004840B8 /* PaslaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F6451C27670167004840B8 /* Build configuration list for PBXNativeTarget "PaslaTests" */;
+			buildPhases = (
+				04F6450127670167004840B8 /* Sources */,
+				04F6450227670167004840B8 /* Frameworks */,
+				04F6450327670167004840B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04F6450727670167004840B8 /* PBXTargetDependency */,
+			);
+			name = PaslaTests;
+			productName = PaslaTests;
+			productReference = 04F6450527670167004840B8 /* PaslaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		04F6450E27670167004840B8 /* PaslaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F6451F27670167004840B8 /* Build configuration list for PBXNativeTarget "PaslaUITests" */;
+			buildPhases = (
+				04F6450B27670167004840B8 /* Sources */,
+				04F6450C27670167004840B8 /* Frameworks */,
+				04F6450D27670167004840B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04F6451127670167004840B8 /* PBXTargetDependency */,
+			);
+			name = PaslaUITests;
+			productName = PaslaUITests;
+			productReference = 04F6450F27670167004840B8 /* PaslaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04F644ED27670165004840B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					04F644F427670165004840B8 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					04F6450427670167004840B8 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 04F644F427670165004840B8;
+					};
+					04F6450E27670167004840B8 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 04F644F427670165004840B8;
+					};
+				};
+			};
+			buildConfigurationList = 04F644F027670165004840B8 /* Build configuration list for PBXProject "Pasla" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04F644EC27670165004840B8;
+			productRefGroup = 04F644F627670165004840B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04F644F427670165004840B8 /* Pasla */,
+				04F6450427670167004840B8 /* PaslaTests */,
+				04F6450E27670167004840B8 /* PaslaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04F644F327670165004840B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F6450027670167004840B8 /* Preview Assets.xcassets in Resources */,
+				04F644FD27670167004840B8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F6450327670167004840B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F6450D27670167004840B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04F644F127670165004840B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F644FB27670165004840B8 /* ContentView.swift in Sources */,
+				04F644F927670165004840B8 /* PaslaApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F6450127670167004840B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F6450A27670167004840B8 /* PaslaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F6450B27670167004840B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F6451627670167004840B8 /* PaslaUITestsLaunchTests.swift in Sources */,
+				04F6451427670167004840B8 /* PaslaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04F6450727670167004840B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F644F427670165004840B8 /* Pasla */;
+			targetProxy = 04F6450627670167004840B8 /* PBXContainerItemProxy */;
+		};
+		04F6451127670167004840B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F644F427670165004840B8 /* Pasla */;
+			targetProxy = 04F6451027670167004840B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04F6451727670167004840B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		04F6451827670167004840B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04F6451A27670167004840B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Pasla/Preview Content\"";
+				DEVELOPMENT_TEAM = 4H7485JNQW;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anildemirci.Pasla;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04F6451B27670167004840B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Pasla/Preview Content\"";
+				DEVELOPMENT_TEAM = 4H7485JNQW;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anildemirci.Pasla;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		04F6451D27670167004840B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4H7485JNQW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anildemirci.PaslaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pasla.app/Pasla";
+			};
+			name = Debug;
+		};
+		04F6451E27670167004840B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4H7485JNQW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anildemirci.PaslaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pasla.app/Pasla";
+			};
+			name = Release;
+		};
+		04F6452027670167004840B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4H7485JNQW;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anildemirci.PaslaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pasla;
+			};
+			name = Debug;
+		};
+		04F6452127670167004840B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4H7485JNQW;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anildemirci.PaslaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pasla;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04F644F027670165004840B8 /* Build configuration list for PBXProject "Pasla" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F6451727670167004840B8 /* Debug */,
+				04F6451827670167004840B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F6451927670167004840B8 /* Build configuration list for PBXNativeTarget "Pasla" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F6451A27670167004840B8 /* Debug */,
+				04F6451B27670167004840B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F6451C27670167004840B8 /* Build configuration list for PBXNativeTarget "PaslaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F6451D27670167004840B8 /* Debug */,
+				04F6451E27670167004840B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F6451F27670167004840B8 /* Build configuration list for PBXNativeTarget "PaslaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F6452027670167004840B8 /* Debug */,
+				04F6452127670167004840B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04F644ED27670165004840B8 /* Project object */;
+}
