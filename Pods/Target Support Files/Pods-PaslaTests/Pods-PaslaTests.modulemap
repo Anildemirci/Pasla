@@ -1,0 +1,6 @@
+framework module Pods_PaslaTests {
+  umbrella header "Pods-PaslaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
