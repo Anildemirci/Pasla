@@ -18,16 +18,18 @@
 	<string>pasla-ed243</string>
 	<key>STORAGE_BUCKET</key>
 	<string>pasla-ed243.appspot.com</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to access the camera for taking photos</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:186557491242:ios:bd8eb354832e6eafe4bb53</string>
 </dict>

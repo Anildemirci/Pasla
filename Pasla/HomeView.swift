@@ -32,6 +32,7 @@ struct HomeView: View {
                             .background(Color("myGreen"))
                             .foregroundColor(Color.white)
                             .clipShape(Capsule())
+                    
                 }
                 Spacer()
             }
@@ -43,7 +44,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             HomeView()
-            HomeView().previewDevice("iPhone 12 Pro Max")
         }
     }
 }

@@ -9,7 +9,28 @@ import SwiftUI
 
 struct CommentsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Spacer()
+            Text("11 müşteri oyu ile 4.5/5 puan.")
+            List{
+                VStack{
+                    HStack(alignment:.top){
+                        VStack(alignment: .leading){
+                            Text("isim soyisim")
+                            Text("tarih")
+                        }
+                        Spacer()
+                        Image(systemName: "star.fill")
+                        Image(systemName: "star.fill")
+                        Image(systemName: "star.fill")
+                        Image(systemName: "star.fill")
+                        Image(systemName: "star.fill")
+                    }
+                    Spacer()
+                    Text("asdaskldjaslkdjasldsakjdşlsakdaslşdjkassadlmsadkadaldasdasdksaildşaksdşlaksdşlaskdadads")
+                }
+            }
+        }
     }
 }
 

@@ -7,9 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041C957F2785EEA80019EDBB /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C957E2785EEA70019EDBB /* UserSettingsView.swift */; };
 		0423FA322768EF290061C2E9 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0423FA312768EF290061C2E9 /* UserInfoView.swift */; };
 		04299E3F276E15A70083C7BD /* StadiumAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04299E3E276E15A70083C7BD /* StadiumAccountView.swift */; };
 		04299E41276E15B30083C7BD /* UserAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04299E40276E15B30083C7BD /* UserAccountView.swift */; };
+		043320AA2792E7E100572563 /* MyTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320A92792E7E100572563 /* MyTeamView.swift */; };
+		043320B22792E87600572563 /* UserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320B12792E87600572563 /* UserInformationView.swift */; };
+		043320B42792E88400572563 /* AllAppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320B32792E88400572563 /* AllAppointmentsView.swift */; };
+		043320B62792E89900572563 /* UserAppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320B52792E89900572563 /* UserAppointmentsView.swift */; };
+		043320B82792E8AA00572563 /* EvaluationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320B72792E8AA00572563 /* EvaluationView.swift */; };
+		043320BB2792EC5B00572563 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320BA2792EC5B00572563 /* CalendarView.swift */; };
+		043320BD2792EC6B00572563 /* ConfirmDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320BC2792EC6B00572563 /* ConfirmDateView.swift */; };
+		043320BF2792EC7700572563 /* DateEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320BE2792EC7700572563 /* DateEditView.swift */; };
+		043320C22792ECC600572563 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320C12792ECC600572563 /* AppointmentView.swift */; };
+		043320C42792ECDC00572563 /* RequestAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320C32792ECDC00572563 /* RequestAppointmentView.swift */; };
+		043320C62792ECE700572563 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320C52792ECE700572563 /* DateView.swift */; };
+		043320C82792ECF800572563 /* FieldInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320C72792ECF800572563 /* FieldInformationsView.swift */; };
+		043320CB2792ED3200572563 /* FavoriteStadiumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320CA2792ED3200572563 /* FavoriteStadiumsView.swift */; };
+		043320CE2792ED5500572563 /* FindStadiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320CD2792ED5500572563 /* FindStadiumView.swift */; };
+		043320D02792ED6000572563 /* StadiumNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320CF2792ED6000572563 /* StadiumNameView.swift */; };
+		043320D22792ED6D00572563 /* SelectedStadiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320D12792ED6D00572563 /* SelectedStadiumView.swift */; };
+		0452C17F279707CE00DBFA93 /* StadiumEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0452C17E279707CE00DBFA93 /* StadiumEditView.swift */; };
+		0463B8772784A7F00070DDEA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463B8762784A7F00070DDEA /* ImagePicker.swift */; };
+		046C957C2788FAD6008D2B66 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 046C957B2788FAD6008D2B66 /* SDWebImageSwiftUI */; };
 		0475F9BD27681CA00053C4EF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475F9BC27681CA00053C4EF /* SignUpView.swift */; };
 		0475F9BF27681DF40053C4EF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475F9BE27681DF40053C4EF /* LoginView.swift */; };
 		0475F9C3276820F40053C4EF /* UserSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475F9C2276820F40053C4EF /* UserSignUpView.swift */; };
@@ -17,6 +37,7 @@
 		0475F9C9276821160053C4EF /* UserLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475F9C8276821160053C4EF /* UserLoginView.swift */; };
 		0475F9CB276821260053C4EF /* StadiumSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475F9CA276821260053C4EF /* StadiumSignUpView.swift */; };
 		04A398B82783471E0091D14D /* StadiumInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A398B72783471E0091D14D /* StadiumInfoView.swift */; };
+		04A398BA278397930091D14D /* StadiumSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A398B9278397930091D14D /* StadiumSettingsView.swift */; };
 		04DD2C682777A2850075A103 /* StadiumPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD2C672777A2850075A103 /* StadiumPhotosView.swift */; };
 		04DD2C6D2777A2CA0075A103 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD2C6C2777A2CA0075A103 /* CommentsView.swift */; };
 		04DD2C712777A2EC0075A103 /* StadiumInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD2C702777A2EC0075A103 /* StadiumInformationsView.swift */; };
@@ -53,9 +74,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041C957E2785EEA70019EDBB /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		0423FA312768EF290061C2E9 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		04299E3E276E15A70083C7BD /* StadiumAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumAccountView.swift; sourceTree = "<group>"; };
 		04299E40276E15B30083C7BD /* UserAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountView.swift; sourceTree = "<group>"; };
+		043320A92792E7E100572563 /* MyTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamView.swift; sourceTree = "<group>"; };
+		043320B12792E87600572563 /* UserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationView.swift; sourceTree = "<group>"; };
+		043320B32792E88400572563 /* AllAppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAppointmentsView.swift; sourceTree = "<group>"; };
+		043320B52792E89900572563 /* UserAppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAppointmentsView.swift; sourceTree = "<group>"; };
+		043320B72792E8AA00572563 /* EvaluationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationView.swift; sourceTree = "<group>"; };
+		043320BA2792EC5B00572563 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		043320BC2792EC6B00572563 /* ConfirmDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDateView.swift; sourceTree = "<group>"; };
+		043320BE2792EC7700572563 /* DateEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditView.swift; sourceTree = "<group>"; };
+		043320C12792ECC600572563 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
+		043320C32792ECDC00572563 /* RequestAppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAppointmentView.swift; sourceTree = "<group>"; };
+		043320C52792ECE700572563 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
+		043320C72792ECF800572563 /* FieldInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldInformationsView.swift; sourceTree = "<group>"; };
+		043320CA2792ED3200572563 /* FavoriteStadiumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStadiumsView.swift; sourceTree = "<group>"; };
+		043320CD2792ED5500572563 /* FindStadiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindStadiumView.swift; sourceTree = "<group>"; };
+		043320CF2792ED6000572563 /* StadiumNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumNameView.swift; sourceTree = "<group>"; };
+		043320D12792ED6D00572563 /* SelectedStadiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedStadiumView.swift; sourceTree = "<group>"; };
+		0452C17E279707CE00DBFA93 /* StadiumEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumEditView.swift; sourceTree = "<group>"; };
+		0463B8762784A7F00070DDEA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0475F9BC27681CA00053C4EF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		0475F9BE27681DF40053C4EF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0475F9C2276820F40053C4EF /* UserSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpView.swift; sourceTree = "<group>"; };
@@ -63,6 +103,7 @@
 		0475F9C8276821160053C4EF /* UserLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginView.swift; sourceTree = "<group>"; };
 		0475F9CA276821260053C4EF /* StadiumSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumSignUpView.swift; sourceTree = "<group>"; };
 		04A398B72783471E0091D14D /* StadiumInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumInfoView.swift; sourceTree = "<group>"; };
+		04A398B9278397930091D14D /* StadiumSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumSettingsView.swift; sourceTree = "<group>"; };
 		04DD2C672777A2850075A103 /* StadiumPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumPhotosView.swift; sourceTree = "<group>"; };
 		04DD2C6C2777A2CA0075A103 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		04DD2C702777A2EC0075A103 /* StadiumInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumInformationsView.swift; sourceTree = "<group>"; };
@@ -95,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046C957C2788FAD6008D2B66 /* SDWebImageSwiftUI in Frameworks */,
 				9EFB7AF297CC29E995546CE3 /* Pods_Pasla.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +174,13 @@
 			isa = PBXGroup;
 			children = (
 				04299E40276E15B30083C7BD /* UserAccountView.swift */,
+				043320A92792E7E100572563 /* MyTeamView.swift */,
+				041C957E2785EEA70019EDBB /* UserSettingsView.swift */,
+				043320C02792ECAA00572563 /* AppointmentStadium */,
+				043320AE2792E84100572563 /* Appointments */,
+				043320C92792ED0500572563 /* FavoriteStadiums */,
+				043320CC2792ED4200572563 /* FindStadium */,
+				043320AB2792E7F000572563 /* Informations */,
 			);
 			path = UserAccount;
 			sourceTree = "<group>";
@@ -140,12 +189,71 @@
 			isa = PBXGroup;
 			children = (
 				04299E3E276E15A70083C7BD /* StadiumAccountView.swift */,
+				04A398B9278397930091D14D /* StadiumSettingsView.swift */,
 				04DD2C722777A7A30075A103 /* Appointments */,
+				043320B92792EC1900572563 /* Calendar */,
 				04DD2C6B2777A2B30075A103 /* Comments */,
 				04DD2C6A2777A2AB0075A103 /* Informations */,
 				04DD2C692777A28F0075A103 /* Photos */,
 			);
 			path = StadiumAccount;
+			sourceTree = "<group>";
+		};
+		043320AB2792E7F000572563 /* Informations */ = {
+			isa = PBXGroup;
+			children = (
+				043320B12792E87600572563 /* UserInformationView.swift */,
+			);
+			path = Informations;
+			sourceTree = "<group>";
+		};
+		043320AE2792E84100572563 /* Appointments */ = {
+			isa = PBXGroup;
+			children = (
+				043320B32792E88400572563 /* AllAppointmentsView.swift */,
+				043320B52792E89900572563 /* UserAppointmentsView.swift */,
+				043320B72792E8AA00572563 /* EvaluationView.swift */,
+			);
+			path = Appointments;
+			sourceTree = "<group>";
+		};
+		043320B92792EC1900572563 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				043320BA2792EC5B00572563 /* CalendarView.swift */,
+				043320BC2792EC6B00572563 /* ConfirmDateView.swift */,
+				043320BE2792EC7700572563 /* DateEditView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		043320C02792ECAA00572563 /* AppointmentStadium */ = {
+			isa = PBXGroup;
+			children = (
+				043320C12792ECC600572563 /* AppointmentView.swift */,
+				043320C52792ECE700572563 /* DateView.swift */,
+				043320C72792ECF800572563 /* FieldInformationsView.swift */,
+				043320C32792ECDC00572563 /* RequestAppointmentView.swift */,
+			);
+			path = AppointmentStadium;
+			sourceTree = "<group>";
+		};
+		043320C92792ED0500572563 /* FavoriteStadiums */ = {
+			isa = PBXGroup;
+			children = (
+				043320CA2792ED3200572563 /* FavoriteStadiumsView.swift */,
+			);
+			path = FavoriteStadiums;
+			sourceTree = "<group>";
+		};
+		043320CC2792ED4200572563 /* FindStadium */ = {
+			isa = PBXGroup;
+			children = (
+				043320CD2792ED5500572563 /* FindStadiumView.swift */,
+				043320CF2792ED6000572563 /* StadiumNameView.swift */,
+				043320D12792ED6D00572563 /* SelectedStadiumView.swift */,
+			);
+			path = FindStadium;
 			sourceTree = "<group>";
 		};
 		0475F9C0276820B60053C4EF /* Login */ = {
@@ -183,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				04DD2C702777A2EC0075A103 /* StadiumInformationsView.swift */,
+				0452C17E279707CE00DBFA93 /* StadiumEditView.swift */,
 			);
 			path = Informations;
 			sourceTree = "<group>";
@@ -237,6 +346,7 @@
 				04F6452227670453004840B8 /* GoogleService-Info.plist */,
 				04F644FC27670167004840B8 /* Assets.xcassets */,
 				04F644FE27670167004840B8 /* Preview Content */,
+				0463B8762784A7F00070DDEA /* ImagePicker.swift */,
 			);
 			path = Pasla;
 			sourceTree = "<group>";
@@ -297,6 +407,9 @@
 			dependencies = (
 			);
 			name = Pasla;
+			packageProductDependencies = (
+				046C957B2788FAD6008D2B66 /* SDWebImageSwiftUI */,
+			);
 			productName = Pasla;
 			productReference = 04F644F527670165004840B8 /* Pasla.app */;
 			productType = "com.apple.product-type.application";
@@ -372,6 +485,9 @@
 				Base,
 			);
 			mainGroup = 04F644EC27670165004840B8;
+			packageReferences = (
+				046C957A2788FAD6008D2B66 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 04F644F627670165004840B8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -518,23 +634,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041C957F2785EEA80019EDBB /* UserSettingsView.swift in Sources */,
+				043320CB2792ED3200572563 /* FavoriteStadiumsView.swift in Sources */,
 				04299E3F276E15A70083C7BD /* StadiumAccountView.swift in Sources */,
+				043320AA2792E7E100572563 /* MyTeamView.swift in Sources */,
 				04DD2C762777A8B40075A103 /* UploadPhotos.swift in Sources */,
+				043320BF2792EC7700572563 /* DateEditView.swift in Sources */,
 				0423FA322768EF290061C2E9 /* UserInfoView.swift in Sources */,
 				04299E41276E15B30083C7BD /* UserAccountView.swift in Sources */,
+				043320BB2792EC5B00572563 /* CalendarView.swift in Sources */,
 				04F644FB27670165004840B8 /* HomeView.swift in Sources */,
 				0475F9C9276821160053C4EF /* UserLoginView.swift in Sources */,
 				04DD2C6D2777A2CA0075A103 /* CommentsView.swift in Sources */,
+				043320C22792ECC600572563 /* AppointmentView.swift in Sources */,
+				043320B62792E89900572563 /* UserAppointmentsView.swift in Sources */,
+				0463B8772784A7F00070DDEA /* ImagePicker.swift in Sources */,
+				043320C82792ECF800572563 /* FieldInformationsView.swift in Sources */,
 				04A398B82783471E0091D14D /* StadiumInfoView.swift in Sources */,
+				043320CE2792ED5500572563 /* FindStadiumView.swift in Sources */,
 				0475F9CB276821260053C4EF /* StadiumSignUpView.swift in Sources */,
 				0475F9BD27681CA00053C4EF /* SignUpView.swift in Sources */,
+				043320BD2792EC6B00572563 /* ConfirmDateView.swift in Sources */,
 				0475F9C7276821080053C4EF /* StadiumLoginView.swift in Sources */,
+				04A398BA278397930091D14D /* StadiumSettingsView.swift in Sources */,
 				04DD2C742777A88C0075A103 /* PendingAppointmentsView.swift in Sources */,
+				043320B22792E87600572563 /* UserInformationView.swift in Sources */,
+				0452C17F279707CE00DBFA93 /* StadiumEditView.swift in Sources */,
 				04DD2C712777A2EC0075A103 /* StadiumInformationsView.swift in Sources */,
+				043320C62792ECE700572563 /* DateView.swift in Sources */,
 				0475F9BF27681DF40053C4EF /* LoginView.swift in Sources */,
+				043320B42792E88400572563 /* AllAppointmentsView.swift in Sources */,
+				043320D02792ED6000572563 /* StadiumNameView.swift in Sources */,
 				04F644F927670165004840B8 /* PaslaApp.swift in Sources */,
 				0475F9C3276820F40053C4EF /* UserSignUpView.swift in Sources */,
 				04DD2C682777A2850075A103 /* StadiumPhotosView.swift in Sources */,
+				043320C42792ECDC00572563 /* RequestAppointmentView.swift in Sources */,
+				043320B82792E8AA00572563 /* EvaluationView.swift in Sources */,
+				043320D22792ED6D00572563 /* SelectedStadiumView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,6 +1027,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		046C957A2788FAD6008D2B66 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		046C957B2788FAD6008D2B66 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 046C957A2788FAD6008D2B66 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04F644ED27670165004840B8 /* Project object */;
 }
