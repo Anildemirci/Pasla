@@ -11,34 +11,29 @@ struct AllAppointmentsView: View {
     var body: some View {
         VStack{
             Spacer()
-            Button(action: {
-                
-            }){
+            NavigationLink(destination: UserAppointmentsView(status: "Onaylandı.", today: "next")){
+                Text("Onaylanan Randevular")
+                    .foregroundColor(Color.white)
+                    .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.125)
+                    .background(Color.green)
+            }
+            Spacer()
+                .padding()
+                .frame(height: 15.0)
+            NavigationLink(destination: UserAppointmentsView(status: "Onay bekliyor.", today: "")){
+                Text("Onay Bekleyen Randevular")
+                    .foregroundColor(Color.white)
+                    .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.125)
+                    .background(Color.yellow)
+            }
+            Spacer()
+                .padding()
+                .frame(height: 15.0)
+            NavigationLink(destination: UserAppointmentsView(status: "Onaylandı.", today: "past")){
                 Text("Geçmiş Randevular")
                     .foregroundColor(Color.white)
                     .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.125)
                     .background(Color.red)
-            }
-            Spacer()
-                .frame(height: 35.0)
-            Button(action: {
-                
-            }){
-                Text("Onaylanmış Randevular")
-                    .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.125)
-                    .background(Color.green)
-                    .foregroundColor(Color.white)
-               
-            }
-            Spacer()
-                .frame(height: 35.0)
-            Button(action: {
-                
-            }){
-                Text("Onay Bekleyen Randevular")
-                    .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.125)
-                    .background(Color.yellow)
-                    .foregroundColor(Color.white)
             }
             Spacer()
         }
