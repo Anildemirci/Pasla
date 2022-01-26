@@ -16,6 +16,7 @@ struct UserLoginView: View {
     @State var messageInput=""
     @State var showingAlert=false
     @State var shown=false
+    @State var shownPass=false
     
     var body: some View {
         VStack{
@@ -27,15 +28,42 @@ struct UserLoginView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
                     //.border(Color("myGreen"), width: 4)
                     .clipShape(Capsule())
-                    .overlay(Capsule().stroke(Color("myGreen"),lineWidth:3))
+                    .overlay(Capsule().stroke(Color("myGreen"),lineWidth:3)).autocapitalization(.none).keyboardType(.emailAddress)
             }.padding()
             HStack {
                 Image(systemName: "key")
-                TextField("şifre giriniz", text: $password)
-                    .padding()
-                    .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
-                    .clipShape(Capsule())
-                    .overlay(Capsule().stroke(Color("myGreen"),lineWidth:3))
+                if shownPass == false {
+                    SecureField("şifre giriniz", text: $password)
+                        .padding()
+                        .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
+                        .clipShape(Capsule())
+                        .overlay(Capsule().stroke(Color("myGreen"),lineWidth:3))
+                } else {
+                    TextField("şifre giriniz", text: $password)
+                        .padding()
+                        .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
+                        .clipShape(Capsule())
+                        .overlay(Capsule().stroke(Color("myGreen"),lineWidth:3))
+                }
+            }
+            if password != "" {
+                Button(action: {
+                    shownPass.toggle()
+                }) {
+                    if shownPass == false {
+                        Image(systemName: "eye.circle.fill")
+                            .foregroundColor(Color("myGreen"))
+                        Text("Şifreyi göster")
+                            .foregroundColor(Color.black)
+                    } else {
+                        Image(systemName: "eye.slash.circle.fill")
+                            .foregroundColor(Color("myGreen"))
+                        Text("Şifreyi gizle")
+                            .foregroundColor(Color.black)
+                    }
+                }
+                .padding()
+                .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.08 )
             }
             Spacer()
             Button(action: {

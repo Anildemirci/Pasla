@@ -9,6 +9,8 @@ import SwiftUI
 import Firebase
 
 struct UserInformationView: View {
+    @ObservedObject var userInfo=UsersInfoModel()
+    
     var body: some View {
         VStack{
             Spacer()
@@ -19,19 +21,19 @@ struct UserInformationView: View {
                     .padding()
                     .foregroundColor(Color.white)
                 VStack{
-                    Text("İsim Soyisim")
+                    Text("İsim Soyisim: "+userInfo.userName+" "+userInfo.userSurname)
                         .multilineTextAlignment(.center)
                         .padding()
                         .foregroundColor(Color("myGreen"))
-                    Text("Telefon Numarası")
+                    Text("Telefon Numarası: "+userInfo.userPhone)
                         .multilineTextAlignment(.center)
                         .padding()
                         .foregroundColor(Color("myGreen"))
-                    Text("Şehir")
+                    Text("Şehir: "+userInfo.userCity)
                         .multilineTextAlignment(.center)
                         .padding()
                         .foregroundColor(Color("myGreen"))
-                    Text("İlçe")
+                    Text("İlçe: "+userInfo.userTown)
                         .multilineTextAlignment(.center)
                         .padding()
                         .foregroundColor(Color("myGreen"))
@@ -60,39 +62,15 @@ struct UserInformationView: View {
                     .cornerRadius(25)
             }
             Spacer()
-        }.background(Color("myGreen"))
+        }.onAppear{
+            userInfo.getDataForUser()
+        }
+        .background(Color("myGreen"))
     }
 }
 
 struct UserInformationView_Previews: PreviewProvider {
     static var previews: some View {
         UserInformationView()
-    }
-}
-
-class userInfoModel : ObservableObject {
-    
-    @Published var infos = [String]()
-    @Published var address=""
-    @Published var open=""
-    @Published var close=""
-    //yeniden yaz firebase
-    init(){
-        let db=Firestore.firestore()
-        db.collection("Stadiums").document(Auth.auth().currentUser!.uid).addSnapshotListener { (snapshot, error) in
-            if error == nil {
-                let address=snapshot?.get("Address") as! String
-                self.address=address
-                if let openTime=snapshot?.get("Opened") as? String {
-                    self.open=openTime
-                }
-                if let closeTime=snapshot?.get("Closed") as? String {
-                    self.close=closeTime
-                }
-                if let info=snapshot?.get("Informations") as? [String] {
-                    self.infos=info
-                }
-            }
-        }
     }
 }

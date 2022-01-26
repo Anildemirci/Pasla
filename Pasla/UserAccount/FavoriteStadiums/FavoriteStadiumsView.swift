@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct FavoriteStadiumsView: View {
+    @StateObject var userInfo=UsersInfoModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            List(userInfo.userFavStadium,id:\.self){ stadiums in
+                NavigationLink(destination: SelectedStadiumView(selectedStadium: stadiums)){
+                    Text(stadiums)
+                }
+            }.navigationBarTitle("Favoriler",displayMode:.large)
+        }.onAppear{
+            userInfo.getDataForUser()
+        }
     }
 }
 

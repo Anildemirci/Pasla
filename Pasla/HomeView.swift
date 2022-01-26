@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct HomeView: View {
     var body: some View {
@@ -24,7 +25,7 @@ struct HomeView: View {
                             .background(Color.blue)
                             .foregroundColor(Color.white)
                             .clipShape(Capsule())
-                }
+                }.padding()
                 NavigationLink(destination: SignUpView()){
                     Text("Üye Ol")
                             .padding()
@@ -39,6 +40,8 @@ struct HomeView: View {
         }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

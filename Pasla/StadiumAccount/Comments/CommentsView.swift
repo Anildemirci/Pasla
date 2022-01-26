@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CommentsView: View {
+    //@ObservedObject var stadiumComment=StadiumCommentModel()
     var body: some View {
         VStack{
             Spacer()

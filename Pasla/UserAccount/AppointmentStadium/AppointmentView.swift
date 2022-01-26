@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct AppointmentView: View {
+    @StateObject var stadiuminfo=StadiumInfoFromUserModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            
+            List(stadiuminfo.nameFields,id:\.self){i in
+                NavigationLink(destination: DateView(selectedField:i)){
+                    Text(i)
+                }
+            }
+                .navigationTitle(Text("Saha Seçimi"))
+        }.onAppear{
+            stadiuminfo.getDataFromInfoForUser()
+        }
     }
 }
 
@@ -18,3 +30,6 @@ struct AppointmentView_Previews: PreviewProvider {
         AppointmentView()
     }
 }
+
+
+

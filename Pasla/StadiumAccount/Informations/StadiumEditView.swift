@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 
 struct StadiumEditView: View {
+    
     @State var village=""
     @State var street=""
     @State var town=""

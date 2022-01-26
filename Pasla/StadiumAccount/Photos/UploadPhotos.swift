@@ -19,10 +19,12 @@ struct UploadPhotos: View {
     @State var messageInput=""
     @State var titleInput=""
     @State var showingAlert=false
-
-    @State var firestoreDatabase=Firestore.firestore()
-    @State var currentUser=Auth.auth().currentUser
     @State var uuid=""
+    @StateObject var stadiumInfo=UsersInfoModel()
+    
+    var firestoreDatabase=Firestore.firestore()
+    var currentUser=Auth.auth().currentUser
+    
     
     var body: some View {
         VStack{
@@ -103,10 +105,10 @@ struct UploadPhotos: View {
     }
     
     func uploadPhoto(){
-        
+        stadiumInfo.getDataForStadium()
         let storage=Storage.storage()
         let storageReference=storage.reference()
-        let mediaFolder=storageReference.child("StadiumPhotos").child(currentUser!.uid)
+        let mediaFolder=storageReference.child("StadiumPhotos").child(stadiumInfo.stadiumName)
         if let data=image.jpegData(compressionQuality: 0.75) {
              uuid=UUID().uuidString
             
@@ -127,8 +129,9 @@ struct UploadPhotos: View {
                                                  "User":currentUser!.email!,
                                                  "Date":FieldValue.serverTimestamp(),
                                                  "Statement":statementText,
+                                                 "Name":stadiumInfo.stadiumName,
                                                  "StorageID":self.uuid] as [String:Any]
-                                firestoreReference=self.firestoreDatabase.collection("StadiumPhotos").document(self.currentUser!.uid).collection("Photos").addDocument(data: firestorePhotos) { (error) in
+                            firestoreReference=self.firestoreDatabase.collection("StadiumPhotos").document(stadiumInfo.stadiumName).collection("Photos").addDocument(data: firestorePhotos) { (error) in
                                 if error != nil {
                                     titleInput="Hata"
                                     messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."

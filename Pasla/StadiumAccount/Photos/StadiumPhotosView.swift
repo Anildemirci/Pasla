@@ -18,28 +18,38 @@ struct StadiumPhotosView: View {
     @State var ID=""
     @State var delStorage=""
     @State var shown=false
-    
-    @ObservedObject var photosObserver = photoObserver()
     @State var show=false
     @State var user=""
     @State var url=""
+
+    @StateObject var photosInfo=StadiumPhotosModel()
     
     var firestoreDatabase=Firestore.firestore()
     var currentUser=Auth.auth().currentUser
     var storage=Storage.storage()
     
+    var userType=""
+    var selectedName=""
+    
     var body: some View {
+        
+        if userType == "Stadium" {
             ScrollView(.vertical,showsIndicators: false){
                 VStack{
-                    if photosObserver.posts.isEmpty{
+                    if photosInfo.posts.isEmpty{
                         Text("Saha tarafından fotoğraf yüklenmedi henüz.").fontWeight(.heavy)
                     } else {
-                        ForEach(photosObserver.posts){i in
+                        ForEach(photosInfo.posts){i in
                             photosStruct(statement: i.statement, image: i.image, id: i.id,show: $show,url: $url)
                         }.animation(.spring())
                     }
                 }
-            }.sheet(isPresented: $show){
+            }
+            .onAppear{
+                stadiumNamee=selectedName
+                photosInfo.getDataForStadium()
+            }
+            .sheet(isPresented: $show){
                 statusView(url: url)
             }.navigationBarItems(trailing:
                 Button(action: {
@@ -51,6 +61,23 @@ struct StadiumPhotosView: View {
                         }
                 }
             )
+        } else {
+             ScrollView(.vertical,showsIndicators: false){
+                 VStack{
+                     if  photosInfo.posts.isEmpty{
+                         Text("Saha tarafından fotoğraf yüklenmedi henüz.").fontWeight(.heavy)
+                     } else {
+                         ForEach(photosInfo.posts){i in
+                             photosStruct(statement: i.statement, image: i.image, id: i.id,show: $show,url: $url)
+                         }.animation(.spring())
+                     }
+                 }
+             }.onAppear{
+                 //favorilerden tıklarsa hata veriyor düzelt.
+                 photosInfo.getDataForUser()
+             }
+             
+        }
     }
 }
 
@@ -84,36 +111,6 @@ struct photosStruct : View {
     }
 }
 
-class photoObserver : ObservableObject {
-    
-    @Published var posts = [dataType]()
-    var photoStatement=[String]()
-    var storageId=[String]()
-    var imageUrl=[String]()
-    
-    init(){
-        let db=Firestore.firestore()
-        let currentUser=Auth.auth().currentUser
-        db.collection("StadiumPhotos").document(currentUser!.uid).collection("Photos").order(by: "Date", descending: true).addSnapshotListener { (snapshot, error) in
-            if error != nil {
-                print((error?.localizedDescription)!)
-                return
-            } else {
-                
-                self.photoStatement.removeAll(keepingCapacity: false)
-                self.imageUrl.removeAll(keepingCapacity: false)
-                
-                for document in snapshot!.documents{
-                    let documentID=document.documentID
-                    let statement=document.get("Statement") as! String
-                    let image=document.get("photoUrl") as! String
-                    
-                    self.posts.append((dataType(id: documentID, statement: statement, image: image)))
-                }
-            }
-        }
-    }
-}
 
 struct dataType : Identifiable {
     var id : String
