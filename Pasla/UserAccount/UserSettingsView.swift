@@ -21,7 +21,7 @@ struct UserSettingsView: View {
     @State var showingAlert=false
     
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical,showsIndicators: false) {
             VStack{
                 Spacer()
                 VStack{
@@ -137,11 +137,14 @@ struct UserSettingsView: View {
                         }
                 }
                 Spacer()
-            }.background(Color("myGreen"))
+            }
             .alert(isPresented: $showingAlert) {
                 Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
         }
+        }.onTapGesture {
+            hideKeyboard()
         }
+        .background(Color("myGreen"))
     }
 }
 

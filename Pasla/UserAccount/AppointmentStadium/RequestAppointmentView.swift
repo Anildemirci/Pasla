@@ -68,6 +68,8 @@ struct RequestAppointmentView: View {
         }
         .onAppear{
             userInfo.getDataForUser()
+        }.onTapGesture {
+            hideKeyboard()
         }
         .alert(isPresented: $showingConfirmAlert){
             Alert(title: Text(titleInput), message: Text(messageInput),
@@ -104,10 +106,10 @@ struct RequestAppointmentView: View {
         dateFormatter.dateStyle = .medium
         timeFormatter.timeStyle = .medium
         timeFormatter.dateFormat = "HH:mm:ss" //24 saatlik format için
-        let date = dateFormatter.string(from: NSDate() as Date)
-        let time = timeFormatter.string(from: NSDate() as Date)
+        let date = dateFormatter.string(from: NSDate() as Date) //bugünün tarihi
+        let time = timeFormatter.string(from: NSDate() as Date) //anlık saat örn. saat:dk:sn
         
-        firestoreDatabase.collection("UserAppointments").document(currentUser!.uid).collection(currentUser!.uid).document(date+"-"+time).setData(firestoreUser) {
+        firestoreDatabase.collection("UserAppointments").document(currentUser!.uid).collection(currentUser!.uid).document(selectedDate+"-"+selectedHour).setData(firestoreUser) {
             error in
             if error != nil {
                 titleInput="Hata"
@@ -133,7 +135,7 @@ struct RequestAppointmentView: View {
                               "UserPhone":userInfo.userPhone,
                               "Date":FieldValue.serverTimestamp()] as [String:Any]
         
-        firestoreDatabase.collection("StadiumAppointments").document(chosenStadiumName).collection(chosenStadiumName).document(date+"-"+time).setData(firestoreStadium) {
+        firestoreDatabase.collection("StadiumAppointments").document(chosenStadiumName).collection(chosenStadiumName).document(selectedDate+"-"+selectedHour).setData(firestoreStadium) {
             error in
             if error != nil {
                 titleInput="Hata"

@@ -101,6 +101,7 @@ struct UserLoginView: View {
                     }
                 } else {
                     messageInput="Lütfen tüm bilgileri giriniz."
+                    showingAlert.toggle()
                 }
             }) {
                 Text("Giriş Yap")
@@ -115,6 +116,8 @@ struct UserLoginView: View {
             Spacer()
         }.alert(isPresented: $showingAlert){
             Alert(title: Text("Hata!"), message: Text(messageInput), dismissButton: .default(Text("OK!")))
+        }.onTapGesture {
+            hideKeyboard()
         }
     }
 }

@@ -22,6 +22,7 @@ struct StadiumSettingsView: View {
     
     var body: some View {
         VStack{
+            ScrollView(.vertical, showsIndicators: false) {
             Spacer()
             VStack{
                 Text("Email Değiştir")
@@ -136,9 +137,13 @@ struct StadiumSettingsView: View {
                     }
             }
             Spacer()
-        }.background(Color("myGreen"))
+        }.onTapGesture {
+            hideKeyboard()
+        }
+            .background(Color("myGreen"))
         .alert(isPresented: $showingAlert) {
             Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
+        }
         }
     }
 }

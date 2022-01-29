@@ -23,11 +23,12 @@ struct UserAccountView: View {
     @State var messageInput=""
     @State var titleInput=""
     @State var showingAlert=false
+    @State var selection=selectionTab
     
     @ObservedObject var infomodel=UsersInfoModel()
     
     var body: some View {
-        TabView {
+        TabView(selection: $selection) {
             NavigationView {
                 VStack {
                     VStack {
@@ -75,19 +76,20 @@ struct UserAccountView: View {
             }.tabItem{
                 Image(systemName: "person")
                 Text("Hesabım")
-            }
+            }.tag(0)
             FavoriteStadiumsView().tabItem{
                 Image(systemName: "star.fill")
                 Text("Favoriler")
-            }
+                    
+            }.tag(1)
             FindStadiumView().tabItem{
                 Image(systemName: "magnifyingglass")
                 Text("Sahalar")
-            }
+            }.tag(2)
             UserSettingsView().tabItem{
                 Image(systemName: "gearshape.fill")
                 Text("Ayarlar")
-            }
+            }.tag(3)
         }.sheet(isPresented: $isShowPhotoLibrary) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: $image)
         }.sheet(isPresented: $isShowCamera) {

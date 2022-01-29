@@ -35,6 +35,14 @@ struct PaslaApp: App {
     }
 }
 
+/*
+ .onAppear{
+     DispatchQueue.main.asyncAfter(deadline: .now()+2){
+         showingAlert.toggle()
+     }
+ 
+ 2 saniye sonra uyarıyı getiriyor. uygulama açılırken logo gösterdikten sonra ekrana yönlendirmesi için kullanabilirsin.
+ */
 
 
 

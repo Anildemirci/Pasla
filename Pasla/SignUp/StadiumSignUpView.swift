@@ -95,7 +95,10 @@ struct StadiumSignUpView: View {
                     }
             }
             Spacer()
-        }.alert(isPresented: $showingAlert){
+        }.onTapGesture {
+            hideKeyboard()
+        }
+        .alert(isPresented: $showingAlert){
             Alert(title: Text("Hata!"), message: Text(messageInput), dismissButton: .default(Text("OK!")))
         }
     }

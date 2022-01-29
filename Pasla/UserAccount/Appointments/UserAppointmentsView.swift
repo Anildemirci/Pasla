@@ -19,6 +19,7 @@ struct UserAppointmentsView: View {
     @State var today=""
     @State var number=0
     @State var shown=false
+    @State var findStadium=false
     
     var firestoreDatabase=Firestore.firestore()
     var currentUser=Auth.auth().currentUser
@@ -30,39 +31,78 @@ struct UserAppointmentsView: View {
                 if today == "past" {
                     if pastAppointments.count != 0{
                         List(pastAppointments,id:\.self){ past in
-                            NavigationLink(destination: EvaluationView().onAppear(){
+                            NavigationLink(destination: EvaluationView(documentID:past,status:status).onAppear(){
                                 
                             }){
                                 Text(past)
                             }
                         }
                     } else {
-                        Text("Henüz geçmiş randevunuz yok.")
+                        Text("İstanbul'da sana uygun sahalara bakmak ister misin?")
+                        Button(action: {
+                            findStadium.toggle()
+                            selectionTab=2
+                        }){
+                            Text("Saha bul")
+                                .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
+                                .background(Color.blue)
+                                .foregroundColor(Color.white)
+                                .clipShape(Capsule())
+                                .fullScreenCover(isPresented: $findStadium) { () -> UserAccountView in
+                                    return UserAccountView()
+                                }
+                        }
                     }
                 } else if today == "next" {
                     if confirmedAppointmentsArray.count != 0 {
                         List(confirmedAppointmentsArray,id:\.self){ confirmed in
-                            NavigationLink(destination: EvaluationView().onAppear(){
+                            NavigationLink(destination: EvaluationView(documentID:confirmed,status:status).onAppear(){
                                 
                             }){
                                 Text(confirmed)
                             }
                         }
                     } else {
-                        Text("Henüz onaylanan randevunuz yok.")
+                        Text("İstanbul'da sana uygun sahalara bakmak ister misin?")
+                        Button(action: {
+                            findStadium.toggle()
+                            selectionTab=2
+                        }){
+                            Text("Saha bul")
+                                .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
+                                .background(Color.blue)
+                                .foregroundColor(Color.white)
+                                .clipShape(Capsule())
+                                .fullScreenCover(isPresented: $findStadium) { () -> UserAccountView in
+                                    return UserAccountView()
+                                }
+                        }
                     }
                 }
             } else {
                 if appointmentsArray.count != 0 {
                     List(appointmentsArray,id:\.self){ appointments in
-                        NavigationLink(destination: EvaluationView().onAppear(){
+                        NavigationLink(destination: EvaluationView(documentID:appointments,status:status).onAppear(){
                             
                         }){
                             Text(appointments)
                         }
                     }
                 } else {
-                    Text("Henüz bekleyen randevunuz yok.")
+                    Text("İstanbul'da sana uygun sahalara bakmak ister misin?")
+                    Button(action: {
+                        findStadium.toggle()
+                        selectionTab=2
+                    }){
+                        Text("Saha bul")
+                            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
+                            .background(Color.blue)
+                            .foregroundColor(Color.white)
+                            .clipShape(Capsule())
+                            .fullScreenCover(isPresented: $findStadium) { () -> UserAccountView in
+                                return UserAccountView()
+                            }
+                    }
                 }
             }
         }.onAppear{
@@ -139,6 +179,8 @@ struct UserAppointmentsView: View {
         
     }
 }
+
+var selectionTab=0
 
 struct UserAppointmentsView_Previews: PreviewProvider {
     static var previews: some View {

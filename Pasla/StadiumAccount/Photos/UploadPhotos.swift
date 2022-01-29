@@ -102,6 +102,9 @@ struct UploadPhotos: View {
         .alert(isPresented: $showingAlert) {
             Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
     
     func uploadPhoto(){

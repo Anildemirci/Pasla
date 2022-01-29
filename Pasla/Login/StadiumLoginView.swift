@@ -102,6 +102,7 @@ struct StadiumLoginView: View {
                     }
                 } else {
                     messageInput="Lütfen tüm bilgileri giriniz."
+                    showingAlert.toggle()
                 }
             }) {
                 Text("Giriş Yap")
@@ -114,7 +115,10 @@ struct StadiumLoginView: View {
                     }
             }
             Spacer()
-        }.alert(isPresented: $showingAlert){
+        }.onTapGesture {
+            hideKeyboard()
+        }
+        .alert(isPresented: $showingAlert){
             Alert(title: Text("Hata!"), message: Text(messageInput), dismissButton: .default(Text("OK!")))
         }
     }
@@ -127,3 +131,10 @@ struct StadiumLoginView_Previews: PreviewProvider {
         StadiumLoginView()
     }
 }
+
+extension View {
+    func hideKeyboard(){
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+

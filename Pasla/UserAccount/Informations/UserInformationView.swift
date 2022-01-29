@@ -13,6 +13,7 @@ struct UserInformationView: View {
     
     var body: some View {
         VStack{
+            ScrollView(.vertical, showsIndicators: false) {
             Spacer()
             VStack {
                 Text("Kişisel Bilgiler")
@@ -66,6 +67,7 @@ struct UserInformationView: View {
             userInfo.getDataForUser()
         }
         .background(Color("myGreen"))
+        }
     }
 }
 

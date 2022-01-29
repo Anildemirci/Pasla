@@ -190,6 +190,9 @@ struct StadiumEditView: View {
                 Spacer()
                     .padding(10)
             }.background(Color("myGreen"))
+                .onTapGesture {
+                    hideKeyboard()
+                }
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
                 }
