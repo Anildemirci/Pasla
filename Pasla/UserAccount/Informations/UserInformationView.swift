@@ -63,11 +63,12 @@ struct UserInformationView: View {
                     .cornerRadius(25)
             }
             Spacer()
-        }.onAppear{
+            }
+            .onAppear{
             userInfo.getDataForUser()
         }
-        .background(Color("myGreen"))
-        }
+        }.background(Color("myGreen"))
+            
     }
 }
 

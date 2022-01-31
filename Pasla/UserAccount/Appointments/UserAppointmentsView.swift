@@ -38,6 +38,7 @@ struct UserAppointmentsView: View {
                             }
                         }
                     } else {
+                        Text("Geçmiş randevunuz bulunmamaktadır.")
                         Text("İstanbul'da sana uygun sahalara bakmak ister misin?")
                         Button(action: {
                             findStadium.toggle()
@@ -63,6 +64,7 @@ struct UserAppointmentsView: View {
                             }
                         }
                     } else {
+                        Text("Onaylanan randevunuz bulunmamaktadır.")
                         Text("İstanbul'da sana uygun sahalara bakmak ister misin?")
                         Button(action: {
                             findStadium.toggle()
@@ -89,6 +91,7 @@ struct UserAppointmentsView: View {
                         }
                     }
                 } else {
+                    Text("Bekleyen randevunuz bulunmamaktadır.")
                     Text("İstanbul'da sana uygun sahalara bakmak ister misin?")
                     Button(action: {
                         findStadium.toggle()
@@ -113,7 +116,7 @@ struct UserAppointmentsView: View {
     
     func getAppointments(){
         for day in 0...13 {
-            let hourToAdd=3
+            let hourToAdd=0
             let daysToAdd=0 + day
             let UTCDate = getCurrentDate()
             var dateComponent = DateComponents()

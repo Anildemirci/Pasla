@@ -90,7 +90,8 @@ struct UserAccountView: View {
                 Image(systemName: "gearshape.fill")
                 Text("Ayarlar")
             }.tag(3)
-        }.sheet(isPresented: $isShowPhotoLibrary) {
+        }
+        .sheet(isPresented: $isShowPhotoLibrary) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: $image)
         }.sheet(isPresented: $isShowCamera) {
             ImagePicker(sourceType: .camera, selectedImage: $image)

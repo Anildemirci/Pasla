@@ -137,10 +137,12 @@ struct StadiumSettingsView: View {
                     }
             }
             Spacer()
-        }.onTapGesture {
+        }.background(Color("myGreen"))
+                .padding()
+            .onTapGesture {
             hideKeyboard()
         }
-            .background(Color("myGreen"))
+            
         .alert(isPresented: $showingAlert) {
             Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
         }

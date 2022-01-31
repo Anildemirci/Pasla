@@ -21,8 +21,8 @@ struct UserSettingsView: View {
     @State var showingAlert=false
     
     var body: some View {
-        ScrollView(.vertical,showsIndicators: false) {
-            VStack{
+        VStack{
+            ScrollView(.vertical,showsIndicators: false) {
                 Spacer()
                 VStack{
                     Text("Email Değiştir")
@@ -137,14 +137,19 @@ struct UserSettingsView: View {
                         }
                 }
                 Spacer()
-            }
+            }.background(Color("myGreen"))
+            .padding()
+                
             .alert(isPresented: $showingAlert) {
                 Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
         }
-        }.onTapGesture {
+            .onAppear(perform: {
+                UIScrollView.appearance().alwaysBounceVertical=true
+            })
+        }
+        .onTapGesture {
             hideKeyboard()
         }
-        .background(Color("myGreen"))
     }
 }
 

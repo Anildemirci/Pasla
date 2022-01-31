@@ -73,7 +73,7 @@ struct StadiumAccountView: View {
                             }.padding()
                                 .frame(width: 200.0, height: 50.0)
                                 .background(Color.white)
-                            NavigationLink(destination: PendingAppointmentsView()){
+                            NavigationLink(destination: PendingAppointmentsView(selectedName:infomodel.stadiumName)){
                                 Text("Bekleyen randevular")
                                     .foregroundColor(Color("myGreen"))
                             }.padding()

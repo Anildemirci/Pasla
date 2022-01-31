@@ -33,6 +33,8 @@ class UsersInfoModel:ObservableObject{
     @Published var userId=""
     @Published var userBirthday=""
     @Published var userFavStadium=[String]()
+    @Published var intNumberField=0
+    @Published var nameFields=[String]()
     
     func getDataForUser(){
         let db=Firestore.firestore()
@@ -100,6 +102,11 @@ class UsersInfoModel:ObservableObject{
                 }
                 if let numberField=snapshot?.get("NumberOfField") as? String {
                     self.stadiumNumberOfField=numberField
+                    self.intNumberField=Int(numberField)!
+                    self.nameFields.removeAll(keepingCapacity: false)
+                    for number in 1...self.intNumberField {
+                        self.nameFields.append("Saha \(number)")
+                    }
                 }
                 if let phonenumber=snapshot?.get("Phone") as? String {
                     self.stadiumPhone=phonenumber

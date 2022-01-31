@@ -18,10 +18,20 @@ struct RequestAppointmentView: View {
     @StateObject var userInfo=UsersInfoModel()
     @State var messageInput=""
     @State var titleInput=""
-    @State var showingConfirmAlert=false
-    @State var showingAlert=false
+    @State var button=""
+    @State var button1=""
+    @State var button2=""
     @State var shown=false
     @State var note=""
+    @State var alertType:AlertType?
+    
+    enum AlertType: Identifiable{
+        case confirmAlert,showAlert
+        
+        var id: Int{
+            hashValue
+        }
+    }
     
     var body: some View {
         VStack{
@@ -55,9 +65,11 @@ struct RequestAppointmentView: View {
                 Spacer()
                     .padding(10)
                 Button(action: {
-                    titleInput="Randevu oluşturmak istediğinizden emin misiniz?"
-                    //messageInput="alt mesaj"
-                    showingConfirmAlert.toggle()
+                    titleInput="Onaylıyor musunuz?"
+                    //messageInput=""
+                    button1="Evet"
+                    button2="Hayır"
+                    alertType = .confirmAlert
                 }){
                     Text("Randevu talep et")
                         .padding()
@@ -70,15 +82,22 @@ struct RequestAppointmentView: View {
             userInfo.getDataForUser()
         }.onTapGesture {
             hideKeyboard()
-        }
-        .alert(isPresented: $showingConfirmAlert){
-            Alert(title: Text(titleInput), message: Text(messageInput),
-                  primaryButton: .default(Text("Evet!")){
-                request()
-                shown.toggle()
-            },
-                  secondaryButton: .default(Text("Hayır!"))
-            )
+        }.alert(item:$alertType){ type in
+            switch type {
+            case .showAlert:
+                return Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("Tamam!")){
+                    if titleInput=="Başarılı" {
+                        shown.toggle()
+                    }
+                })
+            case .confirmAlert:
+                return Alert(title: Text(titleInput), message: Text(messageInput),
+                             primaryButton: .default(Text(button1)){
+                    request()
+                       },
+                             secondaryButton: .default(Text(button2))
+                       )
+            }
         }
         .fullScreenCover(isPresented: $shown) { () -> UserAccountView in
             return UserAccountView()
@@ -117,7 +136,6 @@ struct RequestAppointmentView: View {
             } else {
                 titleInput="Başarılı"
                 messageInput="Randevu talebiniz gönderildi."
-                //kontrolleri gerçekleştir.
             }
         }
         
@@ -140,10 +158,12 @@ struct RequestAppointmentView: View {
             if error != nil {
                 titleInput="Hata"
                 messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
+                alertType = .showAlert
             } else {
                 //kontrolleri gerçekleştir
                 titleInput="Başarılı"
                 messageInput="Randevu talebiniz gönderildi."
+                alertType = .showAlert
             }
         }
         
@@ -162,6 +182,7 @@ struct RequestAppointmentView: View {
             if error != nil {
                 titleInput="Hata"
                 messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
+                alertType = .showAlert
             }
         }
     }

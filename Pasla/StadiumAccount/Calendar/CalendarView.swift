@@ -6,10 +6,22 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct CalendarView: View {
+    @StateObject var stadiuminfo=UsersInfoModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            List(stadiuminfo.nameFields,id:\.self){i in
+                            NavigationLink(destination: ConfirmDateView(selectedField:i,stadiumName: stadiuminfo.stadiumName)){
+                                Text(i)
+                            }
+                        }
+                            .navigationTitle(Text("Saha Seçimi"))
+        }.onAppear{
+            stadiuminfo.getDataForStadium()
+        }
     }
 }
 

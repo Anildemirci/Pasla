@@ -21,8 +21,9 @@ struct StadiumInformationsView: View {
     @StateObject var infoModelForUser=StadiumInfoFromUserModel()
     
     var body: some View {
-        VStack{
+        
             ScrollView(.vertical, showsIndicators: false) {
+                VStack{
                 Spacer()
                     .frame(height: 10.0)
                 if userType == "Stadium" { //halı saha girişi için
@@ -149,8 +150,7 @@ struct StadiumInformationsView: View {
                                         
                                     }
                                 )
-                .background(Color("myGreen"))
-        }
+        }.background(Color("myGreen"))
     }
 }
 

@@ -12,7 +12,6 @@ struct AppointmentView: View {
     
     var body: some View {
         VStack{
-            
             List(stadiuminfo.nameFields,id:\.self){i in
                 NavigationLink(destination: DateView(selectedField:i)){
                     Text(i)

@@ -8,9 +8,12 @@
 import SwiftUI
 import Firebase
 
+
 @main
 struct PaslaApp: App {
-    //@UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    
+    //@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate: AppDelegate
+    //@StateObject var usersinfo=UsersInfoModel()
     @Environment(\.scenePhase) var scenePhase
     
     init() {
@@ -19,8 +22,9 @@ struct PaslaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
-        }.onChange(of: scenePhase) { newScenePhase in
+           HomeView()
+        }
+        .onChange(of: scenePhase) { newScenePhase in
             switch newScenePhase {
             case .active:
               print("App is active")

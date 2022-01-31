@@ -12,7 +12,7 @@ struct DateView: View {
     var firestoreDatabase=Firestore.firestore()
     var currentUser=Auth.auth().currentUser
     
-    @StateObject var daysInfo=dayArray()
+    @StateObject var daysInfo=dayArrayForUser()
     @State var chosenDay=""
     @State var preDay=""
     @State var yellowDates=[String]()
@@ -43,6 +43,26 @@ struct DateView: View {
                                 })
                         }
                     }.padding()
+                }
+            }
+            VStack {
+                HStack{
+                    Text("Müsait değil").scaledToFill()
+                        //.padding()
+                        .foregroundColor(.black)
+                        .frame(width: UIScreen.main.bounds.width * 0.33, height: UIScreen.main.bounds.height * 0.05)
+                        .background(Color.red)
+                    Text("Müsait").scaledToFill()
+                        //.padding()
+                        .foregroundColor(.black)
+                        .frame(width: UIScreen.main.bounds.width * 0.33, height: UIScreen.main.bounds.height * 0.05)
+                        .background(Color.green)
+                        //.border(Color.black, width: 2)
+                    Text("Onay Bekliyor").scaledToFill()
+                        //.padding()
+                        .foregroundColor(.black)
+                        .frame(width: UIScreen.main.bounds.width * 0.33, height: UIScreen.main.bounds.height * 0.05)
+                        .background(Color.yellow)
                 }
             }
             Spacer()
@@ -143,7 +163,7 @@ struct DateView_Previews: PreviewProvider {
     }
 }
 
-class dayArray:ObservableObject{
+class dayArrayForUser:ObservableObject{
     
     @Published var daysArray=[String]()
     
@@ -164,7 +184,7 @@ class dayArray:ObservableObject{
     
     func days(){
         for day in 0...13 {
-            let hourToAdd=3
+            let hourToAdd=0
             let daysToAdd=0 + day
             let UTCDate = getCurrentDate()
             var dateComponent = DateComponents()

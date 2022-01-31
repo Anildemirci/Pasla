@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 
 struct EvaluationView: View {
+    
     @State var comment=""
     @State var points=["Lütfen puan seçiniz","1-Çok kötü","2-Kötü","3-Orta","4-İyi","5-Çok iyi"]
     @State var selectedPoint="Lütfen puan seçiniz"
@@ -117,6 +118,9 @@ struct EvaluationView: View {
                     }.frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.30).background(Color.white)
                         .cornerRadius(25)
                 } else if showComment==false && showCancelButton==false {
+                    Text("Yorum ve puanlama yaptığınız için teşekkür ederiz.")
+                        .padding()
+                        .foregroundColor(Color.white)
                     //onaylanmayan ve reddedilen randevuları firabaseden çekmiyor. Eğer çekersen ona göre şikayet mesaj vs. butonları koy.
                 } else {
                     Spacer()
@@ -197,7 +201,7 @@ struct EvaluationView: View {
     
     func getData(){
         for day in 0...13 {
-            let hourToAdd=3
+            let hourToAdd=0
             let daysToAdd=0 + day
             let UTCDate = getCurrentDate()
             var dateComponent = DateComponents()
