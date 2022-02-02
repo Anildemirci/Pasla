@@ -58,7 +58,7 @@ struct StadiumAccountView: View {
                                     .background(Color.white)
                             }
                             Spacer()
-                            NavigationLink(destination: CommentsView()){
+                            NavigationLink(destination: CommentsView(selectedStadium: infomodel.stadiumName)){
                                 Text("Yorumlar")
                                     .foregroundColor(Color("myGreen"))
                                     .padding()

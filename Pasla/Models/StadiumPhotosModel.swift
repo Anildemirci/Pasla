@@ -12,9 +12,9 @@ import Combine
 class StadiumPhotosModel : ObservableObject {
     
     @Published var posts = [dataType]()
-    @Published var photoStatement=[String]()
-    @Published var storageId=[String]()
-    @Published var imageUrl=[String]()
+    //@Published var photoStatement=[String]()
+    //@Published var storageId=[String]()
+    //@Published var imageUrl=[String]()
     var stinfo=UsersInfoModel()
     
     var didChange=PassthroughSubject<Array<Any>,Never>()
@@ -27,8 +27,8 @@ class StadiumPhotosModel : ObservableObject {
                 return
             } else {
                 
-                self.photoStatement.removeAll(keepingCapacity: false)
-                self.imageUrl.removeAll(keepingCapacity: false)
+                //self.photoStatement.removeAll(keepingCapacity: false)
+                //self.imageUrl.removeAll(keepingCapacity: false)
                 self.posts.removeAll(keepingCapacity: false)
                 
                 for document in snapshot!.documents{
@@ -51,8 +51,8 @@ class StadiumPhotosModel : ObservableObject {
                 return
             } else {
                 
-                self.photoStatement.removeAll(keepingCapacity: false)
-                self.imageUrl.removeAll(keepingCapacity: false)
+                //self.photoStatement.removeAll(keepingCapacity: false)
+                //self.imageUrl.removeAll(keepingCapacity: false)
                 self.posts.removeAll(keepingCapacity: false)
                 
                 for document in snapshot!.documents{

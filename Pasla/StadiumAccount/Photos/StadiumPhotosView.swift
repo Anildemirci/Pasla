@@ -11,11 +11,10 @@ import SDWebImageSwiftUI
 
 struct StadiumPhotosView: View {
     
-    @State var image=""
+    
     @State var chosenPhoto=""
     @State var userTypeArray=[String]()
     @State var stadiumTypeArray=[String]()
-    @State var ID=""
     @State var delStorage=""
     @State var shown=false
     @State var show=false

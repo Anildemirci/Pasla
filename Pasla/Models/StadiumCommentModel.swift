@@ -25,7 +25,7 @@ class StadiumCommentModel : ObservableObject {
     @Published var totalScore=Double()
     
     
-    init() {
+    func getComment() {
         firestoreDatabase.collection("Evaluation").document(name).collection(name).order(by: "CommentDate",descending: true).addSnapshotListener { (snapshot, error) in
             if error != nil {
                 //local hata
