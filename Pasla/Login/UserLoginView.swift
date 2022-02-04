@@ -17,6 +17,7 @@ struct UserLoginView: View {
     @State var showingAlert=false
     @State var shown=false
     @State var shownPass=false
+    @State var forgotPass=false
     
     var body: some View {
         VStack{
@@ -64,6 +65,12 @@ struct UserLoginView: View {
                 }
                 .padding()
                 .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.08 )
+            }
+            Spacer()
+            Button(action: {
+                forgotPass.toggle()
+            }) { Text("Şifremi unuttum")
+                
             }
             Spacer()
             Button(action: {
@@ -118,6 +125,8 @@ struct UserLoginView: View {
             Alert(title: Text("Hata!"), message: Text(messageInput), dismissButton: .default(Text("OK!")))
         }.onTapGesture {
             hideKeyboard()
+        }.sheet(isPresented: $forgotPass) { () -> ForgotPasswordView in
+            return ForgotPasswordView()
         }
     }
 }

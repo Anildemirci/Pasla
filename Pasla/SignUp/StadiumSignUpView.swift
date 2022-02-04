@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import GoogleSignIn
 
 struct StadiumSignUpView: View {
     
@@ -94,6 +95,74 @@ struct StadiumSignUpView: View {
                         return StadiumInfoView()
                     }
             }
+            Button(action: {
+                guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+                // Create Google Sign In configuration object.
+                let config = GIDConfiguration(clientID: clientID)
+                GIDSignIn.sharedInstance.signIn(with: config, presenting: getRootViewController()) { [self] user, error in
+
+                  if let error = error {
+                    //error.localizedDescription
+                    return
+                  }
+
+                  guard
+                    let authentication = user?.authentication,
+                    let idToken = authentication.idToken
+                  else {
+                    return
+                  }
+
+                  let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                                 accessToken: authentication.accessToken)
+                    
+                    Auth.auth().signIn(with: credential) { result, error in
+                        if error != nil {
+                            messageInput=error?.localizedDescription ?? "Hata!"
+                            showingAlert.toggle()
+                        } else {
+                            let firestoreDatabase=Firestore.firestore()
+                            let firestoreUser=["User":Auth.auth().currentUser!.uid,
+                                               "Email":Auth.auth().currentUser?.email,
+                                               "Name":"",
+                                               "Surname":"",
+                                               "DateofBirth":"",
+                                               "City":"",
+                                               "Town":"",
+                                               "Phone":"",
+                                               "Type":"User",
+                                               "Date":FieldValue.serverTimestamp()] as [String:Any]
+                            
+                            firestoreDatabase.collection("Users").document(Auth.auth().currentUser!.uid).setData(firestoreUser) { error in
+                                if error != nil {
+                                    messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
+                                    showingAlert.toggle()
+                                } else {
+                                    shown.toggle()
+                                }
+                            }
+                        }
+                    }
+                  // ...
+                }
+            }) {
+                HStack{
+                    Image("google")
+                        .resizable()
+                        .renderingMode(.original)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                    Text("Hesap Oluştur")
+                        .font(.title3)
+                        .fontWeight(.medium)
+                        .kerning(1.1)
+                }.padding()
+                    .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
+                    .background(Color.white)
+                    .foregroundColor(Color.blue)
+                    .overlay(Capsule().stroke(Color.blue,lineWidth:3))
+            }.padding()
             Spacer()
         }.onTapGesture {
             hideKeyboard()

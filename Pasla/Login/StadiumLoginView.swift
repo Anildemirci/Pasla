@@ -17,6 +17,7 @@ struct StadiumLoginView: View {
     @State var messageInput=""
     @State var shown=false
     @State var shownPass=false
+    @State var forgotPass=false
     
     var body: some View {
         VStack{
@@ -65,6 +66,12 @@ struct StadiumLoginView: View {
                 }
                 .padding()
                 .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.08 )
+            }
+            Spacer()
+            Button(action: {
+                forgotPass.toggle()
+            }) { Text("Şifremi unuttum")
+                
             }
             Spacer()
             Button(action: {
@@ -120,6 +127,9 @@ struct StadiumLoginView: View {
         }
         .alert(isPresented: $showingAlert){
             Alert(title: Text("Hata!"), message: Text(messageInput), dismissButton: .default(Text("OK!")))
+        }
+        .sheet(isPresented: $forgotPass) { () -> ForgotPasswordView in
+            return ForgotPasswordView()
         }
     }
 }
