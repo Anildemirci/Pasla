@@ -14,10 +14,8 @@ struct ImagePicker: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
- 
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    var sourceType2: UIImagePickerController.SourceType = .camera
-    @Binding var selectedImage: UIImage
+    @Binding var selectedImage: UIImage?
     @Environment(\.presentationMode) private var presentationMode
  
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
@@ -25,7 +23,6 @@ struct ImagePicker: UIViewControllerRepresentable {
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false
         imagePicker.sourceType = sourceType
-        //imagePicker.sourceType = sourceType2
         imagePicker.delegate = context.coordinator
         
         return imagePicker
@@ -48,7 +45,7 @@ struct ImagePicker: UIViewControllerRepresentable {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
             }
-     
+            
             parent.presentationMode.wrappedValue.dismiss()
         }
     }

@@ -18,8 +18,6 @@
 	<string>pasla-ed243</string>
 	<key>STORAGE_BUCKET</key>
 	<string>pasla-ed243.appspot.com</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Need to access the camera for taking photos</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>

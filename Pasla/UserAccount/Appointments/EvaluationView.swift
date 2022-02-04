@@ -145,6 +145,7 @@ struct EvaluationView: View {
             
         }.onAppear{
             getData()
+            userInfo.getDataForUser()
         }
         .onTapGesture {
             hideKeyboard()
@@ -271,7 +272,6 @@ struct EvaluationView: View {
     func sendClicked(chosenPoint:String){
         
         getCurrentTime()
-        
         let firestoreUser=["User":Auth.auth().currentUser!.uid,
                            "Email":Auth.auth().currentUser!.email,
                            "StadiumName":stadiumname,

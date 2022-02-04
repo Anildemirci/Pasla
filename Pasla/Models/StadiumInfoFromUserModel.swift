@@ -24,6 +24,7 @@ class StadiumInfoFromUserModel : ObservableObject {
     @Published var id=""
     @Published var intNumberField=0
     @Published var nameFields=[String]()
+    
     init(){
         let db=Firestore.firestore()
         db.collection("Stadiums").whereField("Town", isEqualTo: chosenTown).addSnapshotListener { (snapshot, error) in

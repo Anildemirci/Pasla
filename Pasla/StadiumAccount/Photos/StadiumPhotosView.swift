@@ -20,7 +20,7 @@ struct StadiumPhotosView: View {
     @State var show=false
     @State var user=""
     @State var url=""
-
+    
     @StateObject var photosInfo=StadiumPhotosModel()
     
     var firestoreDatabase=Firestore.firestore()
@@ -60,6 +60,14 @@ struct StadiumPhotosView: View {
                         }
                 }
             )
+                .navigationBarItems(trailing:
+                    Button(action: {
+                    
+                    
+                    }){
+                        Image(systemName: "trash").resizable().frame(width: 30, height: 30)
+                    }
+                )
         } else {
              ScrollView(.vertical,showsIndicators: false){
                  VStack{
@@ -68,7 +76,8 @@ struct StadiumPhotosView: View {
                      } else {
                          ForEach(photosInfo.posts){i in
                              photosStruct(statement: i.statement, image: i.image, id: i.id,show: $show,url: $url)
-                         }.animation(.spring())
+                         }
+                         .animation(.spring())
                      }
                  }
              }.onAppear{
@@ -78,6 +87,7 @@ struct StadiumPhotosView: View {
              
         }
     }
+
 }
 
 
@@ -117,8 +127,9 @@ struct dataType : Identifiable {
     var image : String
 }
 
+
 struct statusView:View{
-    var url=""
+    @State var url=""
     var body: some View{
         ZStack{
             AnimatedImage(url: URL(string: url)).resizable().edgesIgnoringSafeArea(.all)

@@ -12,36 +12,13 @@ import Combine
 struct FindStadiumView: View {
     
     @ObservedObject var findStadium=FindStadium()
-    @State var selectedTown=""
     @State var stadiumNameArray=[String]()
     
     var body: some View {
         NavigationView {
             List(findStadium.townArray){ towns in
-                NavigationLink(destination: StadiumNameView().onAppear() {
-                    selectedTown=towns.town
-                    chosenTown=selectedTown
-                    let firestoreDatabase=Firestore.firestore()
-                     firestoreDatabase.collection("Stadiums").order(by: "Name",descending: false).addSnapshotListener { (snapshot, error) in
-                        if error != nil {
-                            print(error?.localizedDescription ?? "Error")
-                        } else {
-                            if snapshot?.isEmpty != true && snapshot != nil {
-                                stadiumNames.removeAll(keepingCapacity: false)
-                            
-                                for document in snapshot!.documents {
-                                    
-                                    if let Name = document.get("Town") as? String {
-                                        if Name==self.selectedTown {
-                                            let stadiumName=document.get("Name") as! String
-                                            self.stadiumNameArray.append(stadiumName)
-                                            stadiumNames.append(stadiumNameItem(name: stadiumName))
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                NavigationLink(destination: StadiumNameView(selectedTown:towns.town).onAppear() {
+                    chosenTown=towns.town
                 }) {
                     Text(towns.town)
                 }
@@ -62,12 +39,6 @@ struct townName: Identifiable {
     var town:String
 }
 
-struct stadiumNameItem: Identifiable{
-    var id=UUID()
-    var name:String
-}
-
-var stadiumNames=[stadiumNameItem]()
 var chosenTown=""
 var chosenStadiumName=""
 

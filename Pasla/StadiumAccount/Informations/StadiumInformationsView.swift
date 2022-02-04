@@ -11,7 +11,7 @@ import Firebase
 struct StadiumInformationsView: View {
     
     @State var shown=false
-    
+    @State var infoArrayy=[String]()
     var firestoreDatabase=Firestore.firestore()
     var currentUser=Auth.auth().currentUser
     var userType=""
@@ -59,8 +59,8 @@ struct StadiumInformationsView: View {
                     Spacer()
                     
                         Text("Saha Hakkında").font(.title).foregroundColor(.white)
-                        let infoArray=infomodel.stadiumInfos
-                    if infoArray.isEmpty {
+                
+                    if infomodel.stadiumInfos.isEmpty {
                         Text("Henüz saha tarafından bilgi girilmedi")
                             .foregroundColor(Color.black)
                             .font(.title3)
@@ -68,13 +68,17 @@ struct StadiumInformationsView: View {
                             .background(Color.white)
                             .cornerRadius(25)
                     } else {
-                        List(infoArray,id:\.self) { i in
-                                Text(i)
-                                    .foregroundColor(Color.black)
-                                    .font(.title3)
+                        List {
+                            ForEach(infomodel.stadiumInfos,id:\.self) { i in
+                                        Text(i)
+                                            .foregroundColor(Color.black)
+                                            .font(.title3)
+                            }.onDelete(perform: deleteInfo)
+                                
                         }.frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.25)
-                        .background(Color.white)
+                            .background(Color.white)
                         .cornerRadius(25)
+                        
                     }
                 }
                 
@@ -151,6 +155,13 @@ struct StadiumInformationsView: View {
                                     }
                                 )
         }.background(Color("myGreen"))
+    }
+    
+    func deleteInfo(at indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let delField=infomodel.stadiumInfos[index]
+            firestoreDatabase.collection("Stadiums").document(currentUser!.uid).updateData(["Informations" : FieldValue.arrayRemove([delField])])
+        }
     }
 }
 

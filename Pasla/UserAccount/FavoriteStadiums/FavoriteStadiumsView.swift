@@ -14,7 +14,9 @@ struct FavoriteStadiumsView: View {
     var body: some View {
         NavigationView{
             List(userInfo.userFavStadium,id:\.self){ stadiums in
-                NavigationLink(destination: SelectedStadiumView(selectedStadium: stadiums)){
+                NavigationLink(destination: SelectedStadiumView(selectedStadium: stadiums).onAppear() {
+                    chosenStadiumName=stadiums
+                }){
                     Text(stadiums)
                 }
             }.navigationBarTitle("Favoriler",displayMode:.large)

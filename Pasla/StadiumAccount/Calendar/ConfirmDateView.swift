@@ -106,8 +106,7 @@ struct ConfirmDateView: View {
                         })
                         .disabled(yellowDates.contains(hour) ? true: redDates.contains(hour) ? true: closedByStadium.contains(hour) ? true: false)
                 }.onAppear{
-                    print($selection)
-                    print(selection)
+                    
                 }.environment(\.editMode, $editMode)
             }
             Spacer()

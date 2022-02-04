@@ -58,48 +58,55 @@ struct CommentForUser : View {
     var didChange=PassthroughSubject<Array<Any>,Never>()
     
     var body: some View {
-        Spacer()
-        Text("\(commentsArrayStruct.count) müşteri oyu ile \(totalScore) puan.")
-        List(commentsArrayStruct){ i in
-            VStack{
-                HStack(alignment:.top){
-                    VStack(alignment: .leading){
-                        Text(i.fullname)
-                        Text(i.date)
-                    }
-                    Spacer()
-                    if i.score == "5-Çok iyi"{
-                        Group {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }.foregroundColor(Color.yellow)
-                    } else if i.score == "4-İyi" {
-                        Group {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }.foregroundColor(Color.yellow)
-                    } else if i.score == "3-Orta" {
-                        Group {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }.foregroundColor(Color.yellow)
-                    } else if i.score == "2-Kötü" {
-                        Group {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }.foregroundColor(Color.yellow)
-                    } else if i.score == "1- Çok kötü" {
-                        Image(systemName: "star.fill").foregroundColor(Color.yellow)
+        VStack{
+            if commentsArrayStruct.count == 0 {
+                Text("Henüz yorum yapılmadı.")
+            } else {
+                Spacer()
+                let roundedValue=NSString(format: "%.2f",totalScore)
+                Text("\(commentsArrayStruct.count) müşteri oyu ile \(roundedValue) puan.")
+                List(commentsArrayStruct){ i in
+                    VStack{
+                        HStack(alignment:.top){
+                            VStack(alignment: .leading){
+                                Text(i.fullname)
+                                Text(i.date)
+                            }
+                            Spacer()
+                            if i.score == "5-Çok iyi"{
+                                Group {
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                }.foregroundColor(Color.yellow)
+                            } else if i.score == "4-İyi" {
+                                Group {
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                }.foregroundColor(Color.yellow)
+                            } else if i.score == "3-Orta" {
+                                Group {
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                }.foregroundColor(Color.yellow)
+                            } else if i.score == "2-Kötü" {
+                                Group {
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                }.foregroundColor(Color.yellow)
+                            } else if i.score == "1- Çok kötü" {
+                                Image(systemName: "star.fill").foregroundColor(Color.yellow)
+                            }
+                        }
+                        Spacer()
+                        Text(i.comment)
                     }
                 }
-                Spacer()
-                Text(i.comment)
             }
         }.onAppear{
             getComment()
@@ -109,7 +116,7 @@ struct CommentForUser : View {
     func getComment() {
         
         //stadiuminfo.getDataForStadium()
-        
+        var i=0
         firestoreDatabase.collection("Evaluation").document(chosenStadiumName).collection(chosenStadiumName).order(by: "CommentDate",descending: true).addSnapshotListener { (snapshot, error) in
             if error != nil {
                 //local hata
@@ -122,19 +129,18 @@ struct CommentForUser : View {
                     let username = document.get("FullName") as! String
                     let commentDate = document.get("CommentDate") as! String
                     let scorePoint = document.get("Score") as! String
-                    
+                    i+=1
                         if scorePoint.contains("5-Çok iyi") {
-                            totalScore=totalScore+5
+                            totalScore=(totalScore+5)/Double(i)
                         } else if scorePoint.contains("4-İyi") {
-                            totalScore=totalScore+4
+                            totalScore=(totalScore+4)/Double(i)
                         } else if scorePoint.contains("3-Orta") {
-                            totalScore=totalScore+3
+                            totalScore=(totalScore+3)/Double(i)
                         } else if scorePoint.contains("2-Kötü") {
-                            totalScore=totalScore+2
+                            totalScore=(totalScore+2)/Double(i)
                         } else if scorePoint.contains("1-Çok kötü") {
-                            totalScore=totalScore+1
+                            totalScore=(totalScore+1)/Double(i)
                         }
-                    
                     commentsArrayStruct.append((commentInfos(id: document.documentID, comment: comments, fullname: username, date: commentDate, score: scorePoint)))
                 }
                 self.didChange.send(commentsArrayStruct)
@@ -158,48 +164,54 @@ struct CommentForStadium : View {
     @State var totalScore=Double()
     
     var body: some View {
-        Spacer()
-        Text("11 müşteri oyu ile 4.5/5 puan.")
-        List(commentsArrayStruct){ i in
-            VStack{
-                HStack(alignment:.top){
-                    VStack(alignment: .leading){
-                        Text(i.fullname)
-                        Text(i.date)
-                    }
-                    Spacer()
-                    if i.score == "5-Çok iyi"{
-                        Group {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }.foregroundColor(Color.yellow)
-                    } else if i.score == "4-İyi" {
-                        Group {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }.foregroundColor(Color.yellow)
-                    } else if i.score == "3-Orta" {
-                        Group {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }.foregroundColor(Color.yellow)
-                    } else if i.score == "2-Kötü" {
-                        Group {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }.foregroundColor(Color.yellow)
-                    } else if i.score == "1- Çok kötü" {
-                        Image(systemName: "star.fill").foregroundColor(Color.yellow)
+        VStack{
+            if commentsArrayStruct.count == 0 {
+                Text("Henüz yorum yapılmadı.")
+            } else {
+                Spacer()
+                Text("\(commentsArrayStruct.count) müşteri oyu ile \(totalScore) puan.")
+                List(commentsArrayStruct){ i in
+                    VStack{
+                        HStack(alignment:.top){
+                            VStack(alignment: .leading){
+                                Text(i.fullname)
+                                Text(i.date)
+                            }
+                            Spacer()
+                            if i.score == "5-Çok iyi"{
+                                Group {
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                }.foregroundColor(Color.yellow)
+                            } else if i.score == "4-İyi" {
+                                Group {
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                }.foregroundColor(Color.yellow)
+                            } else if i.score == "3-Orta" {
+                                Group {
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                }.foregroundColor(Color.yellow)
+                            } else if i.score == "2-Kötü" {
+                                Group {
+                                    Image(systemName: "star.fill")
+                                    Image(systemName: "star.fill")
+                                }.foregroundColor(Color.yellow)
+                            } else if i.score == "1- Çok kötü" {
+                                Image(systemName: "star.fill").foregroundColor(Color.yellow)
+                            }
+                        }
+                        Spacer()
+                        Text(i.comment)
                     }
                 }
-                Spacer()
-                Text(i.comment)
             }
         }.onAppear{
             getComment()

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import SDWebImageSwiftUI
 
 struct SelectedStadiumView: View {
     
@@ -18,17 +19,29 @@ struct SelectedStadiumView: View {
     @State var titleInput=""
     @State var showingAlert=false
     @State var favCheck=false
+    @State var profilPhoto=""
     
     @StateObject var userInfo=UsersInfoModel()
     
     var body: some View {
                 VStack {
                     VStack {
-                        Image(systemName: "person")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
-                        .padding()
+                        if profilPhoto != "" {
+                            AnimatedImage(url: URL(string: profilPhoto))
+                                .resizable()
+                                //.aspectRatio(contentMode: .fit)
+                                .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
+                            .padding()
+                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                            
+                        } else {
+                            Image(systemName: "person")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
+                            .padding()
+                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                        }
                     }.background(Color.white)
                     HStack {
                         NavigationLink(destination: StadiumPhotosView()){
@@ -63,6 +76,7 @@ struct SelectedStadiumView: View {
                     }.padding()
                 }.onAppear{
                     userInfo.getDataForUser()
+                    getProfilPhoto()
                 }
                 .background(Color("myGreen"))
                 .navigationTitle(Text(selectedStadium))
@@ -84,6 +98,20 @@ struct SelectedStadiumView: View {
                         Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
                     }
     }
+    
+    func getProfilPhoto(){
+        firestoreDatabase.collection("ProfilePhoto").whereField("StadiumName", isEqualTo: selectedStadium).getDocuments { (snapshot, error) in
+            if error == nil {
+                for document in snapshot!.documents{
+                    if document.get("imageUrl") != nil {
+                        let imageUrl=document.get("imageUrl") as! String
+                        profilPhoto=imageUrl
+                    }
+                }
+            }
+        }
+    }
+    
     
     func addFavorite(){
         self.firestoreDatabase.collection("Users").whereField("User", isEqualTo: self.currentUser?.uid).getDocuments { (snapshot, error) in

@@ -103,6 +103,7 @@
 		043320CF2792ED6000572563 /* StadiumNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumNameView.swift; sourceTree = "<group>"; };
 		043320D12792ED6D00572563 /* SelectedStadiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedStadiumView.swift; sourceTree = "<group>"; };
 		0438DE73279F55F900160FE3 /* StadiumInfoFromUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumInfoFromUserModel.swift; sourceTree = "<group>"; };
+		044E663327AC6A0E004BCEFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0452C17E279707CE00DBFA93 /* StadiumEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumEditView.swift; sourceTree = "<group>"; };
 		04530FB027A70A1F0050681D /* ConfirmAppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAppointmentView.swift; sourceTree = "<group>"; };
 		0463B8762784A7F00070DDEA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -367,6 +368,7 @@
 				04299E3D276E157A0083C7BD /* StadiumAccount */,
 				04299E3C276E14D20083C7BD /* UserAccount */,
 				04F6452227670453004840B8 /* GoogleService-Info.plist */,
+				044E663327AC6A0E004BCEFE /* Info.plist */,
 				04F644FC27670167004840B8 /* Assets.xcassets */,
 				04F644FE27670167004840B8 /* Preview Content */,
 				0463B8762784A7F00070DDEA /* ImagePicker.swift */,
@@ -864,6 +866,10 @@
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pasla/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To Take a Photo!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To find your location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To choose a Photo!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -897,6 +903,10 @@
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pasla/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To Take a Photo!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To find your location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To choose a Photo!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

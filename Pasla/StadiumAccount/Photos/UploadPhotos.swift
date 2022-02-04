@@ -13,7 +13,7 @@ struct UploadPhotos: View {
     
     @State var statementText=""
     @State var isShowPhotoLibrary=false
-    @State var image=UIImage()
+    @State var image:UIImage?
     @State var isShowCamera=false
     @State var shown=false
     @State var messageInput=""
@@ -28,16 +28,20 @@ struct UploadPhotos: View {
     
     var body: some View {
         VStack{
-            if let image = image {
-                Image(uiImage: image)
+            Spacer()
+            if image != nil {
+                Image(uiImage: image!)
                                 .resizable()
                                 .scaledToFit()
+                                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
                                 .frame(minWidth: 0, maxWidth: .infinity,maxHeight: UIScreen.main.bounds.width * 1)
                                 .padding(.horizontal)
+                                
             } else {
                 Image(systemName: "photo.fill")
                                 .resizable()
-                                .scaledToFill()
+                                .scaledToFit()
+                                .opacity(0.6)
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .padding(.horizontal)
             }
@@ -76,22 +80,27 @@ struct UploadPhotos: View {
             Spacer()
             TextField("Açıklama", text: $statementText)
                             .padding()
-                        Spacer()
-                        Button(action: {
-                            uploadPhoto()
-                        }) {
-                            Text("Yükle")
-                                //.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
-                                .frame(width: 300, height: 60 )
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .clipShape(Capsule())
-                                .padding(.horizontal)
-                                .fullScreenCover(isPresented: $shown) { () -> StadiumPhotosView in
-                                    return StadiumPhotosView()
-                                }
-                        }
             Spacer()
+            if image != nil{
+                Button(action: {
+                    uploadPhoto()
+                }) {
+                    Text("Yükle")
+                        //.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
+                        .frame(width: 300, height: 60 )
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                        .padding(.horizontal)
+                        .fullScreenCover(isPresented: $shown) { () -> StadiumAccountView in
+                            return StadiumAccountView()
+                        }
+                }
+            }
+            Spacer()
+        }
+        .onAppear{
+            stadiumInfo.getDataForStadium()
         }
         .sheet(isPresented: $isShowPhotoLibrary) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: $image)
@@ -100,7 +109,7 @@ struct UploadPhotos: View {
             ImagePicker(sourceType: .camera, selectedImage: $image)
         }
         .alert(isPresented: $showingAlert) {
-            Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
+            Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("Tamam")))
         }
         .onTapGesture {
             hideKeyboard()
@@ -108,11 +117,11 @@ struct UploadPhotos: View {
     }
     
     func uploadPhoto(){
-        stadiumInfo.getDataForStadium()
+        
         let storage=Storage.storage()
         let storageReference=storage.reference()
         let mediaFolder=storageReference.child("StadiumPhotos").child(stadiumInfo.stadiumName)
-        if let data=image.jpegData(compressionQuality: 0.75) {
+        if let data=image!.jpegData(compressionQuality: 0.75) {
              uuid=UUID().uuidString
             
             let imageReference=mediaFolder.child("\(uuid).jpg")
@@ -144,6 +153,7 @@ struct UploadPhotos: View {
                                     messageInput="Fotoğraf yüklendi."
                                     showingAlert.toggle()
                                     shown.toggle()
+                                    image=nil
                                 }
                             }
                             

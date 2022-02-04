@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import SDWebImageSwiftUI
 
 struct StadiumAccountView: View {
     
@@ -14,10 +15,11 @@ struct StadiumAccountView: View {
     var currentUser=Auth.auth().currentUser
     var storage=Storage.storage()
     
+    @State var profilPhoto=""
     @State var uuid=""
     @State var isShowPhotoLibrary=false
     @State var showingAction=false
-    @State var image=UIImage()
+    @State var image:UIImage?
     @State var isShowCamera=false
     @State var shown=false
     @State var messageInput=""
@@ -27,19 +29,30 @@ struct StadiumAccountView: View {
     @StateObject var infomodel=UsersInfoModel()
     @StateObject var photoModel=StadiumPhotosModel()
     
+    
     var body: some View {
         TabView {
             NavigationView {
                     VStack {
                         VStack {
-                            Image(systemName: "plus")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
-                            .padding()
-                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
-                            .onTapGesture(){
-                                showingAction.toggle()
+                            if profilPhoto != "" {
+                                AnimatedImage(url: URL(string: profilPhoto))
+                                    .resizable()
+                                    //.aspectRatio(contentMode: .fit)
+                                    .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
+                                .padding()
+                                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                                
+                            } else {
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
+                                .padding()
+                                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                                .onTapGesture(){
+                                    showingAction.toggle()
+                                }
                             }
                         }.background(Color.white)
                         HStack {
@@ -84,13 +97,22 @@ struct StadiumAccountView: View {
                     .navigationTitle(Text(infomodel.stadiumName))
                         .navigationBarItems(trailing:
                                                 Button(action: {
-                            
+                            if profilPhoto == "" {
+                                showingAction.toggle()
+                            } else {
+                                trashClicked()
+                            }
                                                 }){
-                                                    Image(systemName: "trash").resizable().frame(width: 30, height: 30)
+                                                    if profilPhoto == "" {
+                                                        Image(systemName: "plus").resizable().frame(width: 30, height: 30)
+                                                    } else {
+                                                        Image(systemName: "trash").resizable().frame(width: 30, height: 30)
+                                                    }
                                                 }
                                             )
             }.onAppear(){
                 infomodel.getDataForStadium()
+                getProfilePhoto()
             }
             .tabItem{
                 Image(systemName: "person")
@@ -112,24 +134,36 @@ struct StadiumAccountView: View {
         }
         .alert(isPresented: $showingAlert) {
             Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
-        }.actionSheet(isPresented: $showingAction){
+        }
+        .actionSheet(isPresented: $showingAction){
             ActionSheet(
                                 title: Text("Fotoğraf Yükle"),
                                 buttons: [
                                     .default(Text("Kamera")) {
                                         isShowCamera.toggle()
+                                        uploadPhoto()
                                     },
                                     //fotoğrafı seçince yüklesin
                                     .default(Text("Galeri")) {
                                         isShowPhotoLibrary.toggle()
+                                        uploadPhoto()
                                     },
                                 ]
                             )
         }
     }
     
+    func getProfilePhoto(){
+        firestoreDatabase.collection("ProfilePhoto").document(currentUser!.uid).addSnapshotListener { (snapshot, error) in
+            if error == nil {
+                if let imageUrl=snapshot?.get("imageUrl") as? String {
+                    profilPhoto=imageUrl
+                }
+            }
+        }
+    }
+    
     func trashClicked(){
-        infomodel.getDataForStadium()
         firestoreDatabase.collection("ProfilePhoto").document(currentUser!.uid).delete { error in
             if error != nil {
                 titleInput="Hata"
@@ -153,13 +187,13 @@ struct StadiumAccountView: View {
             }
         }
     }
+    
     func uploadPhoto(){
-        infomodel.getDataForStadium()
         let storage=Storage.storage()
         let storageReference=storage.reference()
         let mediaFolder=storageReference.child("Profile")
-        if let data=image.jpegData(compressionQuality: 0.75) {
-             uuid=UUID().uuidString
+        if let data=image?.jpegData(compressionQuality: 0.75) {
+            uuid=currentUser!.uid
             
             let imageReference=mediaFolder.child("\(uuid).jpg")
             imageReference.putData(data, metadata: nil) { (metedata, error) in
@@ -204,3 +238,5 @@ struct StadiumAccountView_Previews: PreviewProvider {
         StadiumAccountView()
     }
 }
+
+

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import SDWebImageSwiftUI
 
 struct UserAccountView: View {
     
@@ -14,10 +15,11 @@ struct UserAccountView: View {
     var currentUser=Auth.auth().currentUser
     var storage=Storage.storage()
     
+    @State var profilPhoto=""
     @State var uuid=""
     @State var isShowPhotoLibrary=false
     @State var showingAction=false
-    @State var image=UIImage()
+    @State var image:UIImage?
     @State var isShowCamera=false
     @State var shown=false
     @State var messageInput=""
@@ -32,14 +34,24 @@ struct UserAccountView: View {
             NavigationView {
                 VStack {
                     VStack {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
-                        .padding()
-                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
-                        .onTapGesture(){
-                            showingAction.toggle()
+                        if profilPhoto != "" {
+                            AnimatedImage(url: URL(string: profilPhoto))
+                                .resizable()
+                                //.aspectRatio(contentMode: .fit)
+                                .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
+                            .padding()
+                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                            
+                        } else {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
+                            .padding()
+                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                            .onTapGesture(){
+                                showingAction.toggle()
+                            }
                         }
                     }.background(Color.white)
                     HStack {
@@ -68,12 +80,24 @@ struct UserAccountView: View {
                 }.background(Color("myGreen"))
                     .navigationBarItems(trailing:
                                             Button(action: {
-                        
+                        if profilPhoto == "" {
+                            showingAction.toggle()
+                        } else {
+                            trashClicked()
+                        }
                                             }){
-                                                Image(systemName: "trash").resizable().frame(width: 30, height: 30)
+                                                if profilPhoto == "" {
+                                                    Image(systemName: "plus").resizable().frame(width: 30, height: 30)
+                                                } else {
+                                                    Image(systemName: "trash").resizable().frame(width: 30, height: 30)
+                                                }
                                             }
                                         )
-            }.tabItem{
+            }.onAppear(){
+                infomodel.getDataForUser()
+                getProfilePhoto()
+            }
+            .tabItem{
                 Image(systemName: "person")
                 Text("Hesabım")
             }.tag(0)
@@ -93,8 +117,10 @@ struct UserAccountView: View {
         }
         .sheet(isPresented: $isShowPhotoLibrary) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: $image)
-        }.sheet(isPresented: $isShowCamera) {
+        }
+        .sheet(isPresented: $isShowCamera) {
             ImagePicker(sourceType: .camera, selectedImage: $image)
+                .ignoresSafeArea()
         }
         .alert(isPresented: $showingAlert) {
             Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
@@ -104,13 +130,25 @@ struct UserAccountView: View {
                                 buttons: [
                                     .default(Text("Kamera")) {
                                         isShowCamera.toggle()
+                                        uploadPhoto()
                                     },
                                     //fotoğrafı seçince yüklesin
                                     .default(Text("Galeri")) {
                                         isShowPhotoLibrary.toggle()
+                                        uploadPhoto()
                                     },
                                 ]
                             )
+        }
+    }
+    
+    func getProfilePhoto(){
+        firestoreDatabase.collection("UserProfilePhoto").document(currentUser!.uid).addSnapshotListener { (snapshot, error) in
+            if error == nil {
+                if let imageUrl=snapshot?.get("imageUrl") as? String {
+                    profilPhoto=imageUrl
+                }
+            }
         }
     }
     
@@ -138,13 +176,12 @@ struct UserAccountView: View {
             }
         }
     }
-    func choosePhoto(){
-        infomodel.getDataForUser()
+    func uploadPhoto(){
         let storage=Storage.storage()
         let storageReference=storage.reference()
         let mediaFolder=storageReference.child("UserProfile")
-        if let data=image.jpegData(compressionQuality: 0.75) {
-             uuid=UUID().uuidString
+        if let data=image?.jpegData(compressionQuality: 0.75) {
+            uuid=currentUser!.uid
             
             let imageReference=mediaFolder.child("\(uuid).jpg")
             imageReference.putData(data, metadata: nil) { (metedata, error) in
