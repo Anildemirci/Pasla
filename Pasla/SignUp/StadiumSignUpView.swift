@@ -29,10 +29,11 @@ struct StadiumSignUpView: View {
                     //.border(Color("myGreen"), width: 4)
                     .clipShape(Capsule())
                     .overlay(Capsule().stroke(Color("myGreen"),lineWidth:3))
+                    .autocapitalization(.none).keyboardType(.emailAddress)
             }
             HStack {
                 Image(systemName: "key")
-                TextField("şifre giriniz", text: $password)
+                SecureField("şifre giriniz", text: $password)
                     .padding()
                     .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
                     .clipShape(Capsule())
@@ -40,7 +41,7 @@ struct StadiumSignUpView: View {
             }.padding()
             HStack{
                 Image(systemName: "key")
-                TextField("tekrar şifre giriniz", text: $password2)
+                SecureField("tekrar şifre giriniz", text: $password2)
                     .padding()
                     .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.08 )
                     .clipShape(Capsule())

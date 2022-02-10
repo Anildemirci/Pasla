@@ -21,7 +21,7 @@ struct PaslaApp: App {
         WindowGroup {
             
             let currentUser=Auth.auth().currentUser
-            let firebaseDatabase=Firestore.firestore()
+            //let firebaseDatabase=Firestore.firestore()
             
             if currentUser != nil {
                 StadiumAccountView()

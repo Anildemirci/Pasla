@@ -45,6 +45,8 @@
 		0475F9CB276821260053C4EF /* StadiumSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475F9CA276821260053C4EF /* StadiumSignUpView.swift */; };
 		04A398B82783471E0091D14D /* StadiumInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A398B72783471E0091D14D /* StadiumInfoView.swift */; };
 		04A398BA278397930091D14D /* StadiumSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A398B9278397930091D14D /* StadiumSettingsView.swift */; };
+		04B80A1B27B4B80900C89D8E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B80A1A27B4B80900C89D8E /* MapView.swift */; };
+		04B80A1D27B4C1E700C89D8E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B80A1C27B4C1E700C89D8E /* MapViewModel.swift */; };
 		04DD2C682777A2850075A103 /* StadiumPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD2C672777A2850075A103 /* StadiumPhotosView.swift */; };
 		04DD2C6D2777A2CA0075A103 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD2C6C2777A2CA0075A103 /* CommentsView.swift */; };
 		04DD2C712777A2EC0075A103 /* StadiumInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD2C702777A2EC0075A103 /* StadiumInformationsView.swift */; };
@@ -118,6 +120,8 @@
 		0475F9CA276821260053C4EF /* StadiumSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumSignUpView.swift; sourceTree = "<group>"; };
 		04A398B72783471E0091D14D /* StadiumInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumInfoView.swift; sourceTree = "<group>"; };
 		04A398B9278397930091D14D /* StadiumSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumSettingsView.swift; sourceTree = "<group>"; };
+		04B80A1A27B4B80900C89D8E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		04B80A1C27B4C1E700C89D8E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		04DD2C672777A2850075A103 /* StadiumPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumPhotosView.swift; sourceTree = "<group>"; };
 		04DD2C6C2777A2CA0075A103 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		04DD2C702777A2EC0075A103 /* StadiumInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumInformationsView.swift; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 				0438DE73279F55F900160FE3 /* StadiumInfoFromUserModel.swift */,
 				0418AE4A27A05E5200D6E509 /* StadiumPhotosModel.swift */,
 				04143BEB279A1762004A3357 /* StadiumCommentModel.swift */,
+				04B80A1C27B4C1E700C89D8E /* MapViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -303,6 +308,14 @@
 				04A398B72783471E0091D14D /* StadiumInfoView.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		04B80A1927B4B7F500C89D8E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04B80A1A27B4B80900C89D8E /* MapView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		04DD2C692777A28F0075A103 /* Photos */ = {
@@ -367,6 +380,7 @@
 			children = (
 				04F644F827670165004840B8 /* PaslaApp.swift */,
 				04F644FA27670165004840B8 /* HomeView.swift */,
+				04B80A1927B4B7F500C89D8E /* Views */,
 				04636C6B2799F5E000E17D46 /* Models */,
 				0475F9C0276820B60053C4EF /* Login */,
 				0475F9C1276820C40053C4EF /* SignUp */,
@@ -692,6 +706,8 @@
 				0475F9BD27681CA00053C4EF /* SignUpView.swift in Sources */,
 				043320BD2792EC6B00572563 /* ConfirmDateView.swift in Sources */,
 				04143BEC279A1762004A3357 /* StadiumCommentModel.swift in Sources */,
+				04B80A1B27B4B80900C89D8E /* MapView.swift in Sources */,
+				04B80A1D27B4C1E700C89D8E /* MapViewModel.swift in Sources */,
 				0475F9C7276821080053C4EF /* StadiumLoginView.swift in Sources */,
 				04A398BA278397930091D14D /* StadiumSettingsView.swift in Sources */,
 				04DD2C742777A88C0075A103 /* PendingAppointmentsView.swift in Sources */,

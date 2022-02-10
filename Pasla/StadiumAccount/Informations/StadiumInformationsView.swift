@@ -83,18 +83,31 @@ struct StadiumInformationsView: View {
                 }
                 
                 else { //user girişi için
-                    HStack{
-                        Image(systemName: "map.fill")
-                            .resizable()
-                            .foregroundColor(Color.blue)
-                            .frame(width: 50.0, height: 50.0)
-                            .aspectRatio(contentMode: .fill)
-                        Text(infoModelForUser.address)
-                            .font(.title3)
-                            .foregroundColor(Color("myGreen"))
-                    }
-                    .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.25)
-                    .background(Color.white)
+                    VStack {
+                        HStack{
+                            Image(systemName: "map.fill")
+                                .resizable()
+                                .foregroundColor(Color.blue)
+                                .frame(width: 50.0, height: 50.0)
+                                .aspectRatio(contentMode: .fill)
+                            Text(infoModelForUser.address)
+                                .font(.title3)
+                                .foregroundColor(Color("myGreen"))
+                        }
+                        HStack{
+                            Image(systemName: "location.fill")
+                                .resizable()
+                                .foregroundColor(Color.blue)
+                                .frame(width: 25.0, height: 25.0)
+                                .aspectRatio(contentMode: .fill)
+                            Button(action: {
+                                
+                            }) {
+                                Text("Yol tarifi al")
+                            }
+                        }.padding()
+                    }.frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.25)
+                        .background(Color.white)
                     .cornerRadius(25)
                     Spacer()
                         .frame(height: 25.0)

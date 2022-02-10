@@ -273,7 +273,7 @@ struct EvaluationView: View {
         
         getCurrentTime()
         let firestoreUser=["User":Auth.auth().currentUser!.uid,
-                           "Email":Auth.auth().currentUser!.email,
+                           "Email":Auth.auth().currentUser!.email!,
                            "StadiumName":stadiumname,
                            "FieldName":field,
                            "Date":day,

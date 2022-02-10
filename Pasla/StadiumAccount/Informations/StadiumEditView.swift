@@ -20,6 +20,7 @@ struct StadiumEditView: View {
     @State var messageInput=""
     @State var titleInput=""
     @State var showingAlert=false
+    @StateObject private var mapViewModel=MapViewModel()
     
     var firestoreDatabase=Firestore.firestore()
     var currentUser=Auth.auth().currentUser
@@ -29,7 +30,6 @@ struct StadiumEditView: View {
         ScrollView(.vertical, showsIndicators: false) {
                 Spacer()
                     .padding(10)
-                //map ekle
                 VStack{
                     Text("Adres Bilgileri")
                         .font(.title3)
@@ -81,6 +81,10 @@ struct StadiumEditView: View {
                     }
                 }.frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.50).background(Color.white)
                     .cornerRadius(25)
+                Spacer()
+                    .padding(10)
+                MapView()
+                .frame(height:UIScreen.main.bounds.height * 0.3)
                 Spacer()
                     .padding(10)
                 VStack{
@@ -205,3 +209,6 @@ struct StadiumEditView_Previews: PreviewProvider {
         StadiumEditView()
     }
 }
+
+
+

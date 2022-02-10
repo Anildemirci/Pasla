@@ -102,7 +102,7 @@ class UsersInfoModel:ObservableObject{
                 }
                 if let numberField=snapshot?.get("NumberOfField") as? String {
                     self.stadiumNumberOfField=numberField
-                    self.intNumberField=Int(numberField)!
+                    self.intNumberField=Int(numberField)! //numara girmezse hata alıyor
                     self.nameFields.removeAll(keepingCapacity: false)
                     for number in 1...self.intNumberField {
                         self.nameFields.append("Saha \(number)")
