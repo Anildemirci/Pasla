@@ -83,7 +83,7 @@ struct StadiumEditView: View {
                     .cornerRadius(25)
                 Spacer()
                     .padding(10)
-                MapView()
+                AnnotationView()
                 .frame(height:UIScreen.main.bounds.height * 0.3)
                 Spacer()
                     .padding(10)

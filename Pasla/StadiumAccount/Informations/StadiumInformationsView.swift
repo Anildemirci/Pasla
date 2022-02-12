@@ -159,7 +159,8 @@ struct StadiumInformationsView: View {
                                         if userType != "Stadium" {
                                             hidden()
                                         } else {
-                                            Image(systemName: "plus").resizable().frame(width: 30, height: 30)
+                                            Text("Düzenle")
+                                            //Image(systemName: "plus").resizable().frame(width: 30, height: 30)
                                                 .sheet(isPresented: $shown) { () -> StadiumEditView in
                                                     return StadiumEditView()
                                                 }

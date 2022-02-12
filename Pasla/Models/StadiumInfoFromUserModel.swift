@@ -24,6 +24,8 @@ class StadiumInfoFromUserModel : ObservableObject {
     @Published var id=""
     @Published var intNumberField=0
     @Published var nameFields=[String]()
+    @Published var workingHour=[String]()
+    @Published var workingHour2=[String]()
     
     init(){
         let db=Firestore.firestore()
@@ -99,6 +101,12 @@ class StadiumInfoFromUserModel : ObservableObject {
                     }
                     if let name=document.get("Name") as? String {
                         self.name=name
+                    }
+                    if let workinghour=document.get("WorkingHour") as? [String] {
+                        self.workingHour=workinghour
+                    }
+                    if let workinghour2=document.get("WorkingHour2") as? [String] {
+                        self.workingHour2=workinghour2
                     }
                     if let numberField=document.get("NumberOfField") as? String {
                         self.numberOfField=numberField

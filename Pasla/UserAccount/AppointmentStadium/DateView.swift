@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 struct DateView: View {
+    @StateObject var stadiuminfo=StadiumInfoFromUserModel()
     
     var firestoreDatabase=Firestore.firestore()
     var currentUser=Auth.auth().currentUser
@@ -21,9 +22,8 @@ struct DateView: View {
     @State var yellowHours=[String]()
     @State var selectedField=""
     @State var shown=false
-    
-    @State var
-    hourArray=["00:00-01:00","01:00-02:00","02:00-03:00","03:00-04:00","04:00-05:00","05:00-06:00","06:00-07:00","07:00-08:00","08:00-09:00","09:00-10:00","10:00-11:00","11:00-12:00","12:00-13:00","13:00-14:00","14:00-15:00","15:00-16:00","16:00-17:00","17:00-18:00","18:00-19:00","19:00-20:00","20:00-21:00","21:00-22:00","22:00-23:00","23:00-00:00"]
+    @State var hourType="Full"
+    @State var checkInfos=false
     
     var body: some View {
         VStack{
@@ -71,7 +71,7 @@ struct DateView: View {
                     Text("Lütfen tarih seçiniz.")
                 }
             } else {
-                List(hourArray,id:\.self){ hour in
+                List(hourType=="Full" ? stadiuminfo.workingHour: stadiuminfo.workingHour2,id:\.self){ hour in
                     NavigationLink(destination: RequestAppointmentView(numberField: selectedField, selectedDate: chosenDay, selectedHour: hour)){
                         Button(action: {
                            
@@ -88,6 +88,8 @@ struct DateView: View {
             Spacer()
         }.onAppear{
             daysInfo.days()
+            stadiuminfo.getDataFromInfoForUser()
+            checkInfo()
         }
         .navigationTitle(Text("Tarih ve Saat Seçimi"))
             .navigationBarItems(trailing:
@@ -97,10 +99,43 @@ struct DateView: View {
                                 {
                                         Image(systemName: "info.circle.fill").resizable().frame(width: 30, height: 30)
                                             .sheet(isPresented: $shown) { () -> FieldInformationsView in
-                                                return FieldInformationsView()
+                                                return FieldInformationsView(fieldname:selectedField)
                                             }
             }
                                 )
+    }
+    
+    func getInfos(){
+        let fb=Firestore.firestore()
+        
+        fb.collection("FieldInformations").document(chosenStadiumName).collection("Fields").document(selectedField).addSnapshotListener { (document, error) in
+            if error == nil {
+                if let hourtype=document?.get("HourType") as? String {
+                    hourType=hourtype
+                }
+                //fiyat ve kaporaları çekip listede gösterebilirsin
+            }
+        }
+    }
+    
+    func checkInfo(){
+        let fb=Firestore.firestore()
+        
+        fb.collection("FieldInformations").document(chosenStadiumName).collection("Fields").addSnapshotListener { (snapshot, error) in
+            if error == nil {
+                if snapshot?.isEmpty == true {
+                    checkInfos=false
+                } else {
+                    for document in snapshot!.documents {
+                        if document.documentID==selectedField {
+                            checkInfos=true
+                            getInfos()
+                        }
+                    }
+                }
+                
+            }
+        }
     }
     
     func getDatefromCalendar(day: String){

@@ -33,6 +33,7 @@ struct StadiumSettingsView: View {
                 TextField("Yeni e-mail", text: $newMail)
                     .padding()
                     .border(Color("myGreen"), width: 1)
+                    .autocapitalization(.none).keyboardType(/*@START_MENU_TOKEN@*/.emailAddress/*@END_MENU_TOKEN@*/)
                 Button(action: {
                     if newMail != "" {
                         currentUser?.updateEmail(to: newMail, completion: { (error) in
@@ -76,10 +77,10 @@ struct StadiumSettingsView: View {
                     .multilineTextAlignment(.center)
                     .padding()
                     .foregroundColor(Color("myGreen"))
-                TextField("Yeni şifre", text: $password)
+                SecureField("Yeni şifre", text: $password)
                     .padding()
                     .border(Color("myGreen"), width: 1)
-                TextField("Yeni şifre tekrar", text: $password2)
+                SecureField("Yeni şifre tekrar", text: $password2)
                     .padding()
                     .border(Color("myGreen"), width: 1)
                 Button(action: {

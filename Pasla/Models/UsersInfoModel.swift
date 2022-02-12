@@ -35,6 +35,8 @@ class UsersInfoModel:ObservableObject{
     @Published var userFavStadium=[String]()
     @Published var intNumberField=0
     @Published var nameFields=[String]()
+    @Published var workingHour=[String]()
+    @Published var workingHour2=[String]()
     
     func getDataForUser(){
         let db=Firestore.firestore()
@@ -100,6 +102,12 @@ class UsersInfoModel:ObservableObject{
                 if let name=snapshot?.get("Name") as? String {
                     self.stadiumName=name
                 }
+                if let workinghour=snapshot?.get("WorkingHour") as? [String] {
+                    self.workingHour=workinghour
+                }
+                if let workinghour2=snapshot?.get("WorkingHour2") as? [String] {
+                    self.workingHour2=workinghour2
+                }
                 if let numberField=snapshot?.get("NumberOfField") as? String {
                     self.stadiumNumberOfField=numberField
                     self.intNumberField=Int(numberField)! //numara girmezse hata alıyor
@@ -123,4 +131,6 @@ class UsersInfoModel:ObservableObject{
             }
         }
     }
+    
+    
 }

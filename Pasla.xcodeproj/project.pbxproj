@@ -21,7 +21,6 @@
 		043320B82792E8AA00572563 /* EvaluationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320B72792E8AA00572563 /* EvaluationView.swift */; };
 		043320BB2792EC5B00572563 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320BA2792EC5B00572563 /* CalendarView.swift */; };
 		043320BD2792EC6B00572563 /* ConfirmDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320BC2792EC6B00572563 /* ConfirmDateView.swift */; };
-		043320BF2792EC7700572563 /* DateEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320BE2792EC7700572563 /* DateEditView.swift */; };
 		043320C22792ECC600572563 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320C12792ECC600572563 /* AppointmentView.swift */; };
 		043320C42792ECDC00572563 /* RequestAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320C32792ECDC00572563 /* RequestAppointmentView.swift */; };
 		043320C62792ECE700572563 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043320C52792ECE700572563 /* DateView.swift */; };
@@ -43,6 +42,8 @@
 		0475F9C7276821080053C4EF /* StadiumLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475F9C6276821080053C4EF /* StadiumLoginView.swift */; };
 		0475F9C9276821160053C4EF /* UserLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475F9C8276821160053C4EF /* UserLoginView.swift */; };
 		0475F9CB276821260053C4EF /* StadiumSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475F9CA276821260053C4EF /* StadiumSignUpView.swift */; };
+		0484870B27B725B00057948C /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484870A27B725B00057948C /* LaunchScreenView.swift */; };
+		0484870D27B73B530057948C /* FieldInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484870C27B73B520057948C /* FieldInfoView.swift */; };
 		04A398B82783471E0091D14D /* StadiumInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A398B72783471E0091D14D /* StadiumInfoView.swift */; };
 		04A398BA278397930091D14D /* StadiumSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A398B9278397930091D14D /* StadiumSettingsView.swift */; };
 		04B80A1B27B4B80900C89D8E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B80A1A27B4B80900C89D8E /* MapView.swift */; };
@@ -52,6 +53,9 @@
 		04DD2C712777A2EC0075A103 /* StadiumInformationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD2C702777A2EC0075A103 /* StadiumInformationsView.swift */; };
 		04DD2C742777A88C0075A103 /* PendingAppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD2C732777A88C0075A103 /* PendingAppointmentsView.swift */; };
 		04DD2C762777A8B40075A103 /* UploadPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD2C752777A8B40075A103 /* UploadPhotos.swift */; };
+		04E3779827B77817002DB370 /* WorkingHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3779727B77817002DB370 /* WorkingHours.swift */; };
+		04EC713227B5AE4500A1BA12 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC713127B5AE4500A1BA12 /* AnnotationView.swift */; };
+		04EC713627B5CF0100A1BA12 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC713527B5CF0100A1BA12 /* PinView.swift */; };
 		04F644F927670165004840B8 /* PaslaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F644F827670165004840B8 /* PaslaApp.swift */; };
 		04F644FB27670165004840B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F644FA27670165004840B8 /* HomeView.swift */; };
 		04F644FD27670167004840B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F644FC27670167004840B8 /* Assets.xcassets */; };
@@ -97,7 +101,6 @@
 		043320B72792E8AA00572563 /* EvaluationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationView.swift; sourceTree = "<group>"; };
 		043320BA2792EC5B00572563 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		043320BC2792EC6B00572563 /* ConfirmDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDateView.swift; sourceTree = "<group>"; };
-		043320BE2792EC7700572563 /* DateEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditView.swift; sourceTree = "<group>"; };
 		043320C12792ECC600572563 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
 		043320C32792ECDC00572563 /* RequestAppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAppointmentView.swift; sourceTree = "<group>"; };
 		043320C52792ECE700572563 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 		0475F9C6276821080053C4EF /* StadiumLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumLoginView.swift; sourceTree = "<group>"; };
 		0475F9C8276821160053C4EF /* UserLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginView.swift; sourceTree = "<group>"; };
 		0475F9CA276821260053C4EF /* StadiumSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumSignUpView.swift; sourceTree = "<group>"; };
+		0484870A27B725B00057948C /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		0484870C27B73B520057948C /* FieldInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldInfoView.swift; sourceTree = "<group>"; };
 		04A398B72783471E0091D14D /* StadiumInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumInfoView.swift; sourceTree = "<group>"; };
 		04A398B9278397930091D14D /* StadiumSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumSettingsView.swift; sourceTree = "<group>"; };
 		04B80A1A27B4B80900C89D8E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -127,6 +132,9 @@
 		04DD2C702777A2EC0075A103 /* StadiumInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumInformationsView.swift; sourceTree = "<group>"; };
 		04DD2C732777A88C0075A103 /* PendingAppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingAppointmentsView.swift; sourceTree = "<group>"; };
 		04DD2C752777A8B40075A103 /* UploadPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotos.swift; sourceTree = "<group>"; };
+		04E3779727B77817002DB370 /* WorkingHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHours.swift; sourceTree = "<group>"; };
+		04EC713127B5AE4500A1BA12 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
+		04EC713527B5CF0100A1BA12 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		04F644F527670165004840B8 /* Pasla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pasla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F644F827670165004840B8 /* PaslaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaslaApp.swift; sourceTree = "<group>"; };
 		04F644FA27670165004840B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -241,7 +249,8 @@
 			children = (
 				043320BA2792EC5B00572563 /* CalendarView.swift */,
 				043320BC2792EC6B00572563 /* ConfirmDateView.swift */,
-				043320BE2792EC7700572563 /* DateEditView.swift */,
+				0484870C27B73B520057948C /* FieldInfoView.swift */,
+				04E3779727B77817002DB370 /* WorkingHours.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -314,6 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				04B80A1A27B4B80900C89D8E /* MapView.swift */,
+				04EC713127B5AE4500A1BA12 /* AnnotationView.swift */,
+				04EC713527B5CF0100A1BA12 /* PinView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -380,6 +391,7 @@
 			children = (
 				04F644F827670165004840B8 /* PaslaApp.swift */,
 				04F644FA27670165004840B8 /* HomeView.swift */,
+				0484870A27B725B00057948C /* LaunchScreenView.swift */,
 				04B80A1927B4B7F500C89D8E /* Views */,
 				04636C6B2799F5E000E17D46 /* Models */,
 				0475F9C0276820B60053C4EF /* Login */,
@@ -683,13 +695,14 @@
 			files = (
 				041C957F2785EEA80019EDBB /* UserSettingsView.swift in Sources */,
 				043320CB2792ED3200572563 /* FavoriteStadiumsView.swift in Sources */,
+				0484870B27B725B00057948C /* LaunchScreenView.swift in Sources */,
 				04299E3F276E15A70083C7BD /* StadiumAccountView.swift in Sources */,
 				043320AA2792E7E100572563 /* MyTeamView.swift in Sources */,
 				04DD2C762777A8B40075A103 /* UploadPhotos.swift in Sources */,
-				043320BF2792EC7700572563 /* DateEditView.swift in Sources */,
 				0423FA322768EF290061C2E9 /* UserInfoView.swift in Sources */,
 				04299E41276E15B30083C7BD /* UserAccountView.swift in Sources */,
 				0418AE4D27A0644700D6E509 /* UsersInfoModel.swift in Sources */,
+				04EC713627B5CF0100A1BA12 /* PinView.swift in Sources */,
 				043320BB2792EC5B00572563 /* CalendarView.swift in Sources */,
 				0462287727AD69CD006D12E1 /* ForgotPasswordView.swift in Sources */,
 				04F644FB27670165004840B8 /* HomeView.swift in Sources */,
@@ -708,6 +721,7 @@
 				04143BEC279A1762004A3357 /* StadiumCommentModel.swift in Sources */,
 				04B80A1B27B4B80900C89D8E /* MapView.swift in Sources */,
 				04B80A1D27B4C1E700C89D8E /* MapViewModel.swift in Sources */,
+				04E3779827B77817002DB370 /* WorkingHours.swift in Sources */,
 				0475F9C7276821080053C4EF /* StadiumLoginView.swift in Sources */,
 				04A398BA278397930091D14D /* StadiumSettingsView.swift in Sources */,
 				04DD2C742777A88C0075A103 /* PendingAppointmentsView.swift in Sources */,
@@ -716,10 +730,12 @@
 				04DD2C712777A2EC0075A103 /* StadiumInformationsView.swift in Sources */,
 				043320C62792ECE700572563 /* DateView.swift in Sources */,
 				0475F9BF27681DF40053C4EF /* LoginView.swift in Sources */,
+				04EC713227B5AE4500A1BA12 /* AnnotationView.swift in Sources */,
 				043320B42792E88400572563 /* AllAppointmentsView.swift in Sources */,
 				043320D02792ED6000572563 /* StadiumNameView.swift in Sources */,
 				0438DE74279F55F900160FE3 /* StadiumInfoFromUserModel.swift in Sources */,
 				04F644F927670165004840B8 /* PaslaApp.swift in Sources */,
+				0484870D27B73B530057948C /* FieldInfoView.swift in Sources */,
 				0475F9C3276820F40053C4EF /* UserSignUpView.swift in Sources */,
 				0418AE4B27A05E5200D6E509 /* StadiumPhotosModel.swift in Sources */,
 				04DD2C682777A2850075A103 /* StadiumPhotosView.swift in Sources */,
