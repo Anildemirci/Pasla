@@ -207,10 +207,10 @@ struct StadiumAccountView: View {
                             let imageUrl=url?.absoluteString
                             
                             let firestoreProfile=["imageUrl":imageUrl!,
-                                                 "ID":currentUser!.uid,
-                                                 "User":currentUser!.email!,
-                                                 "Date":FieldValue.serverTimestamp(),
-                                                 "StadiumName":infomodel.stadiumName] as [String:Any]
+                                                  "ID":currentUser!.uid,
+                                                  "User":currentUser!.email!,
+                                                  "Date":FieldValue.serverTimestamp(),
+                                                  "StadiumName":infomodel.stadiumName] as [String:Any]
                                 firestoreDatabase.collection("ProfilePhoto").document(currentUser!.uid).setData(firestoreProfile) { (error) in
                                 if error != nil {
                                     titleInput="Hata"

@@ -13,8 +13,8 @@ class StadiumPhotosModel : ObservableObject {
     
     @Published var posts = [dataType]()
     //@Published var photoStatement=[String]()
-    //@Published var storageId=[String]()
-    //@Published var imageUrl=[String]()
+    @Published var storageId=[String]()
+    @Published var imageUrl=[String]()
     var stinfo=UsersInfoModel()
     
     var didChange=PassthroughSubject<Array<Any>,Never>()
@@ -27,16 +27,18 @@ class StadiumPhotosModel : ObservableObject {
                 return
             } else {
                 
-                //self.photoStatement.removeAll(keepingCapacity: false)
-                //self.imageUrl.removeAll(keepingCapacity: false)
+                self.storageId.removeAll(keepingCapacity: false)
+                self.imageUrl.removeAll(keepingCapacity: false)
                 self.posts.removeAll(keepingCapacity: false)
                 
                 for document in snapshot!.documents{
                     let documentID=document.documentID
                     let statement=document.get("Statement") as! String
                     let image=document.get("photoUrl") as! String
-                    
+                    let storageID=document.get("StorageID") as! String
                     self.posts.append((dataType(id: documentID, statement: statement, image: image)))
+                    self.imageUrl.append(image)
+                    self.storageId.append(storageID)
                 }
                 self.didChange.send(self.posts)
             }

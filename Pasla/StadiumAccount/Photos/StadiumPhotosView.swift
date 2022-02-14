@@ -20,9 +20,13 @@ struct StadiumPhotosView: View {
     @State var show=false
     @State var user=""
     @State var url=""
+    @State var selection=Set<String>()
+    @State var editMode: EditMode = .inactive
+    @State var messageInput=""
+    @State var titleInput=""
+    @State var showingAlert=false
     
     @StateObject var photosInfo=StadiumPhotosModel()
-    
     var firestoreDatabase=Firestore.firestore()
     var currentUser=Auth.auth().currentUser
     var storage=Storage.storage()
@@ -33,17 +37,21 @@ struct StadiumPhotosView: View {
     var body: some View {
         
         if userType == "Stadium" {
-            ScrollView(.vertical,showsIndicators: false){
+            
                 VStack{
                     if photosInfo.posts.isEmpty{
                         Text("Saha tarafından fotoğraf yüklenmedi henüz.").fontWeight(.heavy)
                     } else {
-                        ForEach(photosInfo.posts){i in
-                            photosStruct(statement: i.statement, image: i.image, id: i.id,show: $show,url: $url)
-                        }.animation(.spring())
+                        List {
+                            ForEach(photosInfo.posts){ i in
+                                photosStruct(statement: i.statement, image: i.image, id: i.id,show: $show,url: $url)
+                            }.onDelete(perform: deletePhoto)
+                        }
                     }
                 }
-            }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("Tamam")))
+                }
             .onAppear{
                 stadiumNamee=selectedName
                 photosInfo.getDataForStadium()
@@ -63,7 +71,6 @@ struct StadiumPhotosView: View {
                 .navigationBarItems(trailing:
                     Button(action: {
                     
-                    
                     }){
                         Image(systemName: "trash").resizable().frame(width: 30, height: 30)
                     }
@@ -81,10 +88,43 @@ struct StadiumPhotosView: View {
                      }
                  }
              }.onAppear{
-                 //favorilerden tıklarsa hata veriyor düzelt.
                  photosInfo.getDataForUser()
              }
              
+        }
+        
+    }
+    
+    func deletePhoto(at indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let delPhoto=photosInfo.imageUrl[index]
+            let delStorage=photosInfo.storageId[index]
+            firestoreDatabase.collection("StadiumPhotos").document(stadiumNamee).collection("Photos").whereField("photoUrl", isEqualTo: delPhoto).getDocuments() { (query, error) in
+                if error == nil {
+                    for document in query!.documents{
+                        let delDocID=document.documentID
+                        firestoreDatabase.collection("StadiumPhotos").document(stadiumNamee).collection("Photos").document(delDocID).delete(){ error in
+                            if error == nil {
+                                storage.reference().child("StadiumPhotos").child(stadiumNamee).child("\(delStorage).jpg").delete { error in
+                                    if error != nil {
+                                        titleInput="Hata"
+                                        messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
+                                        showingAlert.toggle()
+                                    } else {
+                                        titleInput="Başarılı"
+                                        messageInput="Fotoğraf silindi."
+                                        showingAlert.toggle()
+                                    }
+                                }
+                            }else {
+                                titleInput="Hata"
+                                messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
+                                showingAlert.toggle()
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -108,7 +148,7 @@ struct photosStruct : View {
     var body: some View {
         VStack{
             AnimatedImage(url: URL(string: image))
-                .resizable().frame(width:350,height:350)
+                .resizable().frame(width:350 ,height:350)
                 .onTapGesture {
                     url=image
                     show.toggle()
@@ -121,7 +161,7 @@ struct photosStruct : View {
 }
 
 
-struct dataType : Identifiable {
+struct dataType : Identifiable,Hashable {
     var id : String
     var statement : String
     var image : String
@@ -136,3 +176,5 @@ struct statusView:View{
         }
     }
 }
+
+

@@ -74,11 +74,9 @@ struct StadiumInformationsView: View {
                                             .foregroundColor(Color.black)
                                             .font(.title3)
                             }.onDelete(perform: deleteInfo)
-                                
                         }.frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.25)
                             .background(Color.white)
                         .cornerRadius(25)
-                        
                     }
                 }
                 
