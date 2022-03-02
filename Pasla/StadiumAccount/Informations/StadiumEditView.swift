@@ -83,8 +83,11 @@ struct StadiumEditView: View {
                     .cornerRadius(25)
                 Spacer()
                     .padding(10)
-                AnnotationView()
-                .frame(height:UIScreen.main.bounds.height * 0.3)
+            Text("Navigasyon için sahanın konumunu ekleyin.")
+                .font(.headline)
+                .foregroundColor(Color.white)
+                MapView()
+                .frame(height:UIScreen.main.bounds.height * 0.35)
                 Spacer()
                     .padding(10)
                 VStack{

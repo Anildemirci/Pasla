@@ -9,18 +9,18 @@ import MapKit
 
 enum MapDetails {
     static let startingLocation=CLLocationCoordinate2D(latitude: 41.0330382, longitude: 28.4517462)
-    static let defaultSpan=MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+    static let defaultSpan=MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25)
 }
 
 class MapViewModel: NSObject,ObservableObject,CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     
     @Published var region=MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
+    
     func checkIfLocationServicesIsEnabled(){
         if CLLocationManager.locationServicesEnabled() {
             locationManager=CLLocationManager()
             locationManager!.delegate=self
-            
         } else {
             //alert göster konuma izin vermesi gerektiğini
         }

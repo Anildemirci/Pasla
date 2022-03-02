@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import MapKit
+import CoreLocation
 
 struct StadiumInformationsView: View {
     
@@ -16,7 +18,9 @@ struct StadiumInformationsView: View {
     var currentUser=Auth.auth().currentUser
     var userType=""
     var selectedName=""
-    
+    @State var messageInput=""
+    @State var titleInput=""
+    @State var showingAlert=false
     @StateObject var infomodel=UsersInfoModel()
     @StateObject var infoModelForUser=StadiumInfoFromUserModel()
     
@@ -99,12 +103,13 @@ struct StadiumInformationsView: View {
                                 .frame(width: 25.0, height: 25.0)
                                 .aspectRatio(contentMode: .fill)
                             Button(action: {
-                                
+                                navigationClicked()
                             }) {
                                 Text("Yol tarifi al")
                             }
                         }.padding()
-                    }.frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.25)
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.25)
                         .background(Color.white)
                     .cornerRadius(25)
                     Spacer()
@@ -144,11 +149,15 @@ struct StadiumInformationsView: View {
                         .cornerRadius(25)
                     }
                 }
-            }.onAppear{
+            }.alert(isPresented: $showingAlert) {
+                Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
+            }
+                .onAppear{
                 if userType=="Stadium" {
                     infomodel.getDataForStadium()
                 } else {
                     infoModelForUser.getDataFromInfoForUser()
+                    infoModelForUser.getLocation()
                 }
             }.navigationBarItems(trailing:
                                     Button(action: {
@@ -166,7 +175,8 @@ struct StadiumInformationsView: View {
                                         
                                     }
                                 )
-        }.background(Color("myGreen"))
+            }
+            .background(Color("myGreen"))
     }
     
     func deleteInfo(at indexSet: IndexSet) {
@@ -174,6 +184,29 @@ struct StadiumInformationsView: View {
             let delField=infomodel.stadiumInfos[index]
             firestoreDatabase.collection("Stadiums").document(currentUser!.uid).updateData(["Informations" : FieldValue.arrayRemove([delField])])
         }
+    }
+    
+    func navigationClicked(){
+        
+        if infoModelForUser.annotationLatitude != 0 && infoModelForUser.annotationLongitude != 0 {
+            let requestLocation=CLLocation(latitude: infoModelForUser.annotationLatitude, longitude: infoModelForUser.annotationLongitude)
+            CLGeocoder().reverseGeocodeLocation(requestLocation) { (placemarks, error) in
+                if let placemark = placemarks {
+                    if placemark.count > 0 {
+                        let newPlacemark=MKPlacemark(placemark: placemarks![0])
+                        let item=MKMapItem(placemark: newPlacemark)
+                        item.name=self.infoModelForUser.name
+                        let launchOptions=[MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+                        item.openInMaps(launchOptions: launchOptions)
+                    }
+                }
+            }
+        } else {
+            titleInput="Hata"
+            messageInput="Saha tarafından konum bilgisi henüz kaydedilmedi."
+            showingAlert.toggle()
+        }
+        
     }
 }
 

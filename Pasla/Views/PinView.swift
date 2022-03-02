@@ -9,43 +9,14 @@ import SwiftUI
 import MapKit
 import Firebase
 
+//pini işaretlediğin yerin koordinatları, posta kodu, bölge adı gibi bilgilerini veriyor.
+//henüz bir yerde kullanılmıyor.
+
 struct PinView: View {
     
     var body: some View {
         VStack {
-            
-            MappView()
-            
-            Button(action: {
-                var firestoreDatabase=Firestore.firestore()
-                var currentUser=Auth.auth().currentUser
-                var nameStadium=""
-                var town=""
-                var city=""
-                var chosenLatitude=Double()
-                var chosenLongitude=Double()
-                
-                let firestoreUser=["User":Auth.auth().currentUser!.uid,
-                                   "Email":Auth.auth().currentUser!.email!,
-                                   "StadiumName":nameStadium,
-                                   "Town":town,
-                                   "City":city,
-                                   "Latitude":chosenLatitude,
-                                   "Longitude":chosenLongitude,
-                                   "AnnotationTitle":nameStadium,
-                                   "Date":FieldValue.serverTimestamp()] as [String:Any]
-                
-                firestoreDatabase.collection("Locations").document(currentUser!.uid).setData(firestoreUser) {
-                        error in
-                        if error != nil {
-                            //self.makeAlert(titleInput: "Error!", messageInput: error?.localizedDescription ?? "Error")
-                        } else {
-                            //self.makeAlert(titleInput: "Başarılı", messageInput: "Konumunuz eklendi.")
-                        }
-                    }
-            }) {
-                Text("kaydet")
-            }
+            MapView()
         }
     }
 }

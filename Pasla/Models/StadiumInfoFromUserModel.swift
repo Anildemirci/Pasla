@@ -26,6 +26,8 @@ class StadiumInfoFromUserModel : ObservableObject {
     @Published var nameFields=[String]()
     @Published var workingHour=[String]()
     @Published var workingHour2=[String]()
+    @Published var annotationLatitude=Double()
+    @Published var annotationLongitude=Double()
     
     init(){
         let db=Firestore.firestore()
@@ -130,6 +132,33 @@ class StadiumInfoFromUserModel : ObservableObject {
                     }
                 }
                 
+            }
+        }
+    }
+    
+    func getLocation(){
+        let db=Firestore.firestore()
+        db.collection("Locations").whereField("StadiumName", isEqualTo: chosenStadiumName).getDocuments { (snapshot, error) in
+            if error == nil {
+                for document in snapshot!.documents{
+                    let documentId=document.documentID
+                    db.collection("Locations").document(documentId).addSnapshotListener { (snapshot, error) in
+                        if error == nil {
+                            
+                            if let longitude=snapshot?.get("Longitude") {
+                                self.annotationLongitude=longitude as! Double
+                            } else  {
+                                self.annotationLongitude=0
+                            }
+                            if let latitude=snapshot?.get("Latitude") {
+                                self.annotationLatitude=latitude as! Double
+                            } else {
+                                self.annotationLatitude=0
+                            }
+                        }
+                    }
+                    
+                }
             }
         }
     }

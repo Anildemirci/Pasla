@@ -26,7 +26,6 @@ struct PendingAppointmentsView: View {
             }
         }.onAppear{
             getFromDatabase()
-            print(daysArray)
         }
     }
     
