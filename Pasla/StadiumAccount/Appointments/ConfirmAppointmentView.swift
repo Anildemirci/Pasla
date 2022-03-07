@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import OneSignal
 
 struct ConfirmAppointmentView: View {
     
@@ -208,7 +209,20 @@ struct ConfirmAppointmentView: View {
         titleInput="Başarılı"
         messageInput="Randevu onaylanmıştır."
         alertType = .showAlert
-
+        firestoreDatabase.collection("PlayerID").whereField("User", isEqualTo: userID).getDocuments { (snapshot, error) in
+            if error == nil {
+                if snapshot?.isEmpty == false && snapshot != nil {
+                    for document in snapshot!.documents {
+                        if let playerId=document.get("PlayerID") as? String{
+                            let status=document.get("Online") as? String
+                            if status=="True" {
+                                OneSignal.postNotification(["contents": ["en":"Randevunuz onaylanmıştır!"], "include_player_ids":["\(playerId)"]])
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func rejectClicked(){
@@ -218,7 +232,20 @@ struct ConfirmAppointmentView: View {
         titleInput="Başarılı"
         messageInput="Randevu iptal edilmiştir."
         alertType = .showAlert
-
+        firestoreDatabase.collection("PlayerID").whereField("User", isEqualTo: userID).getDocuments { (snapshot, error) in
+            if error == nil {
+                if snapshot?.isEmpty == false && snapshot != nil {
+                    for document in snapshot!.documents {
+                        if let playerId=document.get("PlayerID") as? String{
+                            let status=document.get("Online") as? String
+                            if status=="True" {
+                                OneSignal.postNotification(["contents": ["en":"Randevunuz iptal edilmiştir!"], "include_player_ids":["\(playerId)"]])
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

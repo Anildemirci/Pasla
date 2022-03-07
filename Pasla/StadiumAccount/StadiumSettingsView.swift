@@ -121,6 +121,7 @@ struct StadiumSettingsView: View {
             Spacer()
             Button(action: {
                 do{
+                    firestoreDatabase.collection("PlayerID").document(currentUser!.uid).updateData(["Online":"False"])
                     try Auth.auth().signOut()
                     shown.toggle()
                 } catch {

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import OneSignal
 
 struct RequestAppointmentView: View {
     var numberField=""
@@ -16,6 +17,7 @@ struct RequestAppointmentView: View {
     var currentUser=Auth.auth().currentUser
     
     @StateObject var userInfo=UsersInfoModel()
+    @StateObject var stadiumInfo=StadiumInfoFromUserModel()
     @State var messageInput=""
     @State var titleInput=""
     @State var button=""
@@ -107,6 +109,8 @@ struct RequestAppointmentView: View {
     
     func request(){
         userInfo.getDataForUser()
+        stadiumInfo.getDataFromInfoForUser()
+        
         let firestoreDatabase=Firestore.firestore()
         let firestoreUser=["User":Auth.auth().currentUser!.uid,
                            "Email":Auth.auth().currentUser!.email,
@@ -161,6 +165,22 @@ struct RequestAppointmentView: View {
                 alertType = .showAlert
             } else {
                 //kontrolleri gerçekleştir
+                firestoreDatabase.collection("PlayerID").whereField("Name", isEqualTo: chosenStadiumName).getDocuments { (snapshot, error) in
+                    if error == nil {
+                        if snapshot?.isEmpty == false && snapshot != nil {
+                            for document in snapshot!.documents {
+                                if let playerId=document.get("PlayerID") as? String{                                    
+                                    let status=document.get("Online") as? String
+                                    if status=="True" {
+                                        OneSignal.postNotification(["contents": ["en":"Yeni bir randevu talebi!"], "include_player_ids":["\(playerId)"]])
+                                        print(stadiumInfo.id)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
                 titleInput="Başarılı"
                 messageInput="Randevu talebiniz gönderildi."
                 alertType = .showAlert

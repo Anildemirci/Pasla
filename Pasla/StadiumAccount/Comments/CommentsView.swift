@@ -129,20 +129,26 @@ struct CommentForUser : View {
                     let username = document.get("FullName") as! String
                     let commentDate = document.get("CommentDate") as! String
                     let scorePoint = document.get("Score") as! String
-                    i+=1
+                    i=i+1
                         if scorePoint.contains("5-Çok iyi") {
-                            totalScore=(totalScore+5)/Double(i)
+                            totalScore=(totalScore+5.00)
                         } else if scorePoint.contains("4-İyi") {
-                            totalScore=(totalScore+4)/Double(i)
+                            totalScore=(totalScore+4.00)
                         } else if scorePoint.contains("3-Orta") {
-                            totalScore=(totalScore+3)/Double(i)
+                            totalScore=(totalScore+3.00)
                         } else if scorePoint.contains("2-Kötü") {
-                            totalScore=(totalScore+2)/Double(i)
+                            totalScore=(totalScore+2.00)
                         } else if scorePoint.contains("1-Çok kötü") {
-                            totalScore=(totalScore+1)/Double(i)
+                            totalScore=(totalScore+1.00)
                         }
                     commentsArrayStruct.append((commentInfos(id: document.documentID, comment: comments, fullname: username, date: commentDate, score: scorePoint)))
                 }
+                if i != 0 {
+                    totalScore=totalScore/Double(i)
+                } else {
+                    totalScore=0.00
+                }
+                
                 self.didChange.send(commentsArrayStruct)
             }
         }
@@ -159,9 +165,8 @@ struct CommentForStadium : View {
     var didChange=PassthroughSubject<Array<Any>,Never>()
     var firestoreDatabase=Firestore.firestore()
     var currentUser=Auth.auth().currentUser
-    var score=""
-    
     @State var totalScore=Double()
+    @State var score=""
     
     var body: some View {
         VStack{
@@ -169,7 +174,8 @@ struct CommentForStadium : View {
                 Text("Henüz yorum yapılmadı.")
             } else {
                 Spacer()
-                Text("\(commentsArrayStruct.count) müşteri oyu ile \(totalScore) puan.")
+                let roundedValue=NSString(format: "%.2f",totalScore)
+                Text("\(commentsArrayStruct.count) müşteri oyu ile \(roundedValue) puan.")
                 List(commentsArrayStruct){ i in
                     VStack{
                         HStack(alignment:.top){
@@ -220,31 +226,36 @@ struct CommentForStadium : View {
     func getComment() {
         
         stadiuminfo.getDataForStadium()
-        
+        var i=0;
         firestoreDatabase.collection("Evaluation").document(name).collection(name).order(by: "CommentDate",descending: true).addSnapshotListener { (snapshot, error) in
             if error != nil {
                 //local hata
             } else {
                 //anlık güncelleme gelince fazla veri göstermemesi için hafızada tutmuyor.
                 commentsArrayStruct.removeAll(keepingCapacity: false)
-                
                 for document in snapshot!.documents {
                     let comments = document.get("Comment") as! String
                     let username = document.get("FullName") as! String
                     let commentDate = document.get("CommentDate") as! String
                     let scorePoint = document.get("Score") as! String
+                    i=i+i
                         if score.contains("5-Çok iyi") {
-                            totalScore=totalScore+5
+                            totalScore=(totalScore+5.00)
                         } else if score.contains("4-İyi") {
-                            totalScore=totalScore+4
+                            totalScore=(totalScore+4.00)
                         } else if score.contains("3-Orta") {
-                            totalScore=totalScore+3
+                            totalScore=(totalScore+3.00)
                         } else if score.contains("2-Kötü") {
-                            totalScore=totalScore+2
+                            totalScore=(totalScore+2.00)
                         } else if score.contains("1-Çok kötü") {
-                            totalScore=totalScore+1
+                            totalScore=(totalScore+1.00)
                         }
                     commentsArrayStruct.append((commentInfos(id: document.documentID, comment: comments, fullname: username, date: commentDate, score: scorePoint)))
+                }
+                if i != 0 {
+                    totalScore=totalScore/Double(i)
+                } else {
+                    totalScore=0.00
                 }
                 self.didChange.send(commentsArrayStruct)
             }

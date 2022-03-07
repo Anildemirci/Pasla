@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import SDWebImageSwiftUI
+import OneSignal
 
 struct StadiumAccountView: View {
     
@@ -113,6 +114,7 @@ struct StadiumAccountView: View {
             }.onAppear(){
                 infomodel.getDataForStadium()
                 getProfilePhoto()
+                pushNotification()
             }
             .tabItem{
                 Image(systemName: "person")
@@ -148,9 +150,78 @@ struct StadiumAccountView: View {
                                         isShowPhotoLibrary.toggle()
                                         uploadPhoto()
                                     },
+                                    .destructive(Text("İptal")) {
+                                        
+                                    },
                                 ]
                             )
         }
+    }
+    
+    func pushNotification(){
+        //OneSignal.postNotification(["contents": ["en":"Test Message"], "include_player_ids":["6c98d25a-9d6a-11ec-b2b1-2628c68adadd"]])
+        
+        if let deviceState = OneSignal.getDeviceState() {
+            let playerId = deviceState.userId
+            
+            if let playerNewId=playerId {
+                firestoreDatabase.collection("PlayerId").whereField("User", isEqualTo: currentUser!.uid).getDocuments { (snapshot, error) in
+                    if error == nil {
+                        if snapshot?.isEmpty == false && snapshot != nil {
+                            for document in snapshot!.documents {
+                                if let playerID=document.get("PlayerID") as? String {
+                                    let documentId=document.documentID
+                                    if playerNewId==playerID {
+                                        
+                                    } else {
+                                        let firestoreStadium=["User":Auth.auth().currentUser!.uid,
+                                                              "Email":Auth.auth().currentUser!.email!,
+                                                              "PlayerID":playerNewId,
+                                                              "Name":infomodel.stadiumName,
+                                                              "Online":"True",
+                                                              "Type":"Stadium",
+                                                              "Date":FieldValue.serverTimestamp()] as [String:Any]
+                                        
+                                        firestoreDatabase.collection("PlayerID").document(Auth.auth().currentUser!.uid).setData(firestoreStadium) { error in
+                                            if error != nil {
+                                                //hata
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            let firestoreStadium=["User":Auth.auth().currentUser!.uid,
+                                                  "Email":Auth.auth().currentUser!.email!,
+                                                  "PlayerID":playerNewId,
+                                                  "Name":infomodel.stadiumName,
+                                                  "Online":"True",
+                                                  "Type":"Stadium",
+                                                  "Date":FieldValue.serverTimestamp()] as [String:Any]
+                            
+                            firestoreDatabase.collection("PlayerID").document(Auth.auth().currentUser!.uid).setData(firestoreStadium) { error in
+                                if error != nil {
+                                    //hata
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            
+            /*
+             let subscribed = deviceState.isSubscribed
+             print("Device is subscribed: ", subscribed)
+             let hasNotificationPermission = deviceState.hasNotificationPermission
+             print("Device has notification permissions enabled: ", hasNotificationPermission)
+             let notificationPermissionStatus = deviceState.notificationPermissionStatus
+             print("Device's notification permission status: ", notificationPermissionStatus.rawValue)
+             let pushToken = deviceState.pushToken
+             print("Device Push Token Identifier: ", pushToken ?? "no push token, not subscribed")
+             */
+        }
+        
     }
     
     func getProfilePhoto(){

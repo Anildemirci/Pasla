@@ -27,10 +27,10 @@ struct FieldInformationsView: View {
                 if checkInfos==false {
                     Group{
                         Text(fieldname)
-                        Text("Henüz saha boyutu hakkında bilgi verilmedi ")
-                        Text("Henüz saha fiyatı hakkında bilgi verilmedi ")
-                        Text("Henüz kapora hakkında bilgi verilmedi ")
-                    }.font(.title3)
+                        Text("Henüz saha boyutu hakkında bilgi verilmedi")
+                        Text("Henüz saha fiyatı hakkında bilgi verilmedi")
+                        Text("Henüz kapora hakkında bilgi verilmedi")
+                    }.scaledToFill().font(.title3)
                         .padding()
                         .foregroundColor(Color("myGreen"))
                         .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.07).background(Color.white)
@@ -42,12 +42,13 @@ struct FieldInformationsView: View {
                         Text(fieldSize=="" ? "Henüz saha boyutu hakkında bilgi verilmedi":("Saha boyutu: \(fieldSize)"))
                         Text(fieldPrice=="" ? "Henüz saha fiyatı hakkında bilgi verilmedi":("Saha fiyatı: \(fieldPrice)"))
                         Text(deposit=="" ? "Henüz kapora hakkında bilgi verilmedi":("Kapora bilgisi: \(deposit)"))
-                    }.font(.title3)
+                    }.scaledToFill().font(.title3)
                         .padding()
                         .foregroundColor(Color("myGreen"))
                         .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.07).background(Color.white)
                         .border(Color("myGreen"), width: 1)
                         .multilineTextAlignment(.leading)
+                        
                 }
             }.frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height * 0.45).background(Color.white)
                 .cornerRadius(25)

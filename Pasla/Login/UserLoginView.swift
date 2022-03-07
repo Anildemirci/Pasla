@@ -54,12 +54,12 @@ struct UserLoginView: View {
                     if shownPass == false {
                         Image(systemName: "eye.circle.fill")
                             .foregroundColor(Color("myGreen"))
-                        Text("Şifreyi göster")
+                        Text("Şifreyi göster").scaledToFill()
                             .foregroundColor(Color.black)
                     } else {
                         Image(systemName: "eye.slash.circle.fill")
                             .foregroundColor(Color("myGreen"))
-                        Text("Şifreyi gizle")
+                        Text("Şifreyi gizle").scaledToFill()
                             .foregroundColor(Color.black)
                     }
                 }

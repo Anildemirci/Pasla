@@ -64,9 +64,12 @@
 		04F6451427670167004840B8 /* PaslaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6451327670167004840B8 /* PaslaUITests.swift */; };
 		04F6451627670167004840B8 /* PaslaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6451527670167004840B8 /* PaslaUITestsLaunchTests.swift */; };
 		04F6452327670453004840B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04F6452227670453004840B8 /* GoogleService-Info.plist */; };
+		04FF74F027D50E410006CB2F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF74EF27D50E410006CB2F /* NotificationService.swift */; };
+		04FF74F427D50E410006CB2F /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04FF74ED27D50E400006CB2F /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2AF3AA18F4FC0B42A9CA82A4 /* Pods_PaslaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5629037E31E5B1A7E6D245 /* Pods_PaslaTests.framework */; };
 		9EFB7AF297CC29E995546CE3 /* Pods_Pasla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3627AC93395E207DF31E4D /* Pods_Pasla.framework */; };
 		BF6B383F80F77A9F6924BEB2 /* Pods_Pasla_PaslaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A65A7D7FC8DAAE95F58BED /* Pods_Pasla_PaslaUITests.framework */; };
+		FD7D6EF6291873F35A177FFB /* Pods_Pasla_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6ACA1D78D68A97877134D1 /* Pods_Pasla_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +87,28 @@
 			remoteGlobalIDString = 04F644F427670165004840B8;
 			remoteInfo = Pasla;
 		};
+		04FF74F227D50E410006CB2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04F644ED27670165004840B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04FF74EC27D50E400006CB2F;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		04FF74F827D50E410006CB2F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				04FF74F427D50E410006CB2F /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		04143BEB279A1762004A3357 /* StadiumCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumCommentModel.swift; sourceTree = "<group>"; };
@@ -146,15 +170,22 @@
 		04F6451327670167004840B8 /* PaslaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaslaUITests.swift; sourceTree = "<group>"; };
 		04F6451527670167004840B8 /* PaslaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaslaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		04F6452227670453004840B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04FF74ED27D50E400006CB2F /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		04FF74EF27D50E410006CB2F /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		04FF74F127D50E410006CB2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04FF74F927D512D40006CB2F /* Pasla.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pasla.entitlements; sourceTree = "<group>"; };
 		06BF60DDC4C620CECF035528 /* Pods-PaslaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaslaTests.debug.xcconfig"; path = "Target Support Files/Pods-PaslaTests/Pods-PaslaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		104AF989C7F94FD27EB1A005 /* Pods-Pasla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pasla.debug.xcconfig"; path = "Target Support Files/Pods-Pasla/Pods-Pasla.debug.xcconfig"; sourceTree = "<group>"; };
 		33ECFC4B01EEC0A6B85E272F /* Pods-Pasla-PaslaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pasla-PaslaUITests.release.xcconfig"; path = "Target Support Files/Pods-Pasla-PaslaUITests/Pods-Pasla-PaslaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		36AA452F5D465EE0043F2AD5 /* Pods-Pasla.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pasla.release.xcconfig"; path = "Target Support Files/Pods-Pasla/Pods-Pasla.release.xcconfig"; sourceTree = "<group>"; };
 		3D3627AC93395E207DF31E4D /* Pods_Pasla.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pasla.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AF52F576A0A3E5775BC541 /* Pods-Pasla-PaslaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pasla-PaslaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pasla-PaslaUITests/Pods-Pasla-PaslaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		67883E3B3246967A2EF631C0 /* Pods-Pasla-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pasla-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-Pasla-OneSignalNotificationServiceExtension/Pods-Pasla-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		80A65A7D7FC8DAAE95F58BED /* Pods_Pasla_PaslaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pasla_PaslaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		876084E207E87A485A7BEF7A /* Pods-PaslaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaslaTests.release.xcconfig"; path = "Target Support Files/Pods-PaslaTests/Pods-PaslaTests.release.xcconfig"; sourceTree = "<group>"; };
+		AD76B089E1E30A6B90A1DA9C /* Pods-Pasla-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pasla-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-Pasla-OneSignalNotificationServiceExtension/Pods-Pasla-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		BB5629037E31E5B1A7E6D245 /* Pods_PaslaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaslaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6ACA1D78D68A97877134D1 /* Pods_Pasla_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pasla_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +215,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04FF74EA27D50E400006CB2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD7D6EF6291873F35A177FFB /* Pods_Pasla_OneSignalNotificationServiceExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -193,6 +232,7 @@
 				3D3627AC93395E207DF31E4D /* Pods_Pasla.framework */,
 				80A65A7D7FC8DAAE95F58BED /* Pods_Pasla_PaslaUITests.framework */,
 				BB5629037E31E5B1A7E6D245 /* Pods_PaslaTests.framework */,
+				FA6ACA1D78D68A97877134D1 /* Pods_Pasla_OneSignalNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -370,6 +410,7 @@
 				04F644F727670165004840B8 /* Pasla */,
 				04F6450827670167004840B8 /* PaslaTests */,
 				04F6451227670167004840B8 /* PaslaUITests */,
+				04FF74EE27D50E410006CB2F /* OneSignalNotificationServiceExtension */,
 				04F644F627670165004840B8 /* Products */,
 				DC91E8B857B3F18AAFB2B496 /* Pods */,
 				00F42C8082BD354B2D7551DE /* Frameworks */,
@@ -382,6 +423,7 @@
 				04F644F527670165004840B8 /* Pasla.app */,
 				04F6450527670167004840B8 /* PaslaTests.xctest */,
 				04F6450F27670167004840B8 /* PaslaUITests.xctest */,
+				04FF74ED27D50E400006CB2F /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -389,6 +431,7 @@
 		04F644F727670165004840B8 /* Pasla */ = {
 			isa = PBXGroup;
 			children = (
+				04FF74F927D512D40006CB2F /* Pasla.entitlements */,
 				04F644F827670165004840B8 /* PaslaApp.swift */,
 				04F644FA27670165004840B8 /* HomeView.swift */,
 				0484870A27B725B00057948C /* LaunchScreenView.swift */,
@@ -432,6 +475,15 @@
 			path = PaslaUITests;
 			sourceTree = "<group>";
 		};
+		04FF74EE27D50E410006CB2F /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				04FF74EF27D50E410006CB2F /* NotificationService.swift */,
+				04FF74F127D50E410006CB2F /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		DC91E8B857B3F18AAFB2B496 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +493,8 @@
 				33ECFC4B01EEC0A6B85E272F /* Pods-Pasla-PaslaUITests.release.xcconfig */,
 				06BF60DDC4C620CECF035528 /* Pods-PaslaTests.debug.xcconfig */,
 				876084E207E87A485A7BEF7A /* Pods-PaslaTests.release.xcconfig */,
+				67883E3B3246967A2EF631C0 /* Pods-Pasla-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				AD76B089E1E30A6B90A1DA9C /* Pods-Pasla-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -457,10 +511,12 @@
 				04F644F227670165004840B8 /* Frameworks */,
 				04F644F327670165004840B8 /* Resources */,
 				1331F05C47B3141F17E65FA4 /* [CP] Embed Pods Frameworks */,
+				04FF74F827D50E410006CB2F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				04FF74F327D50E410006CB2F /* PBXTargetDependency */,
 			);
 			name = Pasla;
 			packageProductDependencies = (
@@ -510,6 +566,24 @@
 			productReference = 04F6450F27670167004840B8 /* PaslaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		04FF74EC27D50E400006CB2F /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04FF74F527D50E410006CB2F /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				B415BE9AC8C91DEBA936F3DB /* [CP] Check Pods Manifest.lock */,
+				04FF74E927D50E400006CB2F /* Sources */,
+				04FF74EA27D50E400006CB2F /* Frameworks */,
+				04FF74EB27D50E400006CB2F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 04FF74ED27D50E400006CB2F /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -517,7 +591,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					04F644F427670165004840B8 = {
@@ -530,6 +604,9 @@
 					04F6450E27670167004840B8 = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = 04F644F427670165004840B8;
+					};
+					04FF74EC27D50E400006CB2F = {
+						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
@@ -554,6 +631,7 @@
 				04F644F427670165004840B8 /* Pasla */,
 				04F6450427670167004840B8 /* PaslaTests */,
 				04F6450E27670167004840B8 /* PaslaUITests */,
+				04FF74EC27D50E400006CB2F /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -577,6 +655,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		04F6450D27670167004840B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04FF74EB27D50E400006CB2F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -619,6 +704,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Pasla-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B415BE9AC8C91DEBA936F3DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pasla-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -762,6 +869,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04FF74E927D50E400006CB2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04FF74F027D50E410006CB2F /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -774,6 +889,11 @@
 			isa = PBXTargetDependency;
 			target = 04F644F427670165004840B8 /* Pasla */;
 			targetProxy = 04F6451027670167004840B8 /* PBXContainerItemProxy */;
+		};
+		04FF74F327D50E410006CB2F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04FF74EC27D50E400006CB2F /* OneSignalNotificationServiceExtension */;
+			targetProxy = 04FF74F227D50E410006CB2F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -898,8 +1018,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 104AF989C7F94FD27EB1A005 /* Pods-Pasla.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pasla/Pasla.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pasla/Preview Content\"";
@@ -935,8 +1057,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36AA452F5D465EE0043F2AD5 /* Pods-Pasla.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pasla/Pasla.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pasla/Preview Content\"";
@@ -1068,6 +1192,60 @@
 			};
 			name = Release;
 		};
+		04FF74F627D50E410006CB2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67883E3B3246967A2EF631C0 /* Pods-Pasla-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4H7485JNQW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anildemirci.Pasla.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04FF74F727D50E410006CB2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD76B089E1E30A6B90A1DA9C /* Pods-Pasla-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4H7485JNQW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anildemirci.Pasla.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1103,6 +1281,15 @@
 			buildConfigurations = (
 				04F6452027670167004840B8 /* Debug */,
 				04F6452127670167004840B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04FF74F527D50E410006CB2F /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04FF74F627D50E410006CB2F /* Debug */,
+				04FF74F727D50E410006CB2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

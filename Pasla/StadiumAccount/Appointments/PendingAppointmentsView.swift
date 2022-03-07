@@ -17,11 +17,17 @@ struct PendingAppointmentsView: View {
     
     var body: some View {
         VStack {
-            List(appointmentsArray,id:\.self){ appointments in
-                NavigationLink(destination: ConfirmAppointmentView(selectedName: selectedName, documentID: appointments).onAppear(){
-                    
-                }){
-                    Text(appointments)
+            if appointmentsArray.count == 0 {
+                Text("Henüz bekleyen randevunuz yok.")
+                    .font(.headline)
+                    .foregroundColor(Color.black)
+            } else {
+                List(appointmentsArray,id:\.self){ appointments in
+                    NavigationLink(destination: ConfirmAppointmentView(selectedName: selectedName, documentID: appointments).onAppear(){
+                        
+                    }){
+                        Text(appointments)
+                    }
                 }
             }
         }.onAppear{

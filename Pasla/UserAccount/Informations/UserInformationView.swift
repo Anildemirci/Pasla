@@ -10,6 +10,10 @@ import Firebase
 
 struct UserInformationView: View {
     @ObservedObject var userInfo=UsersInfoModel()
+    @State var confirmedNumber=Int()
+    @State var canceledNumber=Int()
+    var firedatabase=Firestore.firestore()
+    var currentUser=Auth.auth().currentUser
     
     var body: some View {
         VStack{
@@ -50,11 +54,11 @@ struct UserInformationView: View {
                     .padding()
                     .foregroundColor(Color.white)
                 VStack{
-                    Text("Aldığı randevu sayısı")
+                    Text("Aldığı randevu sayısı: \(String(confirmedNumber))").scaledToFill()
                         .multilineTextAlignment(.center)
                         .padding()
                         .foregroundColor(Color("myGreen"))
-                    Text("İptal ettiği randevu sayısı")
+                    Text("İptal ettiği randevu sayısı: \(String(canceledNumber))").scaledToFill()
                         .multilineTextAlignment(.center)
                         .padding()
                         .foregroundColor(Color("myGreen"))
@@ -66,9 +70,23 @@ struct UserInformationView: View {
             }
             .onAppear{
             userInfo.getDataForUser()
+                getData()
         }
         }.background(Color("myGreen"))
             
+    }
+    
+    func getData(){
+        firedatabase.collection("UserAppointments").document(currentUser!.uid).collection(currentUser!.uid).whereField("Status", isEqualTo:"İptal edildi.").addSnapshotListener { (snapshot, error) in
+            if error == nil {
+                self.canceledNumber=snapshot!.count
+            }
+    }
+        firedatabase.collection("UserAppointments").document(currentUser!.uid).collection(currentUser!.uid).whereField("Status", isEqualTo:"Onaylandı.").addSnapshotListener { (snapshot, error) in
+            if error == nil {
+                self.confirmedNumber=snapshot!.count
+            }
+    }
     }
 }
 

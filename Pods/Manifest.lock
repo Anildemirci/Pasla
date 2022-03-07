@@ -356,19 +356,13 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.5.0)
-  - ImageSlideshow (1.9.2):
-    - ImageSlideshow/Core (= 1.9.2)
-  - ImageSlideshow/Core (1.9.2)
-  - ImageSlideshow/Kingfisher (1.9.2):
-    - ImageSlideshow/Core
-    - Kingfisher (> 3.0)
-  - Kingfisher (6.3.0)
   - leveldb-library (1.22.1)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - OneSignalXCFramework (3.10.1)
   - PromisesObjC (1.2.12)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
@@ -380,8 +374,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
-  - ImageSlideshow (~> 1.9.0)
-  - ImageSlideshow/Kingfisher
+  - OneSignalXCFramework (< 4.0, >= 3.0.0)
   - SDWebImage (~> 5.0)
 
 SPEC REPOS:
@@ -402,10 +395,9 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
-    - ImageSlideshow
-    - Kingfisher
     - leveldb-library
     - nanopb
+    - OneSignalXCFramework
     - PromisesObjC
     - SDWebImage
 
@@ -426,13 +418,12 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
-  ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
-  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  OneSignalXCFramework: fe027712118f2862ab193b72270487f11450ea63
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 3febd9e3cab8771aa9250c049ab70ce148b80719
+PODFILE CHECKSUM: 9bc746624c80208ca451e3585a105d1c2d71719c
 
 COCOAPODS: 1.11.2
