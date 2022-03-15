@@ -108,7 +108,8 @@ struct UserAppointmentsView: View {
                     }
                 }
             }
-        }.onAppear{
+        }.navigationTitle(Text("Randevularım")).navigationBarTitleDisplayMode(.inline)
+        .onAppear{
             getAppointments()
         }
     }

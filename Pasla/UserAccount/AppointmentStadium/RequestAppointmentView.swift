@@ -27,6 +27,7 @@ struct RequestAppointmentView: View {
     @State var note=""
     @State var alertType:AlertType?
     
+    
     enum AlertType: Identifiable{
         case confirmAlert,showAlert
         
@@ -40,7 +41,7 @@ struct RequestAppointmentView: View {
             ScrollView(.vertical,showsIndicators: false){
                 Spacer()
                     .padding(10)
-                Text(chosenTown)
+                Text(stadiumInfo.name)
                     .padding()
                     .frame(width: UIScreen.main.bounds.width * 1,height: UIScreen.main.bounds.height * 0.075)
                     .background(Color.white)
@@ -79,7 +80,7 @@ struct RequestAppointmentView: View {
                         .background(Color.white)
                 }
             }
-        }
+        }.navigationTitle(Text("Randevu onayla")).navigationBarTitleDisplayMode(.inline)
         .onAppear{
             userInfo.getDataForUser()
         }.onTapGesture {
@@ -164,7 +165,6 @@ struct RequestAppointmentView: View {
                 messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
                 alertType = .showAlert
             } else {
-                //kontrolleri gerçekleştir
                 firestoreDatabase.collection("PlayerID").whereField("Name", isEqualTo: chosenStadiumName).getDocuments { (snapshot, error) in
                     if error == nil {
                         if snapshot?.isEmpty == false && snapshot != nil {
@@ -173,7 +173,6 @@ struct RequestAppointmentView: View {
                                     let status=document.get("Online") as? String
                                     if status=="True" {
                                         OneSignal.postNotification(["contents": ["en":"Yeni bir randevu talebi!"], "include_player_ids":["\(playerId)"]])
-                                        print(stadiumInfo.id)
                                     }
                                 }
                             }
@@ -206,6 +205,7 @@ struct RequestAppointmentView: View {
             }
         }
     }
+    
 }
 
 struct RequestAppointmentView_Previews: PreviewProvider {

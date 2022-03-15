@@ -30,7 +30,8 @@ struct PendingAppointmentsView: View {
                     }
                 }
             }
-        }.onAppear{
+        }.navigationTitle(Text("Bekleyen Randevular")).navigationBarTitleDisplayMode(.inline)
+        .onAppear{
             getFromDatabase()
         }
     }
@@ -76,7 +77,7 @@ struct PendingAppointmentsView: View {
                     }
                 }
                 if self.appointmentsArray.count == 0 {
-                    //tıklanmasın
+                    
                 }
             }
         }

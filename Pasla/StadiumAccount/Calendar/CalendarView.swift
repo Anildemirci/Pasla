@@ -12,27 +12,30 @@ struct CalendarView: View {
     @StateObject var stadiuminfo=UsersInfoModel()
     @State var shown=false
     var body: some View {
-        NavigationView{
-            List(stadiuminfo.nameFields,id:\.self){i in
-                            NavigationLink(destination: ConfirmDateView(selectedField:i,stadiumName: stadiuminfo.stadiumName)){
-                                Text(i)
+        VStack {
+            NavigationView{
+                List(stadiuminfo.nameFields,id:\.self){i in
+                                NavigationLink(destination: ConfirmDateView(selectedField:i,stadiumName: stadiuminfo.stadiumName)){
+                                    Text(i)
+                                }
                             }
-                        }
-            .navigationTitle(Text("Saha Seçimi"))
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                shown.toggle()
-                                    }){
-                                        Text("Düzenle")
-                                        //Image(systemName: "Düzenle").resizable().frame(width: 30, height: 30)
-                                            .sheet(isPresented: $shown) { () -> WorkingHours in
-                                                return WorkingHours()
-                                            }
-                                    }
-                                )
+                .navigationTitle(Text("Saha Seçimi"))
+                .navigationBarItems(trailing:
+                                        Button(action: {
+                    shown.toggle()
+                                        }){
+                                            Text("Düzenle")
+                                            //Image(systemName: "Düzenle").resizable().frame(width: 30, height: 30)
+                                                .sheet(isPresented: $shown) { () -> WorkingHours in
+                                                    return WorkingHours()
+                                                }
+                                        }
+                                    )
+                .navigationTitle(Text("Saha Seçimi")).navigationBarTitleDisplayMode(.inline)
+            }
+            .onAppear{
+                stadiuminfo.getDataForStadium()
         }
-        .onAppear{
-            stadiuminfo.getDataForStadium()
         }
     }
 }

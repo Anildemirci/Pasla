@@ -48,7 +48,7 @@ struct StadiumPhotosView: View {
                             }.onDelete(perform: deletePhoto)
                         }
                     }
-                }
+                }.navigationTitle(Text("Fotoğraflar")).navigationBarTitleDisplayMode(.inline)
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("Tamam")))
                 }
@@ -86,7 +86,7 @@ struct StadiumPhotosView: View {
                          }
                          .animation(.spring())
                      }
-                 }
+                 }.navigationTitle(Text("Fotoğraflar")).navigationBarTitleDisplayMode(.inline)
              }.onAppear{
                  photosInfo.getDataForUser()
              }

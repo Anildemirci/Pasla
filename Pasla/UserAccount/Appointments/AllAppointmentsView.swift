@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AllAppointmentsView: View {
+    
     var body: some View {
         VStack{
             Spacer()
@@ -36,7 +37,7 @@ struct AllAppointmentsView: View {
                     .background(Color.red)
             }
             Spacer()
-        }
+        }.navigationTitle(Text("Randevular")).navigationBarTitleDisplayMode(.inline)
     }
 }
 

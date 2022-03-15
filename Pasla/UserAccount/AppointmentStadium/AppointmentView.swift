@@ -17,7 +17,7 @@ struct AppointmentView: View {
                     Text(i)
                 }
             }
-                .navigationTitle(Text("Saha Seçimi"))
+            .navigationTitle(Text("Saha Seçimi")).navigationBarTitleDisplayMode(.inline)
         }.onAppear{
             stadiuminfo.getDataFromInfoForUser()
         }

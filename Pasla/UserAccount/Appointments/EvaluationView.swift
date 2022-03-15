@@ -143,7 +143,8 @@ struct EvaluationView: View {
                 }
             }
             
-        }.onAppear{
+        }.navigationTitle(Text("Değerlendir")).navigationBarTitleDisplayMode(.inline)
+        .onAppear{
             getData()
             userInfo.getDataForUser()
         }

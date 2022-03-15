@@ -9,7 +9,10 @@ import SwiftUI
 
 struct MyTeamView: View {
     var body: some View {
-        Text("Takımım")
+        NavigationView {
+            Text("Yakında..")
+                .navigationTitle(Text("Takımım")).navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 

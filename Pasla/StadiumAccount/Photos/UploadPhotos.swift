@@ -79,7 +79,10 @@ struct UploadPhotos: View {
             }
             Spacer()
             TextField("Açıklama", text: $statementText)
-                            .padding()
+                .font(.title3)
+                .multilineTextAlignment(.center)
+                .padding()
+                .foregroundColor(Color.black)
             Spacer()
             if image != nil{
                 Button(action: {
@@ -98,7 +101,7 @@ struct UploadPhotos: View {
                 }
             }
             Spacer()
-        }
+        }.navigationTitle(Text("Fotoğraf Yükle")).navigationBarTitleDisplayMode(.inline)
         .onAppear{
             stadiumInfo.getDataForStadium()
         }

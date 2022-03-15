@@ -13,18 +13,29 @@ struct FindStadiumView: View {
     
     @ObservedObject var findStadium=FindStadium()
     @State var stadiumNameArray=[String]()
+    @State var searchField=""
     
     var body: some View {
-        NavigationView {
-            List(findStadium.townArray){ towns in
-                NavigationLink(destination: StadiumNameView(selectedTown:towns.town).onAppear() {
-                    chosenTown=towns.town
-                }) {
-                    Text(towns.town)
-                }
+            NavigationView{
+                VStack {
+                    HStack(){
+                        Image(systemName: "magnifyingglass")//.font(.system(size: 23,weight: .bold))
+                            .foregroundColor(.gray)
+                        TextField("İlçe ara",text: $searchField)
+                    }
+                    .padding(.vertical,10)
+                    .padding(.horizontal)
+                    .background(Color.primary.opacity(0.05))
+                    .cornerRadius(8)
+                    List(searchField == "" ? findStadium.townArray : findStadium.townArray.filter{$0.town.contains(searchField)}){ towns in
+                        NavigationLink(destination: StadiumNameView(selectedTown:towns.town).onAppear() {
+                            chosenTown=towns.town
+                        }) {
+                            Text(towns.town)
+                        }
+                    }
+                }.navigationTitle(Text("İstanbul")).navigationBarTitleDisplayMode(.inline)//başka şehirler eklenirse düzenle
             }
-            .navigationBarTitle("İstanbul",displayMode:.large) //başka şehirler eklenirse düzenle
-        }
     }
 }
 

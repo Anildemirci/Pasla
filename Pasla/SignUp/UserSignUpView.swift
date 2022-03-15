@@ -56,6 +56,7 @@ struct UserSignUpView: View {
                                 messageInput=error?.localizedDescription ?? "Hata!"
                                 showingAlert.toggle()
                             } else {
+                                
                                 let firestoreDatabase=Firestore.firestore()
                                 let firestoreUser=["User":Auth.auth().currentUser!.uid,
                                                    "Email":Auth.auth().currentUser!.email!,
@@ -105,6 +106,7 @@ struct UserSignUpView: View {
             Alert(title: Text("Hata!"), message: Text(messageInput), dismissButton: .default(Text("OK!")))
         }
     }
+
 }
 
 struct UserSignUpView_Previews: PreviewProvider {

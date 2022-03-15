@@ -22,7 +22,6 @@ struct UserAccountView: View {
     @State var showingAction=false
     @State var image:UIImage?
     @State var isShowCamera=false
-    @State var shown=false
     @State var messageInput=""
     @State var titleInput=""
     @State var showingAlert=false
@@ -35,29 +34,28 @@ struct UserAccountView: View {
             NavigationView {
                 VStack {
                     VStack {
-                        if profilPhoto != "" {
-                            AnimatedImage(url: URL(string: profilPhoto))
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: UIScreen.main.bounds.width * 1.0 , height: UIScreen.main.bounds.height * 0.30)
-                                .padding(0)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white,lineWidth:3)).shadow(radius: 25)
-                                .offset(y:UIScreen.main.bounds.height * -0.025)
-                                
-                        } else {
+                        if image != nil {
+                            Image(uiImage: image!)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .clipShape(Circle())
+                                            .overlay(Circle().stroke(Color.white,lineWidth:3)).shadow(radius: 25)
+                                            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+                        }
+                        else if profilPhoto != "" {
+                            CustomImageView(urlString: profilPhoto)
+                        }
+                        else if profilPhoto == "" {
                             Image(systemName: "plus")
                                 .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.30)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white,lineWidth:3)).shadow(radius: 15)
-                            .offset(y:UIScreen.main.bounds.height * -0.015)
+                                .scaledToFit()
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white,lineWidth:3)).shadow(radius: 25)
                             .onTapGesture(){
                                 showingAction.toggle()
                             }
                         }
-                    }.background(Color.white)
+                    }.frame(width: UIScreen.main.bounds.width * 1.0 , height: UIScreen.main.bounds.height * 0.30).background(Color.white)
                     HStack {
                         NavigationLink(destination: MyTeamView()){
                             Text("Takımım")
@@ -82,17 +80,38 @@ struct UserAccountView: View {
                     }
                     Spacer()
                 }.background(Color("myGreen"))
+                    .navigationTitle(Text("Hesabım")).navigationBarTitleDisplayMode(.inline)
+                    .navigationBarItems(leading:
+                        Button(action: {
+                        if image != nil {
+                            image=nil
+                            profilPhoto=""
+                        }
+                        }){
+                            if image != nil {
+                                Image("cancel").resizable().frame(width: 30, height: 30)
+                            }
+                        }
+                    )
                     .navigationBarItems(trailing:
                                             Button(action: {
-                        if profilPhoto == "" {
+                        if profilPhoto == "" && image == nil {
                             showingAction.toggle()
-                        } else {
+                        }
+                        else if image != nil {
+                            uploadPhoto()
+                        }
+                        else if profilPhoto != "" {
                             trashClicked()
                         }
                                             }){
-                                                if profilPhoto == "" {
+                                                if profilPhoto == "" && image == nil {
                                                     Image(systemName: "plus").resizable().frame(width: 30, height: 30)
-                                                } else {
+                                                }
+                                                else if image != nil {
+                                                    Image("confirm").resizable().frame(width: 30, height: 30).foregroundColor(Color.blue)
+                                                }
+                                                else if profilPhoto != "" {
                                                     Image(systemName: "trash").resizable().frame(width: 30, height: 30)
                                                 }
                                             }
@@ -109,7 +128,6 @@ struct UserAccountView: View {
             FavoriteStadiumsView().tabItem{
                 Image(systemName: "star.fill")
                 Text("Favoriler")
-                    
             }.tag(1)
             FindStadiumView().tabItem{
                 Image(systemName: "magnifyingglass")
@@ -119,7 +137,7 @@ struct UserAccountView: View {
                 Image(systemName: "gearshape.fill")
                 Text("Ayarlar")
             }.tag(3)
-        }
+        }.accentColor(Color("myGreen"))
         .sheet(isPresented: $isShowPhotoLibrary) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: $image)
         }
@@ -135,12 +153,12 @@ struct UserAccountView: View {
                                 buttons: [
                                     .default(Text("Kamera")) {
                                         isShowCamera.toggle()
-                                        uploadPhoto()
+                                        
                                     },
                                     //fotoğrafı seçince yüklesin
                                     .default(Text("Galeri")) {
                                         isShowPhotoLibrary.toggle()
-                                        uploadPhoto()
+                            
                                     },
                                     .destructive(Text("İptal")) {
                                         
@@ -245,6 +263,8 @@ struct UserAccountView: View {
                         titleInput="Başarılı"
                         messageInput="Profil fotoğrafınız silinmiştir."
                         showingAlert.toggle()
+                        image=nil
+                        profilPhoto=""
                     }
                 }
             }
@@ -282,7 +302,7 @@ struct UserAccountView: View {
                                     titleInput="Başarılı"
                                     messageInput="Fotoğraf yüklendi."
                                     showingAlert.toggle()
-                                    shown.toggle()
+                                    image=nil
                                 }
                             }
                             
@@ -300,6 +320,26 @@ struct UserAccountView_Previews: PreviewProvider {
     }
 }
 
+struct CustomImageView: View {
+    var urlString: String
+    @ObservedObject var imageLoader = ImageLoaderService()
+    @State var image: UIImage = UIImage()
+    
+    var body: some View {
+        Image(uiImage: image)
+            .resizable()
+            .scaledToFit()
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.white,lineWidth:3)).shadow(radius: 25)
+            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+            .onReceive(imageLoader.$image) { image in
+                self.image = image
+            }
+            .onAppear {
+                imageLoader.loadImage(for: urlString)
+            }
+    }
+}
 
 
 

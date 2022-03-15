@@ -12,13 +12,16 @@ struct UserInformationView: View {
     @ObservedObject var userInfo=UsersInfoModel()
     @State var confirmedNumber=Int()
     @State var canceledNumber=Int()
+    @State var deleteAcc=false
+    @State var messageInput=""
+    @State var titleInput=""
+    @State var showingAlert=false
     var firedatabase=Firestore.firestore()
     var currentUser=Auth.auth().currentUser
     
     var body: some View {
         VStack{
             ScrollView(.vertical, showsIndicators: false) {
-            Spacer()
             VStack {
                 Text("Kişisel Bilgiler")
                     .font(.largeTitle)
@@ -67,12 +70,45 @@ struct UserInformationView: View {
                     .cornerRadius(25)
             }
             Spacer()
+                    .frame(height:25)
+                Button(action: {
+                    currentUser?.delete { error in
+                      if let error = error {
+                        // An error happened.
+                      } else {
+                          firedatabase.collection("Users").document(currentUser!.uid).delete { error in
+                              if error != nil {
+                                  titleInput="Hata"
+                                  messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
+                                  showingAlert.toggle()
+                              }
+                          }
+                          //titleInput="Başarılı"
+                          //messageInput="Hesabınız silindi."
+                          //showingAlert.toggle()
+                          deleteAcc.toggle()
+                      }
+                    }
+                }) {
+                    Text("Hesabı sil")
+                        .padding()
+                        .frame(width: 150.0, height: 25.0)
+                        .background(Color.red)
+                        .foregroundColor(Color.white)
+                        .clipShape(Capsule())
+                        .fullScreenCover(isPresented: $deleteAcc) { () -> HomeView in
+                            return HomeView()
+                        }
+                }
+                Spacer()
             }
             .onAppear{
             userInfo.getDataForUser()
                 getData()
-        }
-        }.background(Color("myGreen"))
+        }.alert(isPresented: $showingAlert) {
+            Alert(title: Text(titleInput), message: Text(messageInput), dismissButton: .default(Text("OK!")))
+    }
+        }.navigationTitle(Text("Bilgilerim")).navigationBarTitleDisplayMode(.inline).background(Color("myGreen"))
             
     }
     

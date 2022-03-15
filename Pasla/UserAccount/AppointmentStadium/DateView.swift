@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import Combine
+
 struct DateView: View {
     @StateObject var stadiuminfo=StadiumInfoFromUserModel()
     
@@ -24,6 +26,8 @@ struct DateView: View {
     @State var shown=false
     @State var hourType="Full"
     @State var checkInfos=false
+    
+    var didChange=PassthroughSubject<Array<Any>,Never>()
     
     var body: some View {
         VStack{
@@ -79,7 +83,7 @@ struct DateView: View {
                             Text(hour)
                                 .frame(width: UIScreen.main.bounds.width * 0.7)
                                 .padding()
-                                .background(yellowDates.contains(hour) ? Color.yellow: redDates.contains(hour) ? Color.red: .green)
+                                .background(redDates.contains(hour) ? Color.red: yellowDates.contains(hour) ? Color.yellow: .green)
                                 .foregroundColor(.black)
                         })
                     }.disabled(yellowDates.contains(hour) ? true: redDates.contains(hour) ? true: false)
@@ -90,19 +94,20 @@ struct DateView: View {
             daysInfo.days()
             stadiuminfo.getDataFromInfoForUser()
             checkInfo()
+            getDatefromCalendar(day: chosenDay)
         }
-        .navigationTitle(Text("Tarih ve Saat Seçimi"))
+        .navigationTitle(Text("Tarih ve Saat Seçimi")).navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     Button(action: {
                 shown.toggle()
-                                    })
+                })
                                 {
-                                        Image(systemName: "info.circle.fill").resizable().frame(width: 30, height: 30)
-                                            .sheet(isPresented: $shown) { () -> FieldInformationsView in
-                                                return FieldInformationsView(fieldname:selectedField)
-                                            }
+                Image(systemName: "info.circle.fill").resizable().frame(width: 30, height: 30)
+                    .sheet(isPresented: $shown) { () -> FieldInformationsView in
+                        return FieldInformationsView(fieldname:selectedField)
+                    }
             }
-                                )
+            )
     }
     
     func getInfos(){
@@ -139,6 +144,7 @@ struct DateView: View {
     }
     
     func getDatefromCalendar(day: String){
+        
         if preDay != day {
             redDates.removeAll()
             yellowDates.removeAll()
@@ -164,7 +170,11 @@ struct DateView: View {
                     }
                 }
             }
+            self.didChange.send(redDates)
+            self.didChange.send(yellowDates)
         } else {
+            redDates.removeAll()
+            yellowDates.removeAll()
             self.firestoreDatabase.collection("Calendar").document(chosenStadiumName).collection(selectedField).whereField("AppointmentDate", isEqualTo: day).addSnapshotListener { (snapshot, error) in
                 if error == nil {
                     for document in snapshot!.documents {
@@ -187,6 +197,8 @@ struct DateView: View {
                     }
                 }
             }
+            self.didChange.send(redDates)
+            self.didChange.send(yellowDates)
         }
     }
     

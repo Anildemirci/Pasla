@@ -14,7 +14,6 @@ struct ForgotPasswordView: View {
     @State var messageInput=""
     @State var titleInput=""
     @State var showingAlert=false
-    @State var disabledButton=true
     
     var firebaseDatabase=Firestore.firestore()
     var body: some View {

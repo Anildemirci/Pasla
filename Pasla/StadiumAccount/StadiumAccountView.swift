@@ -30,21 +30,26 @@ struct StadiumAccountView: View {
     @StateObject var infomodel=UsersInfoModel()
     @StateObject var photoModel=StadiumPhotosModel()
     
-    
     var body: some View {
         TabView {
             NavigationView {
                     VStack {
                         VStack {
-                            if profilPhoto != "" {
+                            if image != nil {
+                                Image(uiImage: image!)
+                                    .resizable()
+                                    //.aspectRatio(contentMode: .fill)
+                                    .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
+                                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                            }
+                            else if profilPhoto != "" {
                                 AnimatedImage(url: URL(string: profilPhoto))
                                     .resizable()
-                                    //.aspectRatio(contentMode: .fit)
+                                    //.aspectRatio(contentMode: .fill)
                                     .frame(width: UIScreen.main.bounds.width * 1 , height: UIScreen.main.bounds.height * 0.20)
-                                .padding()
-                                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
-                                
-                            } else {
+                                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                            }
+                            else if profilPhoto == "" {
                                 Image(systemName: "plus")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -55,7 +60,7 @@ struct StadiumAccountView: View {
                                     showingAction.toggle()
                                 }
                             }
-                        }.background(Color.white)
+                        }.frame(width: UIScreen.main.bounds.width * 1.0 , height: UIScreen.main.bounds.height * 0.30).background(Color.white)
                         HStack {
                             NavigationLink(destination: StadiumPhotosView(userType:infomodel.stadiumType,selectedName: infomodel.stadiumName).onAppear(){
                             }){
@@ -85,34 +90,68 @@ struct StadiumAccountView: View {
                                 Text("Fotoğraf Yükle")
                                     .foregroundColor(Color("myGreen"))
                             }.padding()
-                                .frame(width: 200.0, height: 50.0)
+                                .frame(width: UIScreen.main.bounds.width * 0.6, height: 50.0)
                                 .background(Color.white)
-                            NavigationLink(destination: PendingAppointmentsView(selectedName:infomodel.stadiumName)){
-                                Text("Bekleyen randevular")
-                                    .foregroundColor(Color("myGreen"))
-                            }.padding()
-                                .frame(width: 200.0, height: 50.0)
-                                .background(Color.white)
-                        }.padding()
-                    }.background(Color("myGreen"))
-                    .navigationTitle(Text(infomodel.stadiumName))
-                        .navigationBarItems(trailing:
-                                                Button(action: {
-                            if profilPhoto == "" {
-                                showingAction.toggle()
+                            if infomodel.appointmentsArray.count == 0 {
+                                NavigationLink(destination: PendingAppointmentsView(selectedName:infomodel.stadiumName)){
+                                    Text("Bekleyen randevunuz yok")
+                                        .font(.footnote)
+                                        .scaledToFit()
+                                        .foregroundColor(Color("myGreen"))
+                                }.padding()
+                                    .frame(width: UIScreen.main.bounds.width * 0.6, height: 50.0)
+                                    .background(Color.white)
+                                    .disabled(true)
                             } else {
-                                trashClicked()
+                                NavigationLink(destination: PendingAppointmentsView(selectedName:infomodel.stadiumName)){
+                                    Text("Bekleyen \(infomodel.appointmentsArray.count) adet randevu").scaledToFill()
+                                            .foregroundColor(Color("myGreen"))
+                                }.padding()
+                                    .frame(width: UIScreen.main.bounds.width * 0.6, height: 50.0)
+                                    .background(Color.white)
                             }
-                                                }){
-                                                    if profilPhoto == "" {
-                                                        Image(systemName: "plus").resizable().frame(width: 30, height: 30)
-                                                    } else {
-                                                        Image(systemName: "trash").resizable().frame(width: 30, height: 30)
-                                                    }
+                        }.padding()
+                    }.background(Color("myGreen")).navigationTitle(Text(infomodel.stadiumName)).navigationBarTitleDisplayMode(.inline)
+                    .navigationBarItems(leading:
+                        Button(action: {
+                        if image != nil {
+                            image=nil
+                            profilPhoto=""
+                        }
+                        }){
+                            if image != nil {
+                                Image("cancel").resizable().frame(width: 30, height: 30)
+                            }
+                        }
+                    )
+                    .navigationBarItems(trailing:
+                                            Button(action: {
+                        if profilPhoto == "" && image == nil {
+                            showingAction.toggle()
+                        }
+                        else if image != nil {
+                            
+                            uploadPhoto()
+                        }
+                        else if profilPhoto != "" {
+                            trashClicked()
+                        }
+                                            }){
+                                                if profilPhoto == "" && image == nil {
+                                                    Image(systemName: "plus").resizable().frame(width: 30, height: 30)
                                                 }
-                                            )
-            }.onAppear(){
+                                                else if image != nil {
+                                                    Image("confirm").resizable().frame(width: 30, height: 30).foregroundColor(Color.blue)
+                                                }
+                                                else if profilPhoto != "" {
+                                                    Image(systemName: "trash").resizable().frame(width: 30, height: 30)
+                                                }
+                                            }
+                                        )
+            }
+            .onAppear(){
                 infomodel.getDataForStadium()
+                infomodel.getAppointment()
                 getProfilePhoto()
                 pushNotification()
             }
@@ -128,7 +167,7 @@ struct StadiumAccountView: View {
                 Image(systemName: "gearshape.fill")
                 Text("Ayarlar")
             }
-        }
+        }.accentColor(Color("myGreen"))
         .sheet(isPresented: $isShowPhotoLibrary) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: $image)
         }.sheet(isPresented: $isShowCamera) {
@@ -143,12 +182,9 @@ struct StadiumAccountView: View {
                                 buttons: [
                                     .default(Text("Kamera")) {
                                         isShowCamera.toggle()
-                                        uploadPhoto()
                                     },
-                                    //fotoğrafı seçince yüklesin
                                     .default(Text("Galeri")) {
                                         isShowPhotoLibrary.toggle()
-                                        uploadPhoto()
                                     },
                                     .destructive(Text("İptal")) {
                                         
@@ -252,6 +288,8 @@ struct StadiumAccountView: View {
                     } else {
                         titleInput="Başarılı"
                         messageInput="Profil fotoğrafınız silinmiştir."
+                        image=nil
+                        profilPhoto=""
                         showingAlert.toggle()
                     }
                 }
@@ -291,7 +329,7 @@ struct StadiumAccountView: View {
                                     titleInput="Başarılı"
                                     messageInput="Fotoğraf yüklendi."
                                     showingAlert.toggle()
-                                    shown.toggle()
+                                    image=nil
                                 }
                             }
                             
@@ -301,6 +339,7 @@ struct StadiumAccountView: View {
             }
         }
     }
+    
 }
 
 

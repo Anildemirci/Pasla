@@ -11,19 +11,30 @@ import Firebase
 struct StadiumNameView: View {
     @State var stadiumNames=[String]()
     @State var selectedTown=""
+    @State var searchField=""
     
     var body: some View {
         VStack{
-            List(stadiumNames,id: \.self) { i in
+            HStack(spacing:15){
+                Image(systemName: "magnifyingglass")//.font(.system(size: 23,weight: .bold))
+                    .foregroundColor(.gray)
+                TextField("Saha ara",text: $searchField)
+            }
+            .padding(.vertical,10)
+            .padding(.horizontal)
+            .background(Color.primary.opacity(0.05))
+            .cornerRadius(8)
+            List(searchField == "" ? stadiumNames : stadiumNames.filter{$0.contains(searchField)},id: \.self) { i in
                 NavigationLink(destination: SelectedStadiumView(selectedStadium:i).onAppear(){
                     chosenStadiumName=i
                 }){
                     Text(i)
                 }
-            }
-        }.onAppear{
+            }.frame(width: UIScreen.main.bounds.width * 1.1)
+        }.navigationTitle(Text(selectedTown)).navigationBarTitleDisplayMode(.inline)
+            .onAppear{
             getStadiums()
-        }
+            }.onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
     }
     
     func getStadiums(){
@@ -54,5 +65,24 @@ struct StadiumNameView: View {
 struct StadiumNameView_Previews: PreviewProvider {
     static var previews: some View {
         StadiumNameView()
+    }
+}
+
+//ekrana tıklayınca klavyeyi kapatıyor.
+
+extension UIApplication {
+    func addTapGestureRecognizer() {
+        guard let window = windows.first else { return }
+        let tapGesture = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
+        tapGesture.requiresExclusiveTouchType = false
+        tapGesture.cancelsTouchesInView = false
+        tapGesture.delegate = self
+        window.addGestureRecognizer(tapGesture)
+    }
+}
+
+extension UIApplication: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true // set to `false` if you don't want to detect tap during other gestures
     }
 }

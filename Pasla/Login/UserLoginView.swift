@@ -87,14 +87,15 @@ struct UserLoginView: View {
                             if userTypeArray.contains(email) {
                                 firestoreDatabase.collection("Users").whereField("Email", isEqualTo: email).addSnapshotListener { (snapshot, error) in
                                     if error == nil {
-                                                    Auth.auth().signIn(withEmail: email, password: password) { (authdata, error) in
-                                                        if error != nil {
-                                                            messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
-                                                            showingAlert.toggle()
-                                                        } else {
-                                                            shown.toggle()
-                                                        }
-                                                    }
+                                        Auth.auth().signIn(withEmail: email, password: password) { (authdata, error) in
+                                            if error != nil {
+                                                messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
+                                                showingAlert.toggle()
+                                            } else {
+                                                shown.toggle()
+                                            }
+                                        }
+                                         
                                     } else {
                                         messageInput=error?.localizedDescription ?? "Sistem hatası tekrar deneyiniz."
                                         showingAlert.toggle()

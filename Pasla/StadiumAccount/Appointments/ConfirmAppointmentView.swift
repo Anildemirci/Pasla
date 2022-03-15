@@ -123,7 +123,8 @@ struct ConfirmAppointmentView: View {
                         .frame(height: 25.0)
                 }
             }
-        }.background(Color("myGreen"))
+        }.navigationTitle(Text("Randevu Onayla")).navigationBarTitleDisplayMode(.inline)
+        .background(Color("myGreen"))
             .padding()
             .onAppear{
                 getInfo()

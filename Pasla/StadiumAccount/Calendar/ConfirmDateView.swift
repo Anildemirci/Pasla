@@ -179,7 +179,8 @@ struct ConfirmDateView: View {
                 }
             }
             Spacer()
-        }.onAppear{
+        }
+        .onAppear{
             daysInfo.days()
             infomodel.getDataForStadium()
             checkInfo()
@@ -189,7 +190,7 @@ struct ConfirmDateView: View {
         }.sheet(isPresented: $shownFieldInfo) { () -> FieldInfoView in
             return FieldInfoView(fieldName:selectedField,stadiumname: infomodel.stadiumName)
         }
-        .navigationTitle(Text("Tarih ve Saat Seçimi"))
+        .navigationTitle(Text("Tarih ve Saat Seçimi")).navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if chosenDay != "" {

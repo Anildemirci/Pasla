@@ -69,7 +69,7 @@ struct SelectedStadiumView: View {
                     VStack{
                         NavigationLink(destination: AppointmentView()){
                             Text("Randevu Al")
-                                .foregroundColor(Color.blue)
+                                .foregroundColor(Color.black)
                         }.padding()
                             .frame(width: 200.0, height: 50.0)
                             .background(Color.white)
@@ -79,7 +79,7 @@ struct SelectedStadiumView: View {
                     getProfilPhoto()
                 }
                 .background(Color("myGreen"))
-                .navigationTitle(Text(selectedStadium))
+                .navigationTitle(Text(selectedStadium)).navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(trailing:
                                         Button(action: {
                     if userInfo.userFavStadium.contains(selectedStadium) {
@@ -90,6 +90,7 @@ struct SelectedStadiumView: View {
                 }){
                     if userInfo.userFavStadium.contains(selectedStadium) {
                         Image(systemName: "star.fill").resizable().frame(width: 30, height: 30)
+                            .foregroundColor(Color.yellow)
                     } else {
                         Image(systemName: "star").resizable().frame(width: 30, height: 30)
                     }

@@ -24,7 +24,8 @@ struct CommentsView: View {
             } else if stadiuminfo.userId == currentUser!.uid {
                 CommentForUser()
             }
-        }.onAppear{
+        }.navigationTitle(Text("Yorumlar")).navigationBarTitleDisplayMode(.inline)
+        .onAppear{
             stadiuminfo.getDataForStadium()
             stadiuminfo.getDataForUser()
         }
@@ -62,9 +63,9 @@ struct CommentForUser : View {
             if commentsArrayStruct.count == 0 {
                 Text("Henüz yorum yapılmadı.")
             } else {
-                Spacer()
                 let roundedValue=NSString(format: "%.2f",totalScore)
-                Text("\(commentsArrayStruct.count) müşteri oyu ile \(roundedValue) puan.")
+                Text("\(commentsArrayStruct.count) müşteri oyu ile \(roundedValue) puan.").padding()
+                    .border(Color.black, width: 2)
                 List(commentsArrayStruct){ i in
                     VStack{
                         HStack(alignment:.top){
@@ -108,7 +109,8 @@ struct CommentForUser : View {
                     }
                 }
             }
-        }.onAppear{
+        }
+        .onAppear{
             getComment()
         }
     }
@@ -171,11 +173,12 @@ struct CommentForStadium : View {
     var body: some View {
         VStack{
             if commentsArrayStruct.count == 0 {
-                Text("Henüz yorum yapılmadı.")
+                Text("Henüz yorum yapılmadı.").font(.headline)
             } else {
                 Spacer()
                 let roundedValue=NSString(format: "%.2f",totalScore)
-                Text("\(commentsArrayStruct.count) müşteri oyu ile \(roundedValue) puan.")
+                Text("\(commentsArrayStruct.count) müşteri oyu ile \(roundedValue) puan.").padding()
+                    .border(Color.black, width: 2)
                 List(commentsArrayStruct){ i in
                     VStack{
                         HStack(alignment:.top){
@@ -219,7 +222,8 @@ struct CommentForStadium : View {
                     }
                 }
             }
-        }.onAppear{
+        }
+        .onAppear{
             getComment()
         }
     }
@@ -238,16 +242,16 @@ struct CommentForStadium : View {
                     let username = document.get("FullName") as! String
                     let commentDate = document.get("CommentDate") as! String
                     let scorePoint = document.get("Score") as! String
-                    i=i+i
-                        if score.contains("5-Çok iyi") {
+                    i=i+1
+                        if scorePoint.contains("5-Çok iyi") {
                             totalScore=(totalScore+5.00)
-                        } else if score.contains("4-İyi") {
+                        } else if scorePoint.contains("4-İyi") {
                             totalScore=(totalScore+4.00)
-                        } else if score.contains("3-Orta") {
+                        } else if scorePoint.contains("3-Orta") {
                             totalScore=(totalScore+3.00)
-                        } else if score.contains("2-Kötü") {
+                        } else if scorePoint.contains("2-Kötü") {
                             totalScore=(totalScore+2.00)
-                        } else if score.contains("1-Çok kötü") {
+                        } else if scorePoint.contains("1-Çok kötü") {
                             totalScore=(totalScore+1.00)
                         }
                     commentsArrayStruct.append((commentInfos(id: document.documentID, comment: comments, fullname: username, date: commentDate, score: scorePoint)))

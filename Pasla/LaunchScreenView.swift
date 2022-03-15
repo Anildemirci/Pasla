@@ -57,10 +57,10 @@ struct LaunchScreenView: View {
                 scale=3
                 opacity=0
             }
-            withAnimation(Animation.linear.delay(1.5)){
+            withAnimation(Animation.linear.delay(1.25)){
                 showMainView=true
             }
-            DispatchQueue.main.asyncAfter(deadline: .now()+1.5){
+            DispatchQueue.main.asyncAfter(deadline: .now()+1.25){
                 getData()
             }
         }

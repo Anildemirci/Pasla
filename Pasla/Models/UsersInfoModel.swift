@@ -37,6 +37,8 @@ class UsersInfoModel:ObservableObject{
     @Published var nameFields=[String]()
     @Published var workingHour=[String]()
     @Published var workingHour2=[String]()
+    @Published var daysArray=[String]()
+    @Published var appointmentsArray=[String]()
     
     func getDataForUser(){
         let db=Firestore.firestore()
@@ -132,5 +134,54 @@ class UsersInfoModel:ObservableObject{
         }
     }
     
+    func getCurrentDate()->Date {
+        var now=Date()
+        var nowComponents = DateComponents()
+        let calendar = Calendar.current
+        nowComponents.year = Calendar.current.component(.year, from: now)
+        nowComponents.month = Calendar.current.component(.month, from: now)
+        nowComponents.day = Calendar.current.component(.day, from: now)
+        nowComponents.hour = Calendar.current.component(.hour, from: now)
+        nowComponents.minute = Calendar.current.component(.minute, from: now)
+        nowComponents.second = Calendar.current.component(.second, from: now)
+        nowComponents.timeZone = NSTimeZone.local
+        now = calendar.date(from: nowComponents)!
+        return now
+    }
+
+    func getAppointment() {
+        
+       getDataForStadium()
+        
+        for day in 0...13 {
+            let hourToAdd=0 //tr saatlerine göre +2 ekle
+            let daysToAdd=0 + day
+            let UTCDate = getCurrentDate()
+            var dateComponent = DateComponents()
+            dateComponent.hour=hourToAdd
+            dateComponent.day = daysToAdd
+            let currentDate = Calendar.current.date(byAdding: dateComponent, to: UTCDate)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            let date = dateFormatter.string(from: currentDate! as Date)
+            self.daysArray.append(date)
+        }
+        let db=Firestore.firestore()
+        db.collection("StadiumAppointments").document("Biral").collection("Biral").whereField("Status", isEqualTo: "Onay bekliyor.").addSnapshotListener { (snapshot, error) in
+            if error == nil {
+                self.appointmentsArray.removeAll(keepingCapacity: false)
+                for document in snapshot!.documents {
+                    let date=document.get("AppointmentDate") as! String
+                    if self.daysArray.contains(date) {
+                        self.appointmentsArray.append(document.documentID)
+                    }
+                }
+            }
+        }
+
+    }
+
     
 }
+
