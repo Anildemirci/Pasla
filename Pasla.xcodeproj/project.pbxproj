@@ -154,6 +154,7 @@
 		04A398B9278397930091D14D /* StadiumSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumSettingsView.swift; sourceTree = "<group>"; };
 		04B80A1A27B4B80900C89D8E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		04B80A1C27B4C1E700C89D8E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		04C7F12B280613E80089AB43 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DD2C672777A2850075A103 /* StadiumPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumPhotosView.swift; sourceTree = "<group>"; };
 		04DD2C6C2777A2CA0075A103 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		04DD2C702777A2EC0075A103 /* StadiumInformationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumInformationsView.swift; sourceTree = "<group>"; };
@@ -231,6 +232,7 @@
 		00F42C8082BD354B2D7551DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04C7F12B280613E80089AB43 /* SDWebImage.framework */,
 				3D3627AC93395E207DF31E4D /* Pods_Pasla.framework */,
 				80A65A7D7FC8DAAE95F58BED /* Pods_Pasla_PaslaUITests.framework */,
 				BB5629037E31E5B1A7E6D245 /* Pods_PaslaTests.framework */,
@@ -326,7 +328,7 @@
 			path = FindStadium;
 			sourceTree = "<group>";
 		};
-		04636C6B2799F5E000E17D46 /* Models */ = {
+		04636C6B2799F5E000E17D46 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				0418AE4C27A0644700D6E509 /* UsersInfoModel.swift */,
@@ -335,7 +337,7 @@
 				04143BEB279A1762004A3357 /* StadiumCommentModel.swift */,
 				04B80A1C27B4C1E700C89D8E /* MapViewModel.swift */,
 			);
-			path = Models;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		0475F9C0276820B60053C4EF /* Login */ = {
@@ -438,7 +440,7 @@
 				04F644FA27670165004840B8 /* HomeView.swift */,
 				0484870A27B725B00057948C /* LaunchScreenView.swift */,
 				04B80A1927B4B7F500C89D8E /* Views */,
-				04636C6B2799F5E000E17D46 /* Models */,
+				04636C6B2799F5E000E17D46 /* ViewModels */,
 				0475F9C0276820B60053C4EF /* Login */,
 				0475F9C1276820C40053C4EF /* SignUp */,
 				04299E3D276E157A0083C7BD /* StadiumAccount */,
@@ -1042,7 +1044,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1081,7 +1083,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

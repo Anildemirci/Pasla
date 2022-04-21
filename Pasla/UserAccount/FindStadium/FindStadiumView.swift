@@ -33,7 +33,7 @@ struct FindStadiumView: View {
                         }) {
                             Text(towns.town)
                         }
-                    }
+                    }.listStyle(.plain)
                 }.navigationTitle(Text("İstanbul")).navigationBarTitleDisplayMode(.inline)//başka şehirler eklenirse düzenle
             }
     }

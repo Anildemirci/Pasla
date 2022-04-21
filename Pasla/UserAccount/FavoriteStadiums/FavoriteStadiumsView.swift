@@ -19,7 +19,8 @@ struct FavoriteStadiumsView: View {
                 }){
                     Text(stadiums)
                 }
-            }.frame(width: UIScreen.main.bounds.width * 1.1)
+            }.listStyle(.plain)
+            
             .navigationTitle(Text("Favoriler")).navigationBarTitleDisplayMode(.inline)
         }.onAppear{
             userInfo.getDataForUser()

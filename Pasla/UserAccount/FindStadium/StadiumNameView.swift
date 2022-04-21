@@ -30,7 +30,7 @@ struct StadiumNameView: View {
                 }){
                     Text(i)
                 }
-            }.frame(width: UIScreen.main.bounds.width * 1.1)
+            }.listStyle(.plain)
         }.navigationTitle(Text(selectedTown)).navigationBarTitleDisplayMode(.inline)
             .onAppear{
             getStadiums()
